@@ -14,7 +14,7 @@ import { Link } from "react-router-dom";
 import {db,auth} from './Firebase/firebase'
 import { collection ,addDoc} from "firebase/firestore";
 import { useNavigate } from "react-router-dom";
-const drawerWidth = 240;
+const drawerWidth = 190;
 
 
 function NavBar() {

@@ -166,7 +166,7 @@ p{
 
 .feed{
   width: 80%;
-  margin-top: 200px;
+  /*margin-top: 200px;*/
   margin-left: 300px;
   margin-bottom: 100px;
 }
@@ -416,3 +416,71 @@ p{
   .Google-Button{
     margin-left:150px
   }
+
+  /********************AdminPage*************************/
+
+.AdminCard{
+  margin: 20px;
+  display: inline-block;
+}
+
+.stats {
+  /* background-color: rgba(255, 255, 255, 0.233); */
+  width: 100vw;
+  height: auto;
+  align-items: center;
+  justify-content: center;
+  margin-left: 2vw;
+  margin-top: 3vh;
+  border: 8px solid transparent;
+  padding-left: 200px;
+  padding-right: 50px;
+}
+
+.stats-bar .column {
+  color: white;
+  margin-top: 40px;
+  margin-left: 1vw;
+  margin-right: 1vw;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  gap: 3.5vw;
+
+  width: 70%;
+  height: 80%;
+
+  background: #212121;
+  box-shadow: 4px 4px 10px rgba(24, 24, 40, 0.5);
+  border-radius: 35px;
+}
+@media screen and (max-width: 970px){
+  .stats-bar .column {
+    flex-direction: column;
+  }
+}
+.stats-bar .column h4 {
+  align-items: center;
+  padding: 10px 0;
+
+  width: 60px;
+  height: 45px;
+
+  background: #9747ff;
+  border-radius: 20px;
+}
+
+.stats-bar .column h6 {
+  text-transform: uppercase;
+  width: max-content;
+}
+
+.stats-bar {
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  font-family: Montserrat-Medium;
+  /* background-color: rgba(255, 255, 255, 0.233) ; */
+}

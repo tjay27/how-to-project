@@ -46,6 +46,8 @@ function NavBar() {
           Title,
           Topic,
           author:{name:auth.currentUser.displayName,id:auth.currentUser.uid},
+          title_lower: Title.toLocaleLowerCase(),
+          likes: [],
           comments:[]
       }).then(()=>{alert("success!!")}).catch(err=>{alert(err.message)});
 

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import BlogCard from "../BlogCards";
 import NavBar from "../NavBar";
 import Img1 from "../Images/6.png";
@@ -12,16 +12,6 @@ function Feeds() {
     <>
       <img class="img1" src={Img1} alt="" />
       <img class="img2" src={Img2} alt="" />
-
-      <div>
-        <input
-          class="search-bar"
-          type="search"
-          placeholder="Search"
-          id="searchInput"
-        ></input>
-        <i class="fas fa-search search-icon"></i>
-      </div>
 
       <LoginIcon/>
 

@@ -2,13 +2,13 @@ import { initializeApp } from "firebase/app";
 import {getAuth } from "firebase/auth";
 import {getFirestore} from "firebase/firestore";
 const firebaseConfig = {
-  apiKey: "AIzaSyDxDvJuDr_HKsy234R6wPkNRbyCE8ETvbc",
-  authDomain: "how-to-project-9304b.firebaseapp.com",
-  projectId: "how-to-project-9304b",
-  storageBucket: "how-to-project-9304b.appspot.com",
-  messagingSenderId: "659916051270",
-  appId: "1:659916051270:web:7340470d16929231494b47",
-  measurementId: "G-KDJ3GM6MSC"
+  apiKey: "AIzaSyBD-e6w3-eKyVYFZ0P7S_F2vCsd3qqDf60",
+  authDomain: "pollux-39804.firebaseapp.com",
+  projectId: "pollux-39804",
+  storageBucket: "pollux-39804.appspot.com",
+  messagingSenderId: "315704531556",
+  appId: "1:315704531556:web:a250db402210940a5d9d71",
+  measurementId: "G-RCE4CRL3JK"
 };
 
 // Initialize Firebase

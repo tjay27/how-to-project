@@ -23,14 +23,7 @@ function PopUp(props) {
         </Typography>
         {props.children}
 
-        <Button
-          variant="contained"
-          color="secondary"
-          sx={{ marginTop: "20px" }}
-          onClick={() => props.setTrigger(false)}
-        >
-          {props.submitText}
-        </Button>
+        
         
       </div>
     </div>

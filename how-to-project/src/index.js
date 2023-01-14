@@ -7,7 +7,6 @@ import MyActivity from './Pages/MyActivity';
 import BlogPost from './Pages/BlogPost';
 import SearchPage from './Pages/SearchPage';
 import LoginPage from './Pages/LoginPage';
-import AdminPage from "./AdminPage";
 import { AuthContextProvider } from "../src/Firebase/AuthContext";
 
 // import "../public/index.css";
@@ -21,12 +20,10 @@ function Main() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/feed" element={<Feeds />} />
-          <Route path="/Trending" element={<Feeds />} />
           <Route path="/My-Activity" element={<MyActivity/>} />
           <Route path="/BlogPost" element={<BlogPost />} />
           <Route path="/SearchPage" element={<SearchPage/>} />
           <Route path="/LoginPage" element={<LoginPage/>} />
-          <Route path="/admin" element={<AdminPage />} />
         </Routes>
         </AuthContextProvider>
       </BrowserRouter>

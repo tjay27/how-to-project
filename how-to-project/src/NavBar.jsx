@@ -14,10 +14,14 @@ import { Link } from "react-router-dom";
 import {db,auth} from './Firebase/firebase'
 import { collection ,addDoc} from "firebase/firestore";
 import { useNavigate } from "react-router-dom";
+import Rating from '@mui/material/Rating';
+
 const drawerWidth = 190;
 
 
 function NavBar() {
+  const [value, setValue] = React.useState(0);
+
   const [feedback, setFeedback] = useState(false);
   const [contri, setContri] = useState(false);
   const [cust, setCust] = useState(false);
@@ -27,22 +31,51 @@ function NavBar() {
   const [Topic,setTopic]=useState("");
   const [Title,setTitle]=useState("");
   const bloglist=collection(db,'Blogs');
-
+  
   let navigate = useNavigate();
-
-  const handleSubmit=async (e)=>{
-      
+  const handleSubmit=async (e)=>{ 
       e.preventDefault();
-      await addDoc(bloglist,{
+      if(Title===""||Topic===""){
+        alert("Fill all the fields");
+        return false;
+      }else{
+        
+          await addDoc(bloglist,{
           Title,
           Topic,
-          author:{name:auth.currentUser.displayName,id:auth.currentUser.uid}
+          author:{name:auth.currentUser.displayName,id:auth.currentUser.uid},
+          comments:[]
       }).then(()=>{alert("success!!")}).catch(err=>{alert(err.message)});
 
       setTitle("")
       setTopic("")
   navigate("/feed");
+        
+      }
+      
   };
+  /********for adding Feedback ***********/
+  const [Response,setResponse]=useState("");
+  const feedbackRef=collection(db,"Feedback");
+  
+  const handleFeedback=async (e)=>{    
+    e.preventDefault();
+    if(Response===""){
+      alert("Fill all the fields");
+      return false;
+    }else{
+    await addDoc(feedbackRef,{
+        Response,
+        author:{name:auth.currentUser.displayName,id:auth.currentUser.uid},
+        
+    }).then(()=>{alert("Feedback submitted")}).catch(err=>{alert(err.message)});
+
+    setResponse("");
+
+    navigate("/feed");}
+};
+  /*************************/
+
 
   function Add(event) {
     setComponents([
@@ -106,19 +139,13 @@ function NavBar() {
             color={"#C69AF6"}
           >
             {" "}
-            CELESTIAL <br /> BISCUIT{" "}
+            ONE <br /> STOP{" "}
           </Typography>
         </Box>
 
         <Divider />
         <List>
-          <Link to="/" style={{ textDecoration: "none", color: "white" }}>
-            <ListItem key="Home" disablePadding>
-              <ListItemButton>
-                <ListItemText primary="Home" />
-              </ListItemButton>
-            </ListItem>
-          </Link>
+          
 
           <Link to="/feed" style={{ textDecoration: "none", color: "white" }}>
             <ListItem key="My Feed" disablePadding>
@@ -128,16 +155,7 @@ function NavBar() {
             </ListItem>
           </Link>
 
-          <Link
-            to="/Trending"
-            style={{ textDecoration: "none", color: "white" }}
-          >
-            <ListItem key="Trending" disablePadding>
-              <ListItemButton>
-                <ListItemText primary="Trending" />
-              </ListItemButton>
-            </ListItem>
-          </Link>
+          
 
           <Link
             to="/My-Activity"
@@ -253,7 +271,7 @@ function NavBar() {
             title="FEEDBACK"
             content="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam in
               sapien elementum ipsum molestie dictum sit amet eu lorem."
-            submitText="Submit"
+            
           >
             <TextField
               fullWidth
@@ -263,7 +281,20 @@ function NavBar() {
               rows={4}
               defaultValue=""
               color="secondary"
+              onChange={(e)=>{setResponse(e.target.value)}}
             />
+            <Rating
+        name="simple-controlled"
+        value={value}
+        onChange={(event, newValue) => {
+          setValue(newValue);
+        }}
+      /><br/>
+            <Button variant="contained"
+                        color="secondary"
+                        sx={{ marginTop: "20px" }} 
+                        onClick={handleFeedback}>SUBMIT
+            </Button>
           </PopUp>
         </List>
       </Drawer>

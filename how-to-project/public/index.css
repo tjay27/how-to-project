@@ -137,11 +137,13 @@ p{
 
 .search-icon{
   position: absolute;
-  z-index: 2;
-  margin-top: 11px;
-  margin-left: 20px;
-  right: 220px;
-  top: 43px;
+    z-index: 2;
+    /* margin-top: 11px; */
+    /* margin-left: 20px; */
+    right: 210px;
+    top: 45px;
+    background: top;
+    border: none;
 }
 
 .search-icon:hover{

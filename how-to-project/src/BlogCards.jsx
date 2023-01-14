@@ -6,7 +6,7 @@ import CardMedia from "@mui/material/CardMedia";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import { useState ,useEffect} from "react";
-import { collection, query ,onSnapshot,arrayUnion,arrayRemove,doc,updateDoc} from "firebase/firestore";
+import { collection, query, where ,onSnapshot,arrayUnion,arrayRemove,doc,updateDoc} from "firebase/firestore";
 import { auth, db } from "./Firebase/firebase";
 import useAuthState from "./Firebase/hooks";
 import { UserAuth } from "./Firebase/AuthContext";
@@ -52,6 +52,45 @@ function LikeArticle({id,likes,Title}){
 }
 export default function BlogCard() { 
    // const classes = useStyles();
+
+   const [searchInput, setSearchInput] = useState("");
+   const [updated, setUpdated] = useState('');
+
+  const handleChange = (e) => {
+    e.preventDefault();
+    setSearchInput(e.target.value);
+    // console.log(searchInput);
+  };
+
+  const searchBlog = () => {
+    const articleRef=collection(db,"Blogs")
+      var q;
+      
+      if (searchInput.length > 0) {
+        q=query(articleRef, where("title_lower", "==" , searchInput.toLowerCase()));
+      }
+
+      else {
+        q=query(articleRef);
+      }
+
+      onSnapshot(q,(snapshot)=>{
+        const articles = snapshot.docs.map((doc)=>({
+          id:doc.id,
+          ...doc.data(),
+        }));
+        setArticles(articles);
+        console.log(articles);
+     })
+  };
+
+  const handleKeyDown = (event) => {
+    if (event.key === 'Enter') {
+      setUpdated(searchInput);
+      searchBlog();
+    }
+  };
+
    const [articles,setArticles]=useState([]);
    const {user} = useAuthState(auth);
 
@@ -70,6 +109,21 @@ export default function BlogCard() {
        })
    },[]);
   return (
+  <>
+    <div>
+        <input
+          class="search-bar"
+          type="text"
+          placeholder="Search"
+          id="searchInput"
+          onChange={handleChange}
+          onKeyDown = {handleKeyDown}
+          value={searchInput}
+        ></input>
+        <button class="search-icon" type="submit" onClick={searchBlog}><i class="fas fa-search"></i></button>
+      </div>
+
+
     <div>
              {
     articles.length === 0 ?(
@@ -153,7 +207,7 @@ export default function BlogCard() {
     )
 }
 </div>
-    
+</>
 )}
  
  

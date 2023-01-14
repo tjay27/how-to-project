@@ -15,6 +15,8 @@ import {db,auth} from './Firebase/firebase'
 import { collection ,addDoc} from "firebase/firestore";
 import { useNavigate } from "react-router-dom";
 import Rating from '@mui/material/Rating';
+import TransitionModal from './Elements/Modal';
+
 
 const drawerWidth = 190;
 
@@ -197,21 +199,36 @@ function NavBar() {
                     Etiam in sapien elementum ipsum molestie dictum sit amet eu
                     lorem."
           >
-            <Box
-            sx={{
-              "& .MuiTextField-root": { m: 1, width: "60ch" },
-            }}
-            noValidate
-            autoComplete="off">
-                <TextField fullWidth label="Title" id="Title" margin="20px" onChange={(e)=>{setTitle(e.target.value)}} required/>
-                <TextField fullWidth label="Topic" id="Topic"  margin="20px" onChange={(e)=>{setTopic(e.target.value)}} required/>
-                <Button variant="contained"
-                        color="secondary"
-                        sx={{ marginTop: "20px" }} 
-                        onClick={handleSubmit}>SUBMIT
-                </Button>
-            </Box>
+            <Button variant="contained"
+                      color="secondary"
+                      sx={{ marginTop: "20px" }}> Contribute via Link
+                <TransitionModal title="Contribute"> 
+                  <Box
+                    sx={{
+                    "& .MuiTextField-root": { m: 1, width: "60ch" },
+                     }}
+                    noValidate
+                    autoComplete="off">
+              <TextField fullWidth label="Title" id="Title" margin="20px" onChange={(e)=>{setTitle(e.target.value)}} required/>
+              <TextField fullWidth label="Topic" id="Topic"  margin="20px" onChange={(e)=>{setTopic(e.target.value)}} required/>
+              <Button variant="contained"
+                      color="secondary"
+                      sx={{ marginTop: "20px" }} 
+                      onClick={handleSubmit}>SUBMIT
+
+              </Button>
+          </Box>
+              </TransitionModal>
+              </Button><br/>
+              <Button variant="contained"
+                      color="secondary"
+                      sx={{ marginTop: "20px" }} 
+                      >Contribute via writing
+
+              </Button>
+           
           </PopUp>
+          
 
           <ListItem key="Invite" disablePadding>
             <ListItemButton onClick={() => setCust(true)}>

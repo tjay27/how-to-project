@@ -8,6 +8,7 @@ import BlogPost from './Pages/BlogPost';
 import SearchPage from './Pages/SearchPage';
 import LoginPage from './Pages/LoginPage';
 import { AuthContextProvider } from "../src/Firebase/AuthContext";
+import Contribute from "./Pages/Contribute";
 
 // import "../public/index.css";
 
@@ -24,6 +25,8 @@ function Main() {
           <Route path="/BlogPost" element={<BlogPost />} />
           <Route path="/SearchPage" element={<SearchPage/>} />
           <Route path="/LoginPage" element={<LoginPage/>} />
+          <Route path="/Contribute" element={<Contribute/>} />
+
         </Routes>
         </AuthContextProvider>
       </BrowserRouter>

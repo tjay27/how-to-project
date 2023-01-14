@@ -75,7 +75,7 @@ export default function BlogCard() {
     articles.length === 0 ?(
         <p>no articles found</p>
     ):(
-    articles.map(({id,Title,Link,Topic,userId,likes,comment})=><div class="BlogCard" key={id}>
+    articles.map(({id,Title,Link,Topic,userId,likes,comment,imgURL,})=><div class="BlogCard" key={id}>
     <Card
       sx={{
         maxWidth: 345,
@@ -83,7 +83,8 @@ export default function BlogCard() {
         color: "white",
       }}
     >
-      {/*<CardMedia component="img" height="140" image={props.img} alt="media" />*/}
+      <CardMedia component="img" height="140" image={`${imgURL}`} alt="media" />
+      
       <CardContent>
         <Typography gutterBottom variant="h5" component="div">
          <a href={`${Link}`}> {Title}</a>

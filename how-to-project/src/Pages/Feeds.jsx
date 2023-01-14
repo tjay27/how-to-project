@@ -4,7 +4,8 @@ import NavBar from "../NavBar";
 import Img1 from "../Images/6.png";
 import Img2 from "../Images/7.png";
 import LoginIcon from "../Elements/login";
-
+import { Button } from "@mui/material";
+import TransitionModal from "../Elements/Modal"
 function Feeds() {
   
   return (
@@ -35,6 +36,7 @@ function Feeds() {
           desc={blog.desc}/>
      ))}*/}
      <BlogCard/>
+     
 
       </div>
       

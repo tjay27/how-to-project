@@ -5,6 +5,9 @@ import Img3 from "../Images/image 2.png";
 import Button from "@mui/material/Button";
 import { Typography } from "@mui/material";
 import Chips from '../Elements/Chips';
+import TransitionModal from '../Elements/Modal';
+import { FacebookIcon, FacebookShareButton, LinkedinIcon, LinkedinShareButton, TwitterIcon, TwitterShareButton, WhatsappIcon, WhatsappShareButton  } from "react-share";
+
 function BlogPost() {
 
   return (
@@ -64,6 +67,27 @@ Alpine.js is very beginner-friendly, you barely need to know any JavaScript to g
           </Button>
           <Button size="large">
             <i class="footer-icon fa fa-3x fa-share-alt"></i>
+            <TransitionModal 
+            title="Share via"
+            >
+              <FacebookShareButton
+              url="ok">
+                <FacebookIcon logoFillColor="white" round={true}></FacebookIcon>
+              </FacebookShareButton>
+              <WhatsappShareButton
+              title="sharing content"
+              url="ok">
+                <WhatsappIcon logoFillColor="white" round={true}></WhatsappIcon>
+              </WhatsappShareButton>
+              <TwitterShareButton
+              url="ok">
+                <TwitterIcon logoFillColor="white" round={true}></TwitterIcon>
+              </TwitterShareButton>
+              <LinkedinShareButton
+              url="ok">
+              <LinkedinIcon logoFillColor="white" round={true}></LinkedinIcon>
+              </LinkedinShareButton>
+          </TransitionModal>
           </Button>
           <Button size="large">
             <i class="footer-icon fa fa-3x fa-bookmark-o" ></i>

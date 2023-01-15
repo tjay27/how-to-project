@@ -11,6 +11,7 @@ import { auth, db } from "./Firebase/firebase";
 import useAuthState from "./Firebase/hooks";
 import { UserAuth } from "./Firebase/AuthContext";
 import TransitionModal from './Elements/Modal';
+import { Link } from "react-router-dom";
 import Comment from "./Elements/Comment";
 import { FacebookIcon, FacebookShareButton, LinkedinIcon, LinkedinShareButton, TwitterIcon, TwitterShareButton, WhatsappIcon, WhatsappShareButton  } from "react-share";
 
@@ -125,7 +126,7 @@ export default function BlogCard() {
     articles.length === 0 ?(
         <p>no articles found</p>
     ):(
-    articles.map(({id,Title,Link,Topic,userId,likes,comment,imgURL,})=><div class="BlogCard" key={id}>
+    articles.map(({id,Title,Topic,userId,likes,comment,imgURL,})=><div class="BlogCard" key={id}>
     <Card
       sx={{
         maxWidth: 345,
@@ -137,7 +138,7 @@ export default function BlogCard() {
       
       <CardContent>
         <Typography gutterBottom variant="h5" component="div">
-         <a href={`${Link}`}> {Title}</a>
+        <Link to={`/article/${id}`}>{Title}</Link>
         </Typography>
         <Typography variant="body2" color="white">
           {Topic}

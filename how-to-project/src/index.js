@@ -26,6 +26,7 @@ function Main() {
           <Route path="/SearchPage" element={<SearchPage/>} />
           <Route path="/LoginPage" element={<LoginPage/>} />
           <Route path="/Contribute" element={<Contribute/>} />
+          <Route path="/article/:id" element={<BlogPost/>} />
 
         </Routes>
         </AuthContextProvider>

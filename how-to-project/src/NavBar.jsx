@@ -15,7 +15,6 @@ import {db,auth} from './Firebase/firebase'
 import { collection ,addDoc} from "firebase/firestore";
 import { useNavigate } from "react-router-dom";
 import Rating from '@mui/material/Rating';
-import TransitionModal from './Elements/Modal';
 
 
 const drawerWidth = 190;
@@ -28,36 +27,9 @@ function NavBar() {
   const [contri, setContri] = useState(false);
   const [cust, setCust] = useState(false);
 
-  const [components, setComponents] = useState([""]);
-  /********for adding new blog link ***********/
-  const [Topic,setTopic]=useState("");
-  const [Title,setTitle]=useState("");
-  const bloglist=collection(db,'Blogs');
-  
+  const [components, setComponents] = useState([""]);  
   let navigate = useNavigate();
-  const handleSubmit=async (e)=>{ 
-      e.preventDefault();
-      if(Title===""||Topic===""){
-        alert("Fill all the fields");
-        return false;
-      }else{
-        
-          await addDoc(bloglist,{
-          Title,
-          Topic,
-          author:{name:auth.currentUser.displayName,id:auth.currentUser.uid},
-          title_lower: Title.toLocaleLowerCase(),
-          likes: [],
-          comments:[]
-      }).then(()=>{alert("success!!")}).catch(err=>{alert(err.message)});
 
-      setTitle("")
-      setTopic("")
-  navigate("/feed");
-        
-      }
-      
-  };
   /********for adding Feedback ***********/
   const [Response,setResponse]=useState("");
   const feedbackRef=collection(db,"Feedback");
@@ -199,33 +171,12 @@ function NavBar() {
                     Etiam in sapien elementum ipsum molestie dictum sit amet eu
                     lorem."
           >
+            <Link to="/Contribute" style={{ textDecoration: "none", color: "white" }}>
             <Button variant="contained"
                       color="secondary"
-                      sx={{ marginTop: "20px" }}> Contribute via Link
-                <TransitionModal title="Contribute"> 
-                  <Box
-                    sx={{
-                    "& .MuiTextField-root": { m: 1, width: "60ch" },
-                     }}
-                    noValidate
-                    autoComplete="off">
-              <TextField fullWidth label="Title" id="Title" margin="20px" onChange={(e)=>{setTitle(e.target.value)}} required/>
-              <TextField fullWidth label="Topic" id="Topic"  margin="20px" onChange={(e)=>{setTopic(e.target.value)}} required/>
-              <Button variant="contained"
-                      color="secondary"
-                      sx={{ marginTop: "20px" }} 
-                      onClick={handleSubmit}>SUBMIT
-
-              </Button>
-          </Box>
-              </TransitionModal>
-              </Button><br/>
-              <Button variant="contained"
-                      color="secondary"
-                      sx={{ marginTop: "20px" }} 
-                      >Contribute via writing
-
-              </Button>
+                      sx={{ marginTop: "20px" }}> Contribute 
+                </Button>
+          </Link>
            
           </PopUp>
           

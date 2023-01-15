@@ -20,7 +20,7 @@ export default function Contribute(){
      /********for adding new blog link ***********/
   const [Topic,setTopic]=useState("");
   const [Title,setTitle]=useState("");
-  const [Link,setLink]=useState("");
+  const [link,setLink]=useState("");
   const [imgURL,setImgURL]=useState("");
   const [category,setCat]=useState("");
   const [comments,setComment]=useState([]);
@@ -29,7 +29,7 @@ export default function Contribute(){
   const [description,setDescription]=useState("");
 
   const bloglist=collection(db,'Blogs');
-  
+
   let navigate = useNavigate();
   const handleSubmit=async (e)=>{ 
       e.preventDefault();
@@ -41,7 +41,7 @@ export default function Contribute(){
           await addDoc(bloglist,{
           Title,
           Topic,
-          Link,
+          link,
           description,
           imgURL,
           author:{name:auth.currentUser.displayName,id:auth.currentUser.uid},
@@ -59,8 +59,30 @@ export default function Contribute(){
       setCat("")
       setComment([])
   navigate("/feed");
+  const reportRef=collection(db,"users",user.email,"My submission");
 
-        
+  await addDoc(reportRef,{
+    Title,
+    Topic,
+    link,
+    description,
+    imgURL,
+    author:{name:auth.currentUser.displayName,id:auth.currentUser.uid},
+    category,
+    comments:[],
+    title_lower: Title.toLocaleLowerCase(),
+
+}).then(()=>{alert("success!!")}).catch(err=>{alert(err.message)});
+
+setTitle("")
+setTopic("")
+setDescription("")
+setLink("")
+setImgURL("")
+setCat("")
+setComment([])
+navigate("/feed");
+
       }
       
   };

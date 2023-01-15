@@ -79,10 +79,10 @@ function BlogPost() {
       color: "white"}}}
 {...label} icon={<FavoriteBorder />} checkedIcon={<Favorite />} />
 
-          <Button size="large">
-            <i class="footer-icon fa fa-3x fa-share-alt"></i>
+          <Button size="large" disableTouchRipple>
             <TransitionModal 
             title="Share via"
+            button={<i class="footer-icon fa fa-3x fa-share-alt"></i>}
             >
               <FacebookShareButton
               url="ok">

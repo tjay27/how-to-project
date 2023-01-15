@@ -17,7 +17,8 @@ export default function AlertDialog(props) {
 
   return (
     <div>
-      <Button onClick={handleClickOpen}>
+      <Button onClick={handleClickOpen} size="small" sx={{ backgroundColor: "none", color: "#c69af6" }} disableTouchRipple>
+        {props.button}
       </Button>
       <Dialog
         open={open}
@@ -28,6 +29,9 @@ export default function AlertDialog(props) {
         <DialogTitle id="alert-dialog-title" >
           <h2>{props.title}</h2>
         </DialogTitle>
+        <DialogContent id="alert-dialog-description" >
+          <h4>{props.content}</h4>
+        </DialogContent>
         <DialogContent>
           {props.children}
         </DialogContent>

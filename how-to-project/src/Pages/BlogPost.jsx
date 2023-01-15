@@ -74,10 +74,7 @@ function BlogPost() {
       <Typography variant="h6" align="center">{article.description}</Typography>
       </div>
       <div class="footer">
-          <Checkbox   sx={{ '& .MuiSvgIcon-root': { fontSize: 54 } , color: "white",
-    '&.Mui-checked': {
-      color: "white"}}}
-{...label} icon={<FavoriteBorder />} checkedIcon={<Favorite />} />
+          
 
           <Button size="large" disableTouchRipple>
             <TransitionModal 
@@ -103,9 +100,7 @@ function BlogPost() {
               </LinkedinShareButton>
           </TransitionModal>
           </Button>
-          <Checkbox  sx={{ '& .MuiSvgIcon-root': { fontSize: 54 } , color: "white",
-    '&.Mui-checked': {
-      color: "white"}}} {...label} icon={<BookmarkBorderIcon />} checkedIcon={<BookmarkIcon />} />
+          
           
       </div>
 

@@ -70,7 +70,7 @@ export default function Contribute(){
     author:{name:auth.currentUser.displayName,id:auth.currentUser.uid},
     category,
     comments:[],
-    title_lower: Title.toLocaleLowerCase(),
+    tags: [Title.toLocaleLowerCase(), Topic.toLocaleLowerCase()],
 
 }).then(()=>{alert("success!!")}).catch(err=>{alert(err.message)});
 
@@ -94,7 +94,6 @@ navigate("/feed");
       <img class="img5" src={Img5} alt="" />
         <Box sx={{
         "& .MuiTextField-root": { m: 1 , width:"150ch" },
-        backgroundColor: "yellow",
         marginLeft:3
       }}>
             <Typography variant="h3" align="center">CONTRIBUTE </Typography>
@@ -137,7 +136,7 @@ navigate("/feed");
             id="Image" 
             margin="20px"  
             onChange={(e)=>{setImgURL(e.target.value)}}
-            sx={{margin:2}}
+            sx={{margin:2, color:"white"}}
             required/>
 
 <FormControl  sx={{margin:2}}>

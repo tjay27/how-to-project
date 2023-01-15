@@ -56,16 +56,14 @@ export default function BlogCard() {
    const [searchInput, setSearchInput] = useState("");
    const [updated, setUpdated] = useState('');
 
-  const handleChange = (e) => {
-    e.preventDefault();
-    setSearchInput(e.target.value);
-    // console.log(searchInput);
-  };
+   const [articles,setArticles]=useState([]);
+   const {user} = useAuthState(auth);
 
   const searchBlog = () => {
     const articleRef=collection(db,"Blogs")
-      var q;
+    var q;
       
+      console.log(searchInput);
       if (searchInput.length > 0) {
         q=query(articleRef, where("title_lower", "==" , searchInput.toLowerCase()));
       }
@@ -91,9 +89,6 @@ export default function BlogCard() {
     }
   };
 
-   const [articles,setArticles]=useState([]);
-   const {user} = useAuthState(auth);
-
 
   
    useEffect(()=>{
@@ -108,6 +103,7 @@ export default function BlogCard() {
            console.log(articles);
        })
    },[]);
+
   return (
   <>
     <div>
@@ -115,8 +111,8 @@ export default function BlogCard() {
           class="search-bar"
           type="text"
           placeholder="Search"
-          id="searchInput"
-          onChange={handleChange}
+          id="searchBar"
+          onChange={(e)=>{setSearchInput(e.target.value);}}
           onKeyDown = {handleKeyDown}
           value={searchInput}
         ></input>

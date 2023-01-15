@@ -1,15 +1,43 @@
-import React from "react";
+import React ,{useState,useEffect} from "react";
 import Card from "@mui/material/Card";
+import { auth, db } from "../Firebase/firebase";
+import useAuthState from "../Firebase/hooks";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
+import { collection, doc,query,onSnapshot, getDocs } from "firebase/firestore";
+import { Link } from "react-router-dom";
+import DeleteArticle from "./DeleteArticle";
 
 
-export default function BCards(props) {
+export default function BCards() {
+  const [articles,setArticles]=useState([]);
+   const {user} = useAuthState(auth);
+
+   useEffect(()=>{
+    const reportRef=collection(db,"users","deepanshi.chourasia@gmail.com","My submission");
+    const q=query(reportRef);
+    onSnapshot(q,(snapshot)=>{
+        const articles = snapshot.docs.map((doc)=>({
+            id:doc.id,
+            ...doc.data(),
+        }));
+        setArticles(articles);
+        console.log(articles);
+    })
+},[]);
+  
+    
   return (
-    <div class="BCard">
-      <Card
+
+    <div >
+       {
+    articles.length === 0 ?(
+        <p>no articles found</p>
+    ):(
+    articles.map(({id,Title,link,Topic,userId,likes,comment})=><div class="BlogCard" key={id}>
+    <Card
         sx={{
           maxWidth: 700,
           backgroundColor: "rgb(148, 207, 250, 0.4)",
@@ -19,11 +47,10 @@ export default function BCards(props) {
         }}
       >
         <CardMedia component="img" height="120" 
-        sx={{width:80,display:"flex",padding:3}} image={props.img} alt="media" />
-        <CardContent sx={{display:"flex" }}>
-          <Typography gutterBottom variant="h5" align="center" component="div">
-            {props.heading}
-          </Typography>
+        sx={{width:80,display:"flex",padding:3}}  alt="media" />
+        <CardContent sx={{display:"-ms-inline-flexbox" }}>
+          <Link to={`/article/${id}`} sx={{color:"white"}}>{Title}</Link>
+
           
 <Button
             size="small" 
@@ -31,7 +58,9 @@ export default function BCards(props) {
                  marginLeft:"320px",
                  }}>
             <i class="fas fa-2x fa-trash"></i>
+            
           </Button>
+          <DeleteArticle id={id}/>
           <Button
             size="small"
             sx={{color: "#40F4FF" }}>    
@@ -45,6 +74,9 @@ export default function BCards(props) {
 
         </CardContent>
       </Card>
+      </div>
+      ))}
+      
     
     </div>
   );

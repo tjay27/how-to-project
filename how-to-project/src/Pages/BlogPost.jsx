@@ -157,7 +157,6 @@ function BlogPost() {
 
       <Typography variant="h6" align="center">{article.description}</Typography>
       </div>
-
       {
         (user)
         ? <div class="footer">

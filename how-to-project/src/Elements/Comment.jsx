@@ -6,10 +6,12 @@ import {v4 as uuidv4} from 'uuid'
 import useAuthState from '../Firebase/hooks';
 
 
-export default function Comment({id}){
+export default function Comment({currentlyLoggedInUser,id}){
+    // const {user} = useAuthState(auth);
+
     const [comment,setComment]=useState("");
     const [comments,setComments]=useState([]);
-    const {currentlyLoggedInUser}=useAuthState(auth);
+    
     const commentRef = doc(db,"Blogs",id)
 
 useEffect(()=>{
@@ -49,7 +51,8 @@ const handleDeleteComment=(comment)=>{
 }
     return(
         <div>comment
-            
+            {/* {console.log(currentlyLoggedInUser)} */}
+
             <div className='container' >
                 {
                 comments.map(({commentId,user,comment,userName})=>(
@@ -72,20 +75,19 @@ const handleDeleteComment=(comment)=>{
                         </div>
                     </div>
                   </div>
-                    ))}
-                    {
-                        currentlyLoggedInUser && (
-                            <input 
-                            type="text" 
-                            className='form-control mt-4 mb-5' 
-                            value={comment} 
-                            onChange={(e)=>{setComment(e.target.value);
-                            }}
-                            placeholder="Add a comment"
-                            onKeyUp={(e)=>{handleChangeComment(e);}}/>
-                        )
-}
+            ))}
+                    { currentlyLoggedInUser 
+                        ?<input 
+                           type="text" 
+                           className='form-control mt-4 mb-5' 
+                           value={comment} 
+                           onChange={(e)=>{setComment(e.target.value);}}
+                           placeholder="Add a comment"
+                           onKeyUp={(e)=>{handleChangeComment(e);}} />
+                        :null
+                    }
             </div>
+            
         </div>
     )
 }

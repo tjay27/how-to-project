@@ -161,17 +161,16 @@ export default function BlogCard() {
              <i class="fa-2x fa-regular fa-heart"></i>
           </Button>}
             <p>{likes?<span>{likes.length}</span>:""}</p></div>
-        <Button
-          size="small"
-          sx={{ backgroundColor: "none", color: "#c69af6" }}
-        >
+
+        <Button size="small" sx={{ backgroundColor: "none", color: "#c69af6" }}>
           <i class="fas fa-2x fa-comments"></i>
           <TransitionModal>
                       
-              <Comment id={id}/>
+              <Comment id={id} currentlyLoggedInUser={user}/>
             
           </TransitionModal>
         </Button>
+        {/* <p>{comments?<span>{comments.length}</span>:""}</p> */}
        
         
         <Button

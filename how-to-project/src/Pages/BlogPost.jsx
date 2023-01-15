@@ -73,36 +73,50 @@ function BlogPost() {
 
       <Typography variant="h6" align="center">{article.description}</Typography>
       </div>
-      <div class="footer">
-          
+      {
+        (user)
+        ? <div class="footer">
+        <Checkbox   sx={{ '& .MuiSvgIcon-root': { fontSize: 54 } , color: "white",
+  '&.Mui-checked': {
+    color: "white"}}}
+{...label} icon={<FavoriteBorder />} checkedIcon={<Favorite />} 
+// onChange={ (event) => {setLikeState(event.target.checked);}} onClick={handleLike}
+/>
 
-          <Button size="large" disableTouchRipple>
-            <TransitionModal 
-            title="Share via"
-            button={<i class="footer-icon fa fa-3x fa-share-alt"></i>}
-            >
-              <FacebookShareButton
-              url="ok">
-                <FacebookIcon logoFillColor="white" round={true}></FacebookIcon>
-              </FacebookShareButton>
-              <WhatsappShareButton
-              title="sharing content"
-              url="ok">
-                <WhatsappIcon logoFillColor="white" round={true}></WhatsappIcon>
-              </WhatsappShareButton>
-              <TwitterShareButton
-              url="ok">
-                <TwitterIcon logoFillColor="white" round={true}></TwitterIcon>
-              </TwitterShareButton>
-              <LinkedinShareButton
-              url="ok">
-              <LinkedinIcon logoFillColor="white" round={true}></LinkedinIcon>
-              </LinkedinShareButton>
-          </TransitionModal>
-          </Button>
-          
-          
-      </div>
+        <Button size="large">
+          <i class="footer-icon fa fa-3x fa-share-alt"></i>
+          <TransitionModal 
+          title="Share via"
+          >
+            <FacebookShareButton
+            url="ok">
+              <FacebookIcon logoFillColor="white" round={true}></FacebookIcon>
+            </FacebookShareButton>
+            <WhatsappShareButton
+            title="sharing content"
+            url="ok">
+              <WhatsappIcon logoFillColor="white" round={true}></WhatsappIcon>
+            </WhatsappShareButton>
+            <TwitterShareButton
+            url="ok">
+              <TwitterIcon logoFillColor="white" round={true}></TwitterIcon>
+            </TwitterShareButton>
+            <LinkedinShareButton
+            url="ok">
+            <LinkedinIcon logoFillColor="white" round={true}></LinkedinIcon>
+            </LinkedinShareButton>
+        </TransitionModal>
+        </Button>
+        <Checkbox  sx={{ '& .MuiSvgIcon-root': { fontSize: 54 } , color: "white",
+  '&.Mui-checked': {
+    color: "white"}}} {...label} icon={<BookmarkBorderIcon />} checkedIcon={<BookmarkIcon />} onChange={ (event) => {setSavedState(event.target.checked);
+}} onClick={handleBookmark} />
+        
+    </div>
+
+    : null
+      }
+      
 
       </>)}
 

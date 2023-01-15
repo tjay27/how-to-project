@@ -48,18 +48,8 @@ export default function BCards() {
       >
         <CardMedia component="img" height="120" 
         sx={{width:80,display:"flex",padding:3}}  alt="media" />
-        <CardContent sx={{display:"-ms-inline-flexbox" }}>
+        <CardContent sx={{display:"inline" }}>
           <Link to={`/article/${id}`} sx={{color:"white"}}>{Title}</Link>
-
-          
-<Button
-            size="small" 
-            sx={{color: "#40F4FF" ,
-                 marginLeft:"320px",
-                 }}>
-            <i class="fas fa-2x fa-trash"></i>
-            
-          </Button>
           <DeleteArticle id={id}/>
           <Button
             size="small"

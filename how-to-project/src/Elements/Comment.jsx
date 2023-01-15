@@ -3,6 +3,7 @@ import React, { useEffect } from 'react';
 import { useState } from 'react';
 import { auth, db } from '../Firebase/firebase';
 import {v4 as uuidv4} from 'uuid'
+import { TextField } from '@mui/material';
 
 
 export default function Comment({currentlyLoggedInUser,id}){
@@ -49,14 +50,13 @@ const handleDeleteComment=(comment)=>{
     })
 }
     return(
-        <div>comments
+        <div>
             {/* {console.log(currentlyLoggedInUser)} */}
 
             <div className='container' >
                 {
                 comments.map(({commentId,user,comment,userName})=>(
                   <div key={commentId}>
-                    <div className='border p-2 mt-2 row'>
                         <div>
                             <span className={`badge ${
                                 user === currentlyLoggedInUser.uid?
@@ -72,17 +72,20 @@ const handleDeleteComment=(comment)=>{
                                 onClick={()=>handleDeleteComment({commentId,user,comment,userName})} style={{cursor:"pointer"}}></i>
                             )}
                         </div>
-                    </div>
+                    
                   </div>
             ))}
                     { currentlyLoggedInUser 
-                        ?<input 
+                        ?<TextField
                            type="text" 
                            className='form-control mt-4 mb-5' 
-                           value={comment} 
+                           value={comment}
+                           multiline
+                           rows={4} 
                            onChange={(e)=>{setComment(e.target.value);}}
                            placeholder="Add a comment"
-                           onKeyUp={(e)=>{handleChangeComment(e);}} />
+                           onKeyUp={(e)=>{handleChangeComment(e);}} 
+                           sx={{backgroundColor:"#c69af6"}}/>
                         :null
                     }
             </div>

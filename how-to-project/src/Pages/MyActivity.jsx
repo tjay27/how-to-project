@@ -11,14 +11,49 @@ import Box from '@mui/material/Box';
 import useAuthState from "../Firebase/hooks";
 import { auth } from "../Firebase/firebase";
 import { UserAuth } from "../Firebase/AuthContext";
-import {Tabs,Tab} from "@mui/material";
+import PropTypes from 'prop-types';
+import Tabs from '@mui/material/Tabs';
+import Tab from '@mui/material/Tab';
 
+function TabPanel(props) {
+  const { children, value, index, ...other } = props;
 
+  return (
+    <div
+      role="tabpanel"
+      hidden={value !== index}
+      id={`simple-tabpanel-${index}`}
+      aria-labelledby={`simple-tab-${index}`}
+      {...other}
+    >
+      {value === index && (
+        <Box sx={{ p: 3 }}>
+          <Typography>{children}</Typography>
+        </Box>
+      )}
+    </div>
+  );
+}
+
+TabPanel.propTypes = {
+  children: PropTypes.node,
+  index: PropTypes.number.isRequired,
+  value: PropTypes.number.isRequired,
+};
+
+function a11yProps(index) {
+  return {
+    id: `simple-tab-${index}`,
+    'aria-controls': `simple-tabpanel-${index}`,
+  };
+}
 
 function MyActivity() {
   const {user}=useAuthState(auth);
   const[value,setValue] = useState(0);
-
+  const handleChange = (event, newValue) => {
+    setValue(newValue);
+  };
   return (
     <>
       <img class="img1" src={Img1} alt="" />
@@ -36,34 +71,34 @@ function MyActivity() {
   sx={{ width: 126, height: 126 ,marginLeft:80}}
 />
 <Typography variant="h4" align="center" sx={{color:"white", margin:2}}>{user.displayName}</Typography>
-<Box sx={{
-        
+<Box
+    sx={{
+        width: '100%',
         backgroundColor: "rgb(70, 43, 136, 0.4)",
         marginLeft:3
-      }}
-    >
-      <Tabs value={value} onChange={(e,val) => setValue(val) }
-            textColor="white"
+      }}>
+      <Box sx={{ borderBottom: 1, borderColor: 'divider' }} >
+        <Tabs value={value} onChange={handleChange} aria-label="basic tabs example" textColor="white"
             indicatorColor="primary"
             aria-label="primary tabs example"
             sx={{marginLeft:47 , color:"white" , paddingLeft:9 }}>
-                <Tab sx={{marginRight:3 , fontSize:23}} label="my submissions">
-                  
-                </Tab>
-                <Tab sx={{marginRight:3 , fontSize:23}}label="liked"></Tab>
-                <Tab sx={{marginRight:2 , fontSize:23}}label="bookmark"></Tab>
-            </Tabs>
-       <div class="feed myfeed">
-        {Blogs.map((blog) => (
-          <BCards
-            key={blog.id}
-            img={blog.imgURL}
-            heading={blog.heading}
-            
-          />
-        ))}
-      </div>
-</Box>
+          <Tab sx={{marginRight:3 , fontSize:23}} label="my submissions" {...a11yProps(0)} />
+          <Tab sx={{marginRight:3 , fontSize:23}} label="liked"{...a11yProps(1)} />
+          <Tab sx={{marginRight:3 , fontSize:23}} label="Bookmark" {...a11yProps(2)} />
+        </Tabs>
+      </Box>
+      <TabPanel value={value} index={0}>
+        <div class="feed myfeed">
+                    <BCards />
+                  </div>
+      </TabPanel>
+      <TabPanel value={value} index={1}>
+        Item Two
+      </TabPanel>
+      <TabPanel value={value} index={2}>
+        Item Three
+      </TabPanel>
+    </Box>
 </>
 :<Typography variant="h4"align="center" sx={{color:"white", margin:4,marginTop:17}}>LOG IN TO ACCESS THE PROFILE</Typography>}
 

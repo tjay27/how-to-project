@@ -149,7 +149,7 @@ function NavBar() {
           >
             <ListItem key="Search Topics" disablePadding>
               <ListItemButton>
-                <ListItemText primary="Search Topics" />
+                <ListItemText primary="Browse Categories" />
               </ListItemButton>
             </ListItem>
           </Link>
@@ -160,19 +160,19 @@ function NavBar() {
         <List>
           <ListItem key="Contribute" disablePadding>
             <ListItemButton onClick={() => setContri(true)}>
-              <ListItemText primary="Contribute" />
+              <ListItemText primary="Publish" />
             </ListItemButton>
           </ListItem>
           <PopUp
             trigger={contri}
             setTrigger={setContri}
-            title="CONTRIBUTE"
-            content="Contribute to our website to express your views. Remember, it is important you submit an authentic and original article on a topic that is relevant to each of these website’s readership.Make sure your guest blog articles are polished, researched, and compelling."
+            title="Publish your Content"
+            content="Write and post your technical stuff like blog, research paper and articles. Remember, it is important you submit an authentic and original article on a topic that is relevant to each of these website’s readership.Make sure your guest blog articles are polished, researched, and compelling."
           >
             <Link to="/Contribute" style={{ textDecoration: "none", color: "white" }}>
             <Button variant="contained"
                       color="secondary"
-                      sx={{ marginTop: "20px" }}> Contribute 
+                      sx={{ marginTop: "20px" }}> PUBLISH
                 </Button>
           </Link>
            
@@ -235,8 +235,7 @@ function NavBar() {
             trigger={feedback}
             setTrigger={setFeedback}
             title="FEEDBACK"
-            content="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam in
-              sapien elementum ipsum molestie dictum sit amet eu lorem."
+            content="Your Feedback will help us to improve our website and your own experience. Kindly spare a minute to provide your valuable feeback. Thankyou."
             
           >
             <TextField

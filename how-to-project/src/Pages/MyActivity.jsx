@@ -64,11 +64,12 @@ function MyActivity() {
     <LoginIcon/>
       <NavBar />
       {user ?
-      <>
+      <div style={{marginLeft: '15%', marginRight: '5%'}}>
+        
       <Avatar
   alt="Remy Sharp"
   src={user.photoURL}
-  sx={{ width: 126, height: 126 ,marginLeft:80}}
+  sx={{ width: 126, height: 126 ,marginLeft:67}}
 />
 <Typography variant="h4" align="center" sx={{color:"white", margin:2}}>{user.displayName}</Typography>
 <Box
@@ -99,7 +100,7 @@ function MyActivity() {
         Item Three
       </TabPanel>
     </Box>
-</>
+</div>
 :<Typography variant="h4"align="center" sx={{color:"white", margin:4,marginTop:17}}>LOG IN TO ACCESS THE PROFILE</Typography>}
 
      

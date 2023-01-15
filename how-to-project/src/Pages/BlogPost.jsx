@@ -11,7 +11,7 @@ import { useState } from "react";
 import {auth, db } from "../Firebase/firebase";
 import useAuthState from "../Firebase/hooks";
 import { useEffect } from "react";
-import { doc, onSnapshot } from "firebase/firestore";
+import { collection, query, where ,onSnapshot,arrayUnion,arrayRemove,doc,updateDoc} from "firebase/firestore";
 import Checkbox from '@mui/material/Checkbox';
 import FavoriteBorder from '@mui/icons-material/FavoriteBorder';
 import Favorite from '@mui/icons-material/Favorite';
@@ -32,6 +32,90 @@ function BlogPost() {
       setArticle({...snapshot.data(),id:snapshot.id});
     });
   },[]);
+
+
+  const [likeState, setLikeState] = useState(false);
+  const [savedState, setSavedState] = useState(false);
+
+  // const handleLike = () => {
+  //   const likesRef = doc(db,"Blogs",id);
+  //   const likes = likesRef.get(likes);
+  //   console.log(likes);
+  //   const userRef = doc(db,"users", user.email);
+
+  //   if(likeState)
+  //   {
+
+  //     // updating users collection
+  //     updateDoc(userRef,{
+  //       Liked:arrayRemove(id),
+  //   }).then(()=>{
+  //     console.log("Unliked");
+  //   }).catch((e)=>{
+  //       console.log(e);
+  //   });
+
+  //   // updating blog collection
+  //   // if(likesRef.likes?.includes(user.uid)){
+  //   //   updateDoc(likesRef,{
+  //   //       likes:arrayRemove(user.uid),
+  //   //   }).then(()=>{
+  //   //       console.log("unliked");
+  //   //   }).catch((e)=>{
+  //   //       console.log(e);
+  //   //   });
+    
+  //   // }
+
+  // }
+  //   else{
+  //     updateDoc(userRef,{
+  //       Liked:arrayUnion(id),
+  //   }).then(()=>{
+  //     console.log("liked");
+  //   }).catch((e)=>{
+  //       console.log(e);
+  //   });
+
+
+  //   // updating blog collection
+  // //   updateDoc(likesRef,{
+  // //     likes:arrayUnion(user.uid)
+  // // }).then(()=>{
+  // //     console.log("liked");
+  // // }).catch((e)=>{
+  // //     console.log(e);
+  // // });
+      
+  //   }
+  // };
+
+  const handleBookmark = () => {
+
+    const userRef = doc(db,"users", user.email);
+    if(savedState)
+    {
+      updateDoc(userRef,{
+        Bookmark:arrayRemove(id),
+    }).then(()=>{
+        console.log("removed blog");
+    }).catch((e)=>{
+        console.log(e);
+    });
+    }
+
+    else{
+      updateDoc(userRef,{
+        Bookmark:arrayUnion(id),
+    }).then(()=>{
+        console.log("saved blog");
+    }).catch((e)=>{
+        console.log(e);
+    });
+    }
+  };
+
+
   return (
 
     <>
@@ -73,41 +157,51 @@ function BlogPost() {
 
       <Typography variant="h6" align="center">{article.description}</Typography>
       </div>
-      <div class="footer">
-          <Checkbox   sx={{ '& .MuiSvgIcon-root': { fontSize: 54 } , color: "white",
-    '&.Mui-checked': {
-      color: "white"}}}
-{...label} icon={<FavoriteBorder />} checkedIcon={<Favorite />} />
 
-          <Button size="large">
-            <i class="footer-icon fa fa-3x fa-share-alt"></i>
-            <TransitionModal 
-            title="Share via"
-            >
-              <FacebookShareButton
-              url="ok">
-                <FacebookIcon logoFillColor="white" round={true}></FacebookIcon>
-              </FacebookShareButton>
-              <WhatsappShareButton
-              title="sharing content"
-              url="ok">
-                <WhatsappIcon logoFillColor="white" round={true}></WhatsappIcon>
-              </WhatsappShareButton>
-              <TwitterShareButton
-              url="ok">
-                <TwitterIcon logoFillColor="white" round={true}></TwitterIcon>
-              </TwitterShareButton>
-              <LinkedinShareButton
-              url="ok">
-              <LinkedinIcon logoFillColor="white" round={true}></LinkedinIcon>
-              </LinkedinShareButton>
-          </TransitionModal>
-          </Button>
-          <Checkbox  sx={{ '& .MuiSvgIcon-root': { fontSize: 54 } , color: "white",
-    '&.Mui-checked': {
-      color: "white"}}} {...label} icon={<BookmarkBorderIcon />} checkedIcon={<BookmarkIcon />} />
-          
-      </div>
+      {
+        (user)
+        ? <div class="footer">
+        <Checkbox   sx={{ '& .MuiSvgIcon-root': { fontSize: 54 } , color: "white",
+  '&.Mui-checked': {
+    color: "white"}}}
+{...label} icon={<FavoriteBorder />} checkedIcon={<Favorite />} 
+// onChange={ (event) => {setLikeState(event.target.checked);}} onClick={handleLike}
+/>
+
+        <Button size="large">
+          <i class="footer-icon fa fa-3x fa-share-alt"></i>
+          <TransitionModal 
+          title="Share via"
+          >
+            <FacebookShareButton
+            url="ok">
+              <FacebookIcon logoFillColor="white" round={true}></FacebookIcon>
+            </FacebookShareButton>
+            <WhatsappShareButton
+            title="sharing content"
+            url="ok">
+              <WhatsappIcon logoFillColor="white" round={true}></WhatsappIcon>
+            </WhatsappShareButton>
+            <TwitterShareButton
+            url="ok">
+              <TwitterIcon logoFillColor="white" round={true}></TwitterIcon>
+            </TwitterShareButton>
+            <LinkedinShareButton
+            url="ok">
+            <LinkedinIcon logoFillColor="white" round={true}></LinkedinIcon>
+            </LinkedinShareButton>
+        </TransitionModal>
+        </Button>
+        <Checkbox  sx={{ '& .MuiSvgIcon-root': { fontSize: 54 } , color: "white",
+  '&.Mui-checked': {
+    color: "white"}}} {...label} icon={<BookmarkBorderIcon />} checkedIcon={<BookmarkIcon />} onChange={ (event) => {setSavedState(event.target.checked);
+}} onClick={handleBookmark} />
+        
+    </div>
+
+    : null
+      }
+      
 
       </>)}
 

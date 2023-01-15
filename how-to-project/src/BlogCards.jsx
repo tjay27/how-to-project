@@ -19,7 +19,10 @@ function LikeArticle({id,likes,Title}){
   const {user} = useAuthState(auth);
 
   const likesRef = doc(db,"Blogs",id);
+  
   const handleLike = ()=>{
+
+    const userRef = doc(db, "users", user.email);
       if(likes?.includes(user.uid)){
           updateDoc(likesRef,{
               likes:arrayRemove(user.uid),
@@ -28,6 +31,15 @@ function LikeArticle({id,likes,Title}){
           }).catch((e)=>{
               console.log(e);
           });
+
+          // updating user collection
+          updateDoc(userRef,{
+            Liked:arrayRemove(id),
+        }).then(()=>{
+          console.log("Unliked");
+        }).catch((e)=>{
+            console.log(e);
+        });
       }
       else{
           updateDoc(likesRef,{
@@ -37,6 +49,17 @@ function LikeArticle({id,likes,Title}){
           }).catch((e)=>{
               console.log(e);
           });
+
+
+          // updating user collection
+          updateDoc(userRef,{
+            Liked:arrayUnion(id),
+        }).then(()=>{
+          console.log("liked");
+        }).catch((e)=>{
+            console.log(e);
+        });
+    
       }
   
   }

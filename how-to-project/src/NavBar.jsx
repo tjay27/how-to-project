@@ -115,7 +115,7 @@ function NavBar() {
             color={"#C69AF6"}
           >
             {" "}
-            ONE <br /> STOP{" "}
+            TECH <br /> TWEAKS{" "}
           </Typography>
         </Box>
 
@@ -167,9 +167,7 @@ function NavBar() {
             trigger={contri}
             setTrigger={setContri}
             title="CONTRIBUTE"
-            content="Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Etiam in sapien elementum ipsum molestie dictum sit amet eu
-                    lorem."
+            content="Contribute to our website to express your views. Remember, it is important you submit an authentic and original article on a topic that is relevant to each of these website’s readership.Make sure your guest blog articles are polished, researched, and compelling."
           >
             <Link to="/Contribute" style={{ textDecoration: "none", color: "white" }}>
             <Button variant="contained"
@@ -190,9 +188,7 @@ function NavBar() {
             trigger={cust}
             setTrigger={setCust}
             title="INVITE"
-            content="Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Etiam in sapien elementum ipsum molestie dictum sit amet eu
-                    lorem."
+            content="Contribute to our website to express your views. Remember, it is important you submit an authentic and original article on a topic that is relevant to each of these website’s readership.Make sure your guest blog articles are polished, researched, and compelling."
             submitText="Invite"
           >
             <Box

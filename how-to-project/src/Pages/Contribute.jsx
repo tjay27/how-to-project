@@ -47,7 +47,7 @@ export default function Contribute(){
           author:{name:auth.currentUser.displayName,id:auth.currentUser.uid},
           category,
           comments:[],
-          title_lower: Title.toLocaleLowerCase(),
+          tags: [Title.toLocaleLowerCase(), Topic.toLocaleLowerCase()],
 
       }).then(()=>{alert("success!!")}).catch(err=>{alert(err.message)});
 
@@ -86,7 +86,7 @@ export default function Contribute(){
 
 
             <TextField 
-            fullWidth label="Topic" 
+            fullWidth label="Field of Study" 
             id="Topic" 
             margin="20px"  
             onChange={(e)=>{setTopic(e.target.value)}}

@@ -6,7 +6,7 @@ import CardMedia from "@mui/material/CardMedia";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import { useState ,useEffect} from "react";
-import { collection, query, where ,onSnapshot,arrayUnion,arrayRemove,doc,updateDoc} from "firebase/firestore";
+import { collection, query, where ,onSnapshot,arrayUnion,arrayRemove,doc,updateDoc, getDocs} from "firebase/firestore";
 import { auth, db } from "./Firebase/firebase";
 import useAuthState from "./Firebase/hooks";
 import { UserAuth } from "./Firebase/AuthContext";
@@ -78,24 +78,30 @@ export default function BlogCard() {
    // const classes = useStyles();
 
    const [searchInput, setSearchInput] = useState("");
+   const [searchAuthor, setSearchAuthor] = useState("");
    const [updated, setUpdated] = useState('');
 
    const [articles,setArticles]=useState([]);
    const {user} = useAuthState(auth);
 
-  const searchBlog = () => {
+  const searchBlog = async () => {
     const articleRef=collection(db,"Blogs")
-    var q;
-      
-      console.log(searchInput);
-      if (searchInput.length > 0) {
-        q=query(articleRef, where("title_lower", "==" , searchInput.toLowerCase()));
-      }
 
+      var q;
+      if(searchInput.length > 0 && searchAuthor.length > 0){
+        q = query(articleRef, where("tags", "array-contains" , searchInput.toLowerCase()), where('author.name', "==" , searchAuthor));
+      }
+      else if(searchInput.length > 0){
+        q = query(articleRef, where("tags", "array-contains" , searchInput.toLowerCase()));
+      }
+      else if(searchAuthor.length > 0){
+        q = query(articleRef, where('author.name', "==" , searchAuthor));
+      }
       else {
-        q=query(articleRef);
+        q= query(articleRef);
       }
 
+      console.log(q);
       onSnapshot(q,(snapshot)=>{
         const articles = snapshot.docs.map((doc)=>({
           id:doc.id,
@@ -103,7 +109,7 @@ export default function BlogCard() {
         }));
         setArticles(articles);
         console.log(articles);
-     })
+     });
   };
 
   const handleKeyDown = (event) => {
@@ -130,18 +136,37 @@ export default function BlogCard() {
 
   return (
   <>
-    <div>
+    <div class="searchCont">
+
+      <div>
         <input
           class="search-bar"
           type="text"
-          placeholder="Search"
+          placeholder="Search by Blog Title or Field of Study..."
           id="searchBar"
           onChange={(e)=>{setSearchInput(e.target.value);}}
           onKeyDown = {handleKeyDown}
           value={searchInput}
         ></input>
         <button class="search-icon" type="submit" onClick={searchBlog}><i class="fas fa-search"></i></button>
-      </div>
+        </div>
+
+        <div>
+
+        <input
+          class="search-bar"
+          type="text"
+          placeholder="Search by Author Name..."
+          id="searchBar1"
+          onChange={(e)=>{setSearchAuthor(e.target.value);}}
+          onKeyDown = {(e) => {if (e.key === 'Enter') {
+            searchBlog();
+          }}}
+          value={searchAuthor}
+        ></input>
+        <button class="search-icon" type="submit" onClick={searchBlog}><i class="fas fa-search"></i></button>
+        </div>
+    </div>
 
 
     <div>
@@ -149,7 +174,7 @@ export default function BlogCard() {
     articles.length === 0 ?(
         <p>no articles found</p>
     ):(
-    articles.map(({id,Title,Topic,userId,likes,comment,imgURL,})=><div class="BlogCard" key={id}>
+    articles.map(({id,Title,Topic,userId,likes,comment,imgURL,author})=><div class="BlogCard" key={id}>
     <Card
       sx={{
         maxWidth: 345,
@@ -164,7 +189,10 @@ export default function BlogCard() {
         <Link to={`/article/${id}`}>{Title}</Link>
         </Typography>
         <Typography variant="body2" color="white">
-          {Topic}
+          Author: {author.name}
+        </Typography>
+        <Typography variant="body2" color="white">
+          Field: {Topic}
         </Typography>
         
       </CardContent>

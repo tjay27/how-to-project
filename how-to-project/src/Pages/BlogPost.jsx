@@ -11,7 +11,7 @@ import { useState } from "react";
 import {auth, db } from "../Firebase/firebase";
 import useAuthState from "../Firebase/hooks";
 import { useEffect } from "react";
-import { doc, onSnapshot } from "firebase/firestore";
+import { collection, query, where ,onSnapshot,arrayUnion,arrayRemove,doc,updateDoc} from "firebase/firestore";
 import Checkbox from '@mui/material/Checkbox';
 import FavoriteBorder from '@mui/icons-material/FavoriteBorder';
 import Favorite from '@mui/icons-material/Favorite';
@@ -32,6 +32,90 @@ function BlogPost() {
       setArticle({...snapshot.data(),id:snapshot.id});
     });
   },[]);
+
+
+  const [likeState, setLikeState] = useState(false);
+  const [savedState, setSavedState] = useState(false);
+
+  // const handleLike = () => {
+  //   const likesRef = doc(db,"Blogs",id);
+  //   const likes = likesRef.get(likes);
+  //   console.log(likes);
+  //   const userRef = doc(db,"users", user.email);
+
+  //   if(likeState)
+  //   {
+
+  //     // updating users collection
+  //     updateDoc(userRef,{
+  //       Liked:arrayRemove(id),
+  //   }).then(()=>{
+  //     console.log("Unliked");
+  //   }).catch((e)=>{
+  //       console.log(e);
+  //   });
+
+  //   // updating blog collection
+  //   // if(likesRef.likes?.includes(user.uid)){
+  //   //   updateDoc(likesRef,{
+  //   //       likes:arrayRemove(user.uid),
+  //   //   }).then(()=>{
+  //   //       console.log("unliked");
+  //   //   }).catch((e)=>{
+  //   //       console.log(e);
+  //   //   });
+    
+  //   // }
+
+  // }
+  //   else{
+  //     updateDoc(userRef,{
+  //       Liked:arrayUnion(id),
+  //   }).then(()=>{
+  //     console.log("liked");
+  //   }).catch((e)=>{
+  //       console.log(e);
+  //   });
+
+
+  //   // updating blog collection
+  // //   updateDoc(likesRef,{
+  // //     likes:arrayUnion(user.uid)
+  // // }).then(()=>{
+  // //     console.log("liked");
+  // // }).catch((e)=>{
+  // //     console.log(e);
+  // // });
+      
+  //   }
+  // };
+
+  const handleBookmark = () => {
+
+    const userRef = doc(db,"users", user.email);
+    if(savedState)
+    {
+      updateDoc(userRef,{
+        Bookmark:arrayRemove(id),
+    }).then(()=>{
+        console.log("removed blog");
+    }).catch((e)=>{
+        console.log(e);
+    });
+    }
+
+    else{
+      updateDoc(userRef,{
+        Bookmark:arrayUnion(id),
+    }).then(()=>{
+        console.log("saved blog");
+    }).catch((e)=>{
+        console.log(e);
+    });
+    }
+  };
+
+
   return (
 
     <>

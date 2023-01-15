@@ -24,7 +24,10 @@ function LikeArticle({id,likes,Title}){
   const {user} = useAuthState(auth);
 
   const likesRef = doc(db,"Blogs",id);
+  
   const handleLike = ()=>{
+
+    const userRef = doc(db, "users", user.email);
       if(likes?.includes(user.uid)){
           updateDoc(likesRef,{
               likes:arrayRemove(user.uid),
@@ -33,6 +36,15 @@ function LikeArticle({id,likes,Title}){
           }).catch((e)=>{
               console.log(e);
           });
+
+          // updating user collection
+          updateDoc(userRef,{
+            Liked:arrayRemove(id),
+        }).then(()=>{
+          console.log("Unliked");
+        }).catch((e)=>{
+            console.log(e);
+        });
       }
       else{
           updateDoc(likesRef,{
@@ -42,6 +54,17 @@ function LikeArticle({id,likes,Title}){
           }).catch((e)=>{
               console.log(e);
           });
+
+
+          // updating user collection
+          updateDoc(userRef,{
+            Liked:arrayUnion(id),
+        }).then(()=>{
+          console.log("liked");
+        }).catch((e)=>{
+            console.log(e);
+        });
+    
       }
   
   }
@@ -78,16 +101,14 @@ export default function BlogCard() {
     setCat("");
 }}
 
-  const handleChange = (e) => {
-    e.preventDefault();
-    setSearchInput(e.target.value);
-    // console.log(searchInput);
-  };
+   const [articles,setArticles]=useState([]);
+   const {user} = useAuthState(auth);
 
   const searchBlog = () => {
     const articleRef=collection(db,"Blogs")
-      var q;
+    var q;
       
+      console.log(searchInput);
       if (searchInput.length > 0) {
         q=query(articleRef, where("title_lower", "==" , searchInput.toLowerCase()));
       }
@@ -113,9 +134,6 @@ export default function BlogCard() {
     }
   };
 
-   const [articles,setArticles]=useState([]);
-   const {user} = useAuthState(auth);
-
 
   
    useEffect(()=>{
@@ -130,6 +148,7 @@ export default function BlogCard() {
            console.log(articles);
        })
    },[]);
+
   return (
   <>
     <div>
@@ -137,8 +156,8 @@ export default function BlogCard() {
           class="search-bar"
           type="text"
           placeholder="Search"
-          id="searchInput"
-          onChange={handleChange}
+          id="searchBar"
+          onChange={(e)=>{setSearchInput(e.target.value);}}
           onKeyDown = {handleKeyDown}
           value={searchInput}
         ></input>

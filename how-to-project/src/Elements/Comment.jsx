@@ -27,7 +27,6 @@ const handleChangeComment=(e)=>{
                 user:currentlyLoggedInUser.uid,
                 userName:currentlyLoggedInUser.displayName,
                 comment:comment,
-                createdAt:new Date(),
                 commentId: uuidv4()
             }),
         }).then(()=>{
@@ -38,18 +37,19 @@ const handleChangeComment=(e)=>{
 
 const handleDeleteComment=(comment)=>{
     console.log(comment);
+
     updateDoc(commentRef, {
-        comments:arrayRemove(comment),
+        comments: arrayRemove(comment)
     })
     .then((e) => {
         console.log(e);
     })
     .catch((error) => {
-        console.log(error);
+        console.log("error",error);
     })
 }
     return(
-        <div>comment
+        <div>comments
             {/* {console.log(currentlyLoggedInUser)} */}
 
             <div className='container' >
@@ -69,7 +69,7 @@ const handleDeleteComment=(comment)=>{
                         <div >
                             {user ===currentlyLoggedInUser.uid && (
                                 <i className='fa fa-times' 
-                                onClick={()=>handleDeleteComment({commentId,user,comment,userName})}></i>
+                                onClick={()=>handleDeleteComment({commentId,user,comment,userName})} style={{cursor:"pointer"}}></i>
                             )}
                         </div>
                     </div>

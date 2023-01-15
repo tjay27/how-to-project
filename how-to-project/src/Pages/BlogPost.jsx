@@ -4,18 +4,45 @@ import Img2 from "../Images/7.png";
 import Img3 from "../Images/image 2.png";
 import Button from "@mui/material/Button";
 import { Typography } from "@mui/material";
-import Chips from '../Elements/Chips';
 import TransitionModal from '../Elements/Modal';
 import { FacebookIcon, FacebookShareButton, LinkedinIcon, LinkedinShareButton, TwitterIcon, TwitterShareButton, WhatsappIcon, WhatsappShareButton  } from "react-share";
+import { useParams } from "react-router-dom";
+import { useState } from "react";
+import {auth, db } from "../Firebase/firebase";
+import useAuthState from "../Firebase/hooks";
+import { useEffect } from "react";
+import { doc, onSnapshot } from "firebase/firestore";
+import Checkbox from '@mui/material/Checkbox';
+import FavoriteBorder from '@mui/icons-material/FavoriteBorder';
+import Favorite from '@mui/icons-material/Favorite';
+import BookmarkBorderIcon from '@mui/icons-material/BookmarkBorder';
+import BookmarkIcon from '@mui/icons-material/Bookmark';
+import Comment from "../Elements/Comment";
+
+const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
 
 function BlogPost() {
+  const {id}=useParams();
+  const [article,setArticle]=useState(null);
+  const{user}=useAuthState(auth);
 
+  useEffect(()=>{
+    const docRef=doc(db,"Blogs",id);
+    onSnapshot(docRef,(snapshot)=>{
+      setArticle({...snapshot.data(),id:snapshot.id});
+    });
+  },[]);
   return (
 
     <>
       <img class="img1" src={Img1} alt="" />
       <img class="img2" src={Img2} alt="" />
       
+      
+
+
+     {article && (
+      <>
       <Button size="large"  disableTouchRipple>
       <i class="arrow fa-solid fa-3x fa-circle-arrow-left"></i></Button>
       <Button disableTouchRipple>
@@ -29,42 +56,29 @@ function BlogPost() {
           <i class="fa fa-3x fa-check-square-o"  aria-hidden="true"></i> 
           <Typography variant="h6" align="center" >In This Article</Typography>
         </Button>
-         <Typography variant="body1" align="center">item1</Typography>
-         <Typography align="center">item1</Typography>
-         <Typography align="center">item1</Typography>
+         <Typography variant="body1" align="center">{article.category}</Typography>
+         
       </div>
-
-
-      <div className="left-bar">
-        <Typography variant="h5" align="center">TAGS</Typography>
-        
-      </div>
-
-
-
-      <div className="container-head">
-        <Typography align="center">Building an image searching app using Alpine and Tailwind CSS</Typography>
+     <div className="container-head">
+        <Typography align="center">{article.Title}</Typography>
         <Button  size="large" disableTouchRipple>
           <i class="user-icon fa-3x fa-solid fa-user" ></i>
-          <Typography variant="h6" align="center" color="white" marginLeft={5}>By Author</Typography>
+          <Typography variant="h6" align="center" color="white" marginLeft={5}>{article.author.name}</Typography>
         </Button>
       </div>     
-       <img class="img3" src={Img3} alt="" />
+       <img class="img3" src={`${article.imgURL}`} alt="" />
        
 
       <div class="container-content">
 
-      <Typography variant="h6" align="center">Alpine.js is a collection of 14 attributes, 6 properties, and 2 methods; you can think of it as jQuery for the modern web.<br/>
-However, unlike jQuery — which provides imperative DOM APIs, Alpine.js provides a declarative way to bind data to the DOM using the x-bind directive.<br/>
-Alpine.js is very beginner-friendly, you barely need to know any JavaScript to get up and running with it.</Typography>
+      <Typography variant="h6" align="center">{article.description}</Typography>
       </div>
-
-
-
       <div class="footer">
-          <Button size="large">
-            <i class="footer-icon fa fa-3x fa-heart-o"></i>
-          </Button>
+          <Checkbox   sx={{ '& .MuiSvgIcon-root': { fontSize: 54 } , color: "white",
+    '&.Mui-checked': {
+      color: "white"}}}
+{...label} icon={<FavoriteBorder />} checkedIcon={<Favorite />} />
+
           <Button size="large">
             <i class="footer-icon fa fa-3x fa-share-alt"></i>
             <TransitionModal 
@@ -89,11 +103,16 @@ Alpine.js is very beginner-friendly, you barely need to know any JavaScript to g
               </LinkedinShareButton>
           </TransitionModal>
           </Button>
-          <Button size="large">
-            <i class="footer-icon fa fa-3x fa-bookmark-o" ></i>
-          </Button>
+          <Checkbox  sx={{ '& .MuiSvgIcon-root': { fontSize: 54 } , color: "white",
+    '&.Mui-checked': {
+      color: "white"}}} {...label} icon={<BookmarkBorderIcon />} checkedIcon={<BookmarkIcon />} />
+          
       </div>
 
+      </>)}
+
+
+      
     </>
   );
 }

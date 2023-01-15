@@ -1,8 +1,6 @@
 import { Box, TextField, Typography } from "@mui/material";
 import { Timestamp,collection, addDoc } from "firebase/firestore";
 import React ,{useState} from "react";
-import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
-import { storage } from "../Firebase/firebase";
 import {auth, db } from "../Firebase/firebase";
 import useAuthState from "../Firebase/hooks";
 import { useNavigate } from "react-router-dom";
@@ -11,6 +9,10 @@ import RadioGroup from '@mui/material/RadioGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import FormControl from '@mui/material/FormControl';
 import FormLabel from '@mui/material/FormLabel';
+import { Button } from "@mui/material";
+import Img6 from "../Images/astronaut.png";
+import Img2 from "../Images/7.png";
+import Img5 from "../Images/earth.png";
 
 
 export default function Contribute(){
@@ -21,6 +23,7 @@ export default function Contribute(){
   const [Link,setLink]=useState("");
   const [imgURL,setImgURL]=useState("");
   const [category,setCat]=useState("");
+  const [comments,setComment]=useState([]);
 
 
   const [description,setDescription]=useState("");
@@ -43,6 +46,9 @@ export default function Contribute(){
           imgURL,
           author:{name:auth.currentUser.displayName,id:auth.currentUser.uid},
           category,
+          comments:[],
+          title_lower: Title.toLocaleLowerCase(),
+
       }).then(()=>{alert("success!!")}).catch(err=>{alert(err.message)});
 
       setTitle("")
@@ -51,6 +57,7 @@ export default function Contribute(){
       setLink("")
       setImgURL("")
       setCat("")
+      setComment([])
   navigate("/feed");
 
         
@@ -61,17 +68,20 @@ export default function Contribute(){
 
     return(
        <div>
+         <img class="img6" src={Img6} alt="" />
+      <img class="img5" src={Img5} alt="" />
         <Box sx={{
-        
+        "& .MuiTextField-root": { m: 1 , width:"150ch" },
         backgroundColor: "yellow",
         marginLeft:3
       }}>
-            <Typography>CONTRIBUTE </Typography>
+            <Typography variant="h3" align="center">CONTRIBUTE </Typography>
             <TextField 
             fullWidth label="Title" 
             id="Title" 
             margin="20px"  
             onChange={(e)=>{setTitle(e.target.value)}}
+            sx={{margin:2}}
             required/>
 
 
@@ -80,6 +90,7 @@ export default function Contribute(){
             id="Topic" 
             margin="20px"  
             onChange={(e)=>{setTopic(e.target.value)}}
+            sx={{margin:2}}
             required/>
 
 <TextField 
@@ -88,7 +99,8 @@ export default function Contribute(){
             rows={4}
             id="Description" 
             margin="20px"  
-            onChange={(e)=>{setDescription(e.target.value)}}
+            onChange={(e)=>{setDescription(e.target.value)}}           
+            sx={{margin:2}}
             required/>
 
 <TextField 
@@ -96,15 +108,17 @@ export default function Contribute(){
             id="Link" 
             margin="20px"  
             onChange={(e)=>{setLink(e.target.value)}}
+            sx={{margin:2}}
             />
             <TextField 
             fullWidth label="Image" 
             id="Image" 
             margin="20px"  
             onChange={(e)=>{setImgURL(e.target.value)}}
+            sx={{margin:2}}
             required/>
 
-<FormControl>
+<FormControl  sx={{margin:2}}>
       <FormLabel id="demo-row-radio-buttons-group-label">Choose Category</FormLabel>
       <RadioGroup
         row
@@ -116,13 +130,15 @@ export default function Contribute(){
         <FormControlLabel value="other" control={<Radio />} label="Technical Stuff" onChange={(e)=>{setCat("Technical Stuff")}}/>
         
       </RadioGroup>
-    </FormControl>
-          <button
-            className="form-control btn-primary mt-2"
+    </FormControl><br/>
+          <Button
+          variant="contained"
+          color="secondary"
+          sx={{ marginTop: "20px" , marginLeft:75 }}
             onClick={handleSubmit}
           >
             Publish
-          </button>
+          </Button>
 
         </Box>
        </div>

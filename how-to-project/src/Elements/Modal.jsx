@@ -30,7 +30,7 @@ export default function AlertDialog(props) {
           <h2>{props.title}</h2>
         </DialogTitle>
         <DialogContent id="alert-dialog-description" >
-          <h4>{props.content}</h4>
+          <h6>{props.content}</h6>
         </DialogContent>
         <DialogContent>
           {props.children}

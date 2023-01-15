@@ -188,7 +188,6 @@ function NavBar() {
             trigger={cust}
             setTrigger={setCust}
             title="INVITE"
-            content="Contribute to our website to express your views. Remember, it is important you submit an authentic and original article on a topic that is relevant to each of these website’s readership.Make sure your guest blog articles are polished, researched, and compelling."
             submitText="Invite"
           >
             <Box

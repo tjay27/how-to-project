@@ -233,7 +233,7 @@ export default function BlogCard() {
           </Button>}
             <p>{likes?<span>{likes.length}</span>:""}</p></div>
 
-          <TransitionModal button={<i class="fas fa-2x fa-comments"></i>}>             
+          <TransitionModal title="Comment section" button={<i class="fas fa-2x fa-comments"></i>}>             
               <Comment id={id} currentlyLoggedInUser={user}/>
           </TransitionModal>
         {/* <p>{comments?<span>{comments.length}</span>:""}</p> */}
@@ -263,7 +263,7 @@ export default function BlogCard() {
               </LinkedinShareButton>
           </TransitionModal>
                          
-           <TransitionModal title="report content ?" button={<i class="fa-solid fa-2x fa-circle-exclamation"></i> } content="lorem ipsum">
+           <TransitionModal title="report content ?" button={<i class="fa-solid fa-2x fa-circle-exclamation"></i> } content="sensitive content on the website can be reported and removed soon ">
           <FormControl>
       <RadioGroup
         aria-labelledby="demo-radio-buttons-group-label"

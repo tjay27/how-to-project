@@ -118,16 +118,20 @@ p{
 }
 
 /* ********************* MY FEED ****************** */
-
+.searchCont{
+  display: flex;
+  justify-content: flex-start;
+}
 .search-bar{
-  position: absolute;
+  /* position: absolute; */
   display: inline-block;
-  width: 450px;
+  width: 350px;
   height: 40px;
   border-radius: 25px;
   background-color: #c69af6;
-  right: 200px;
-  top: 40px;
+  margin: 20px;
+  /* right: 200px;
+  top: 40px; */
   padding: 10px;
 }
 
@@ -136,18 +140,19 @@ p{
 }
 
 .search-icon{
-  position: absolute;
+  position: relative;
     z-index: 2;
-    /* margin-top: 11px; */
-    /* margin-left: 20px; */
-    right: 210px;
-    top: 45px;
+    right: 65px;
     background: top;
     border: none;
 }
 
 .search-icon:hover{
   box-shadow: 10px 5px 40px #c89ef5;
+}
+
+#searchBar {
+  width: 400px;
 }
 
 .profile-icon{

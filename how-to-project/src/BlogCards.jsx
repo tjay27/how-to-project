@@ -6,11 +6,7 @@ import CardMedia from "@mui/material/CardMedia";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import { useState ,useEffect} from "react";
-<<<<<<< HEAD
-import { collection, query, where ,onSnapshot,arrayUnion,arrayRemove,doc,updateDoc, getDocs} from "firebase/firestore";
-=======
 import { collection, query, where ,onSnapshot,arrayUnion,arrayRemove,doc,updateDoc,addDoc} from "firebase/firestore";
->>>>>>> 5a5e5e00dbf8cdd2ecb2bfbb9e225f64f3fc5c8e
 import { auth, db } from "./Firebase/firebase";
 import useAuthState from "./Firebase/hooks";
 import { UserAuth } from "./Firebase/AuthContext";
@@ -199,11 +195,9 @@ export default function BlogCard() {
     articles.length === 0 ?(
         <p>no articles found</p>
     ):(
-<<<<<<< HEAD
-    articles.map(({id,Title,Topic,userId,likes,comment,imgURL,author})=><div class="BlogCard" key={id}>
-=======
-    articles.map(({id,Title,Topic,userId,likes,comment,imgURL,link})=><div class="BlogCard" key={id}>
->>>>>>> 5a5e5e00dbf8cdd2ecb2bfbb9e225f64f3fc5c8e
+
+    articles.map(({id,Title,Topic,userId,likes,comment,imgURL,author,link})=><div class="BlogCard" key={id}>
+
     <Card
       sx={{
         maxWidth: 345,

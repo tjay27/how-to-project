@@ -2,6 +2,7 @@ import { deleteDoc, doc } from "firebase/firestore";
 import React from "react";
 import {  auth, db } from "../Firebase/firebase";
 import useAuthState from "../Firebase/hooks";
+import { Button } from "@mui/material";
 
 
 export default function DeleteArticle({ id }) {
@@ -22,11 +23,17 @@ export default function DeleteArticle({ id }) {
   };
   return (
     <div>
-      <i
-        className="fa fa-trash"
-        onClick={handleDelete}
-        style={{ cursor: "pointer" }}
-      />
+      <Button
+            size="small"
+            sx={{color: "#40F4FF" ,
+                 marginLeft:"390px",
+                 }}>
+                
+            <i class="fa-solid fa-2x fa-trash"
+            onClick={handleDelete}
+        style={{ cursor: "pointer" }}></i>     
+ </Button>
+      
     </div>
   );
 }

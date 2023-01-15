@@ -13,6 +13,7 @@ import { Button } from "@mui/material";
 import Img6 from "../Images/astronaut.png";
 import Img2 from "../Images/7.png";
 import Img5 from "../Images/earth.png";
+import './contribute.css';
 
 
 export default function Contribute(){

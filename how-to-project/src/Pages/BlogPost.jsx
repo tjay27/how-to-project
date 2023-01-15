@@ -156,6 +156,8 @@ function BlogPost() {
       <div class="container-content">
 
       <Typography variant="h6" align="center">{article.description}</Typography>
+      <Typography variant="h4" align="center" sx={{color:"#c69af6",margin:7}}>Discussion Corner</Typography>
+      <Comment id={id} currentlyLoggedInUser={user}></Comment>
       </div>
       {
         (user)
@@ -168,9 +170,10 @@ function BlogPost() {
 />
 
         <Button size="large">
-          <i class="footer-icon fa fa-3x fa-share-alt"></i>
           <TransitionModal 
           title="Share via"
+          button={<i class="footer-icon fa fa-3x fa-share-alt"></i>
+}
           >
             <FacebookShareButton
             url="ok">

@@ -235,8 +235,7 @@ function NavBar() {
             trigger={feedback}
             setTrigger={setFeedback}
             title="FEEDBACK"
-            content="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam in
-              sapien elementum ipsum molestie dictum sit amet eu lorem."
+            content="Your Feedback will help us to improve our website and your own experience. Kindly spare a minute to provide your valuable feeback. Thankyou."
             
           >
             <TextField

@@ -94,7 +94,7 @@ navigate("/feed");
       <img class="img5" src={Img5} alt="" />
         <Box sx={{
         "& .MuiTextField-root": { m: 1 , width:"150ch" },
-        marginLeft:3
+        marginLeft:3, marginTop:5, color: "white"
       }}>
             <Typography variant="h3" align="center">CONTRIBUTE </Typography>
             <TextField 

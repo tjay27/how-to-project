@@ -49,32 +49,51 @@ function LoginIcon(){
         <i class=" fa-3x fas fa-user-circle"></i>
       </Fab>
 
-      <PopUp
+      {/* <PopUp
         trigger={openLogin}
         setTrigger={setOpenLogin}
-        title="Login"
+        title="My Account"
         content="Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                     Etiam in sapien elementum ipsum molestie dictum sit amet eu
                     lorem."
         
       >
         <img class="loginImg" src={Login} alt="" />
-        <div >
-          {user
-          ?       <div>
+        <div > */}
+      {user
+      ?    <PopUp
+      trigger={openLogin}
+      setTrigger={setOpenLogin}
+      title="My Account"
+      content="Welcome. You can write your own technical blogs, research papers or articles for others to read. Have fun writing and browsing through some super cool technical stuff."
+      
+    >
+      <img class="loginImg" src={Login} alt="" />
+         <div>
             <p>{user.displayName}</p>  
                 <Button  variant="contained"
           color="secondary"
           sx={{ marginTop: "20px" }} onClick={handleSignOut}>LOGOUT</Button>
 
           </div>
-          :    <div className="Google-Button">    <GoogleButton  
+          </PopUp>
+
+          :  <PopUp
+          trigger={openLogin}
+          setTrigger={setOpenLogin}
+          title="Login"
+          content="Hello User, login to your account for writing your own technical stuff and accessing various other features like commenting, discussing and saving blogs or articles."
+          
+        >
+          <img class="loginImg" src={Login} alt="" />
+            <div className="Google-Button">    <GoogleButton  
            onClick={handleGoogleSignIn}/>
           </div>
+          </PopUp>
         }
-      </div>
+      {/* </div>
 
-      </PopUp>
+      </PopUp> */}
       </>
     ) 
 }

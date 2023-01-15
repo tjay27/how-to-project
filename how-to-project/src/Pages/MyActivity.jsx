@@ -29,13 +29,13 @@ function MyActivity() {
     <LoginIcon/>
       <NavBar />
       {user ?
-      <>
+      <div style={{marginLeft: '15%', marginRight: '5%'}}>
       <Avatar
   alt="Remy Sharp"
   src={user.photoURL}
-  sx={{ width: 126, height: 126 ,marginLeft:80}}
+  sx={{ width: 126, height: 126 ,marginLeft:67}}
 />
-<Typography variant="h4" align="center" sx={{color:"white", margin:2}}>{user.displayName}</Typography>
+<Typography variant="h4" align="center" sx={{color:"white", margin:2, marginBottom: 10}}>{user.displayName}</Typography>
 <Box sx={{
         
         backgroundColor: "rgb(70, 43, 136, 0.4)",
@@ -46,7 +46,7 @@ function MyActivity() {
             textColor="white"
             indicatorColor="primary"
             aria-label="primary tabs example"
-            sx={{marginLeft:47 , color:"white" , paddingLeft:9 }}>
+            sx={{marginLeft:25 , color:"white" , paddingLeft:9 }}>
                 <Tab sx={{marginRight:3 , fontSize:23}} label="my submissions">
                   
                 </Tab>
@@ -64,7 +64,7 @@ function MyActivity() {
         ))}
       </div>
 </Box>
-</>
+</div>
 :<Typography variant="h4"align="center" sx={{color:"white", margin:4,marginTop:17}}>LOG IN TO ACCESS THE PROFILE</Typography>}
 
      

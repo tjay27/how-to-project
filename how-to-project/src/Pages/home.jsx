@@ -13,6 +13,7 @@ function Home() {
           <div class="col-lg-5">
             <h1>Tech Tweaks</h1>
             <h4>Build on a Solid Foundation, Reach for the Stars!</h4>
+            <p>Speak through your technical writings...</p>
             <Link to="/feed">
             <button
               type="button"

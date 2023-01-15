@@ -163,7 +163,7 @@ export default function BlogCard() {
         <input
           class="search-bar"
           type="text"
-          placeholder="Search by Blog Title or Field of Study..."
+          placeholder="Search by Title or Field of Study..."
           id="searchBar"
           onChange={(e)=>{setSearchInput(e.target.value);}}
           onKeyDown = {handleKeyDown}
@@ -193,7 +193,7 @@ export default function BlogCard() {
     <div>
              {
     articles.length === 0 ?(
-        <p>no articles found</p>
+        <p style={{margin: 20, fontSize: 22}}>No articles found</p>
     ):(
 
     articles.map(({id,Title,Topic,userId,likes,comment,imgURL,author,link})=><div class="BlogCard" key={id}>

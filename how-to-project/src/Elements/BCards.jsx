@@ -11,13 +11,14 @@ import { Link } from "react-router-dom";
 import DeleteArticle from "./DeleteArticle";
 
 
-export default function BCards() {
+export default function BCards({user}) {
   const [articles,setArticles]=useState([]);
-   const {user} = useAuthState(auth);
+  //  const {user} =  useAuthState(auth);
 
    useEffect(()=>{
-    const reportRef=collection(db,"users","deepanshi.chourasia@gmail.com","My submission");
-    const q=query(reportRef);
+    const reportRef= collection(db,"users",user.email,"My submission");
+    const q= query(reportRef);
+
     onSnapshot(q,(snapshot)=>{
         const articles = snapshot.docs.map((doc)=>({
             id:doc.id,
@@ -36,7 +37,7 @@ export default function BCards() {
     articles.length === 0 ?(
         <p>no articles found</p>
     ):(
-    articles.map(({id,Title,link,Topic,userId,likes,comment})=><div class="BlogCard" key={id}>
+    articles.map(({id,Title,link,Topic,userId,likes,comment, imgURL})=><div class="BlogCard" key={id}>
     <Card
         sx={{
           maxWidth: 700,
@@ -46,10 +47,10 @@ export default function BCards() {
           borderRadius:7
         }}
       >
-        <CardMedia component="img" height="120" 
-        sx={{width:80,display:"flex",padding:3}}  alt="media" />
+        <CardMedia component="img" height="120" width="250"
+        sx={{width:150,display:"flex",padding:3}}  alt="media" src={imgURL}/>
         <CardContent sx={{display:"inline" }}>
-          <Link to={`/article/${id}`} sx={{color:"white"}}>{Title}</Link>
+          <Link to={`/article/${id}`} style={{color: "white"}}>{Title}</Link>
           <DeleteArticle id={id}/>
           <Button
             size="small"

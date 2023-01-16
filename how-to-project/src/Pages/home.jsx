@@ -4,6 +4,7 @@ import obj1 from "../Images/1.png";
 import obj2 from "../Images/2.png";
 import obj3 from "../Images/3.png";
 import { Link } from "react-router-dom";
+import { Typography } from "@mui/material";
 
 function Home() {
   return (
@@ -11,8 +12,10 @@ function Home() {
       <div class="home-section-1">
         <div class="row">
           <div class="col-lg-5">
-            <h1>Tech Tweaks</h1>
-            <h4>Build on a Solid Foundation, Reach for the Stars!</h4>
+            <Typography variant="h1">Tech</Typography>
+            <Typography variant="h1" sx={{color:"#c69af6"}}>Tweaks</Typography>
+             
+            <h4><i>Build on a Solid Foundation, Reach for the Stars!</i></h4>
             <p>Speak through your technical writings...</p>
             <Link to="/feed">
             <button

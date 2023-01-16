@@ -14,6 +14,8 @@ import { UserAuth } from "../Firebase/AuthContext";
 import PropTypes from 'prop-types';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
+import Liked from "../Elements/Liked";
+import Bookmarked from "../Elements/Bookmarked";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -64,7 +66,7 @@ function MyActivity() {
     <LoginIcon/>
       <NavBar />
       {user ?
-      <div style={{marginLeft: '15%', marginRight: '5%'}}>
+      <div style={{marginLeft: '5%', marginRight: '5%'}}>
         
       <Avatar
   alt="Remy Sharp"
@@ -75,14 +77,13 @@ function MyActivity() {
 <Box
     sx={{
         width: '100%',
-        backgroundColor: "rgb(70, 43, 136, 0.4)",
         marginLeft:3
       }}>
       <Box sx={{ borderBottom: 1, borderColor: 'divider' }} >
         <Tabs value={value} onChange={handleChange} aria-label="basic tabs example" textColor="white"
             indicatorColor="primary"
             aria-label="primary tabs example"
-            sx={{marginLeft:47 , color:"white" , paddingLeft:9 }}>
+            sx={{marginLeft:33 , color:"white" , paddingLeft:9 }}>
           <Tab sx={{marginRight:3 , fontSize:23}} label="my submissions" {...a11yProps(0)} />
           <Tab sx={{marginRight:3 , fontSize:23}} label="liked"{...a11yProps(1)} />
           <Tab sx={{marginRight:3 , fontSize:23}} label="Bookmark" {...a11yProps(2)} />
@@ -94,10 +95,14 @@ function MyActivity() {
                   </div>
       </TabPanel>
       <TabPanel value={value} index={1}>
-        Item Two
+      <div class="feed myfeed">
+                    <Liked />
+                  </div>
       </TabPanel>
       <TabPanel value={value} index={2}>
-        Item Three
+      <div class="feed myfeed">
+                    <Bookmarked/>
+                  </div>
       </TabPanel>
     </Box>
 </div>

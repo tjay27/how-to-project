@@ -263,12 +263,13 @@ export default function BlogCard() {
               </LinkedinShareButton>
           </TransitionModal>
                          
-           <TransitionModal title="report content ?" button={<i class="fa-solid fa-2x fa-circle-exclamation"></i> } content="sensitive content on the website can be reported and removed soon ">
+           <TransitionModal title="Report content ?" button={<i class="fa-solid fa-2x fa-circle-exclamation"></i> } content="sensitive content on the website can be reported and removed soon ">
           <FormControl>
       <RadioGroup
         aria-labelledby="demo-radio-buttons-group-label"
         defaultValue="female"
         name="radio-buttons-group"
+        sx={{color:"black"}}
       >
         <FormControlLabel value="female" control={<Radio />} label="Sensitive Content" onChange={(e)=>{setCat("Sensitive Content")}} />
         <FormControlLabel value="male" control={<Radio />} label="Wrong information" onChange={(e)=>{setCat("Wrong information")}}/>
@@ -278,7 +279,7 @@ export default function BlogCard() {
       </RadioGroup>
       <Button variant="contained"
                         color="secondary"
-                        sx={{ marginTop: "20px" }} 
+                        sx={{ marginTop: "20px" ,marginLeft:"200px"}} 
                         onClick={handleReport}>Submit</Button>
     </FormControl>
                       

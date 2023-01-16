@@ -18,6 +18,7 @@ import Favorite from '@mui/icons-material/Favorite';
 import BookmarkBorderIcon from '@mui/icons-material/BookmarkBorder';
 import BookmarkIcon from '@mui/icons-material/Bookmark';
 import Comment from "../Elements/Comment";
+import { Link } from "react-router-dom";
 
 const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
 
@@ -128,9 +129,9 @@ function BlogPost() {
      {article && (
       <>
       <Button size="large"  disableTouchRipple>
-      <i class="arrow fa-solid fa-3x fa-circle-arrow-left"></i></Button>
-      <Button disableTouchRipple>
-      <i class="arrow fa-solid fa-3x fa-circle-arrow-right"></i></Button>
+        <Link to="/feed"><i class="arrow fa-solid fa-3x fa-circle-arrow-left"></i></Link>
+      </Button>
+      
       
       
       

@@ -11,22 +11,15 @@ import { Link } from "react-router-dom";
 import DeleteArticle from "./DeleteArticle";
 
 
-export default function Bookmarked() {
+export default function Bookmarked({user}) {
   const [articles,setArticles]=useState([]);
-   const {user} = useAuthState(auth);
+  //  const {user} = useAuthState(auth);
 
-   useEffect(()=>{
-    const reportRef=collection(db,"users","deepanshi.chourasia@gmail.com","My submission");
-    const q=query(reportRef);
-    onSnapshot(q,(snapshot)=>{
-        const articles = snapshot.docs.map((doc)=>({
-            id:doc.id,
-            ...doc.data(),
-        }));
-        setArticles(articles);
-        console.log(articles);
-    })
-},[]);
+   useEffect(() => {
+    onSnapshot(doc(db, 'users', `${user?.email}`), (doc) => {
+      setArticles(doc.data()?.Bookmark);
+    });
+  }, [user?.email]);
   
     
   return (

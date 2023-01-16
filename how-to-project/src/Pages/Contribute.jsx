@@ -90,7 +90,7 @@ navigate("/feed");
 
 
     return(
-       <div>
+       <div class="publishPost">
          <img class="img6" src={Img6} alt="" />
       <img class="img5" src={Img5} alt="" />
         <Box sx={{

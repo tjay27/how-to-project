@@ -10,22 +10,15 @@ import { collection, doc,query,onSnapshot, getDocs } from "firebase/firestore";
 import { Link } from "react-router-dom";
 
 
-export default function Liked() {
+export default function Liked({user}) {
   const [articles,setArticles]=useState([]);
-   const {user} = useAuthState(auth);
-
-   useEffect(()=>{
-    const reportRef=collection(db,"users","deepanshi.chourasia@gmail.com","My submission");
-    const q=query(reportRef);
-    onSnapshot(q,(snapshot)=>{
-        const articles = snapshot.docs.map((doc)=>({
-            id:doc.id,
-            ...doc.data(),
-        }));
-        setArticles(articles);
-        console.log(articles);
-    })
-},[]);
+  //  const {user} = useAuthState(auth);
+  
+  useEffect(() => {
+    onSnapshot(doc(db, 'users', `${user?.email}`), (doc) => {
+      setArticles(doc.data()?.Liked);
+    });
+  }, [user?.email]);
   
     
   return (
@@ -36,6 +29,7 @@ export default function Liked() {
         <p>no articles found</p>
     ):(
     articles.map(({id,Title})=><div class="BlogCard" key={id}>
+
     <Card
         sx={{
           maxWidth: 900,
@@ -45,8 +39,8 @@ export default function Liked() {
           borderRadius:7
         }}
       >
-        <CardMedia component="img" height="120" 
-        sx={{width:80,display:"flex",padding:3}}  alt="media" />
+        <CardMedia component="img" height="120" width="250"
+        sx={{width:150,display:"flex",padding:3}}  alt="media"/>
         <CardContent sx={{display:"flex" }}>
           <Link to={`/article/${id}`} sx={{color:"white"}}>{Title}</Link>
           <Button></Button>

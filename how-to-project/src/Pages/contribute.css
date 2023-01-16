@@ -1,3 +1,12 @@
-label, input, textarea, span{
-    color: white !important;
+.publishPost label{
+    color: white ;
+}
+.publishPost input{
+    color: white ;
+}
+.publishPost textarea{
+    color: white ;
+}
+.publishPost span{
+    color: white ;
 }

@@ -71,7 +71,7 @@ function MyActivity() {
       <Avatar
   alt="Remy Sharp"
   src={user.photoURL}
-  sx={{ width: 126, height: 126 ,marginLeft:67}}
+  sx={{ width: 126, height: 126 ,marginLeft:80}}
 />
 <Typography variant="h4" align="center" sx={{color:"white", margin:2}}>{user.displayName}</Typography>
 <Box
@@ -82,7 +82,6 @@ function MyActivity() {
       <Box sx={{ borderBottom: 1, borderColor: 'divider' }} >
         <Tabs value={value} onChange={handleChange} aria-label="basic tabs example" textColor="white"
             indicatorColor="primary"
-            aria-label="primary tabs example"
             sx={{marginLeft:33 , color:"white" , paddingLeft:9 }}>
           <Tab sx={{marginRight:3 , fontSize:23}} label="my submissions" {...a11yProps(0)} />
           <Tab sx={{marginRight:3 , fontSize:23}} label="liked"{...a11yProps(1)} />
@@ -91,17 +90,17 @@ function MyActivity() {
       </Box>
       <TabPanel value={value} index={0}>
         <div class="feed myfeed">
-                    <BCards />
+                    <BCards user={user}/>
                   </div>
       </TabPanel>
       <TabPanel value={value} index={1}>
       <div class="feed myfeed">
-                    <Liked />
+                    <Liked user={user}/>
                   </div>
       </TabPanel>
       <TabPanel value={value} index={2}>
       <div class="feed myfeed">
-                    <Bookmarked/>
+                    <Bookmarked user={user}/>
                   </div>
       </TabPanel>
     </Box>

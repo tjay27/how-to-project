@@ -9,6 +9,7 @@ import SearchPage from './Pages/SearchPage';
 import LoginPage from './Pages/LoginPage';
 import { AuthContextProvider } from "../src/Firebase/AuthContext";
 import Contribute from "./Pages/Contribute";
+import AdminPage from "./Pages/AdminPage"
 
 // import "../public/index.css";
 
@@ -16,7 +17,6 @@ function Main() {
   return (
     <div>
       <BrowserRouter>
-        {/* <Header/>  */}
         <AuthContextProvider>
         <Routes>
           <Route path="/" element={<Home />} />
@@ -27,6 +27,7 @@ function Main() {
           <Route path="/LoginPage" element={<LoginPage/>} />
           <Route path="/Contribute" element={<Contribute/>} />
           <Route path="/article/:id" element={<BlogPost/>} />
+          <Route path="/admin" element={<AdminPage/>} />
 
         </Routes>
         </AuthContextProvider>

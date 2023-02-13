@@ -4,7 +4,7 @@ import Chip from '@mui/material/Chip';
 
 
 const ListItem = styled('li')(({ theme }) => ({
-  margin: theme.spacing(2),
+  margin: theme.spacing(0),
 }));
 
 export default function ChipsArray() {
@@ -29,7 +29,7 @@ export default function ChipsArray() {
         return (
           <ListItem key={data.key} >
             <Chip
-              sx={{width:280 , height:50 , backgroundColor:'#4267B2',color:'white', padding:4,fontSize:'20px'}}
+              sx={{width:350 , height:50 , backgroundColor:'white',color:'black', padding:0,fontSize:'20px', fontFamily:'Montserrat'}}
               icon={icon}
               label={data.label}
               onDelete={(handleDelete(data))}

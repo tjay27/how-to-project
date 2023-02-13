@@ -38,14 +38,14 @@ export default function BCards({user}) {
         <p>no articles found</p>
     ):(
     articles.map(({id,Title,link,Topic,userId,likes,comment, imgURL})=><div class="BlogCard" key={id}>
-    <Card
-        sx={{
-          maxWidth: 700,
-          backgroundColor: "rgb(148, 207, 250, 0.4)",
-          color: "white",
-          display:"flex",
-          borderRadius:7
-        }}
+    <Card class="cards"
+        // sx={{
+        //   maxWidth: 700,
+        //   backgroundColor: "rgb(148, 207, 250, 0.4)",
+        //   color: "white",
+        //   display:"flex",
+        //   borderRadius:7
+        // }}
       >
         <CardMedia component="img" height="120" width="250"
         sx={{width:150,display:"flex",padding:3}}  alt="media" src={imgURL}/>

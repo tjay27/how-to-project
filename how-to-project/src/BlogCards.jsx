@@ -172,7 +172,7 @@ export default function BlogCard() {
         <button class="search-icon" type="submit" onClick={searchBlog}><i class="fas fa-search"></i></button>
         </div>
 
-        <div>
+        {/* <div>
 
         <input
           class="search-bar"
@@ -186,9 +186,14 @@ export default function BlogCard() {
           value={searchAuthor}
         ></input>
         <button class="search-icon" type="submit" onClick={searchBlog}><i class="fas fa-search"></i></button>
-        </div>
+        </div> */}
     </div>
 
+    <div>
+      <h3 class="feedname">
+        MY FEED
+      </h3>
+    </div>
 
     <div>
              {
@@ -198,12 +203,12 @@ export default function BlogCard() {
 
     articles.map(({id,Title,Topic,userId,likes,comment,imgURL,author,link})=><div class="BlogCard" key={id}>
 
-    <Card
-      sx={{
-        maxWidth: 345,
-        backgroundColor: "rgb(70, 43, 136, 0.4)",
-        color: "white",
-      }}
+    <Card class="cards"
+      // sx={{
+      //   maxWidth: 345,
+      //   backgroundColor: "rgb(70, 43, 136, 0.4)",
+      //   color: "white",
+      // }}
     >
       <CardMedia component="img" height="140" image={`${imgURL}`} alt="media" />
       

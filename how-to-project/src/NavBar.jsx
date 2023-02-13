@@ -17,7 +17,9 @@ import { useNavigate } from "react-router-dom";
 import Rating from '@mui/material/Rating';
 
 
-const drawerWidth = 190;
+
+
+const drawerHeight = 190;
 
 
 function NavBar() {
@@ -87,26 +89,34 @@ function NavBar() {
       <Drawer
         PaperProps={{
           sx: {
-            backgroundColor: "rgb(70, 43, 136, 0.4)",
+            backgroundColor: "black",
             color: "white",
-          },
-        }}
+          
+          } ,
+        }
+        
+      }
         sx={{
-          mx: 20,
-          my: 10,
-          width: drawerWidth,
-          flexShrink: 0,
+          height:'10px',
+        
+          my: 4,
+          // height: '100px',
+          // flexShrink: 0,
+          
           "& .MuiDrawer-paper": {
-            width: drawerWidth,
+            height: '120px',
             boxSizing: "border-box",
+            flexGrow: 1
+
           },
         }}
         variant="permanent"
-        anchor="left"
+        anchor="top"
+        elevation={4}
       >
-        <Toolbar />
+        {/* <Toolbar /> */}
 
-        <Box>
+        {/* <Box>
           <Typography
             marginLeft={"-10px"}
             marginBottom={"20px"}
@@ -117,13 +127,12 @@ function NavBar() {
             {" "}
             TECH <br /> TWEAKS{" "}
           </Typography>
-        </Box>
+        </Box> */}
 
         <Divider />
-        <List>
-          
-
-          <Link to="/feed" style={{ textDecoration: "none", color: "white" }}>
+        <List orientation="horizontal" 
+        sx={{display:"flex"}}>
+          <Link to="/feed" style={{ textDecoration: "none", color: "white"}}>
             <ListItem key="My Feed" disablePadding>
               <ListItemButton>
                 <ListItemText primary="My Feed" />
@@ -167,7 +176,10 @@ function NavBar() {
             trigger={contri}
             setTrigger={setContri}
             title="Publish your Content"
-            content="Write and post your technical stuff like blog, research paper and articles. Remember, it is important you submit an authentic and original article on a topic that is relevant to each of these website’s readership.Make sure your guest blog articles are polished, researched, and compelling."
+            content="Write and post your technical stuff like blog, research paper and articles.
+             Remember, it is important you submit an authentic and original article on a topic that is
+              relevant to each of these website’s readership.Make sure your guest blog articles are 
+              polished, researched, and compelling."
           >
             <Link to="/Contribute" style={{ textDecoration: "none", color: "white" }}>
             <Button variant="contained"

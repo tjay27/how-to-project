@@ -3,21 +3,45 @@ import AdminCard from "./AdminCard";
 import StatsAdmin from "./StatsAdmin"
 import Blogs from "../Blogs";
 import NavBar from "../NavBar";
-import Img1 from "../Images/6.png";
-import Img2 from "../Images/7.png";
 import PopUp from "../Elements/PopUp";
 import Fab from "@mui/material/Fab";
 import Login from "../Images/Login.png";
 import { Box, TextField } from "@mui/material";
+import Logo from "../Images/Logo.png";
+import LoginIcon from "../Elements/login";
+
+
 
 function AdminPage() {
   const [openLogin, setOpenLogin] = useState(false);
 
   return (
     <>
-      <img class="img1" src={Img1} alt="" />
-      <img class="img2" src={Img2} alt="" />
+    
+    <div class="bar">
+    <nav>
+    <img class="Logo" src={Logo} alt="Logo" />
 
+    <ul>
+      <li><a href="feed">Feed</a></li>
+      <li><a href="My-Activity">My Activity</a></li>
+      <li><a href="SearchPage">Search</a></li>
+    </ul>
+    <div class="dropdown">
+<button class="dropbtn">More</button>
+<div class="dropdown-content">
+<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#">Publish</button>
+<a href="#">Invite</a>
+<a href="#">Feedback</a>
+</div>
+</div>
+    <button type="button" class="b2">Get Chrome Extension</button>
+    <LoginIcon/>
+
+    </nav>
+    <hr/>
+  </div>
+      {/* <NavBar /> */}
       <div>
         <input
           class="search-bar"
@@ -27,6 +51,12 @@ function AdminPage() {
         ></input>
         <i class="fas fa-search search-icon"></i>
       </div>
+
+      
+      <div class="adminText">
+        <h1>ADMIN PAGE</h1>
+      </div>
+
 
       <Fab
         color="secondary"
@@ -80,7 +110,7 @@ function AdminPage() {
         </Box>
       </PopUp>
 
-      <NavBar />
+      
       <StatsAdmin/>
       <div class="feed myfeed">
         {Blogs.map((blog) => (

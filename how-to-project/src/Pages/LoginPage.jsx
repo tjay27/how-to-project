@@ -1,7 +1,4 @@
 import React,{useRef} from "react";
-import Img6 from "../Images/astronaut.png";
-import Img2 from "../Images/7.png";
-import Img5 from "../Images/earth.png";
 import Button from "@mui/material/Button";
 import { Typography } from "@mui/material";
 import {Form , Card} from 'react-bootstrap';
@@ -34,8 +31,6 @@ function LoginPage() {
   return (
 
     <>
-      <img class="img6" src={Img6} alt="" />
-      <img class="img5" src={Img5} alt="" />
 <div className="form-container">
      <Card sx={{backgroundColor:"black"}}><Card.Body>
      

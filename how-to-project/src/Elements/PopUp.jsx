@@ -10,10 +10,10 @@ function PopUp(props) {
           <i class="fas fa-times-circle"></i>
         </button>
         <Typography
-          variant="h5"
-          marginRight="50px"
+          variant="h4"
+          // marginRight="30px"
           display="block"
-          color="black"
+          color="white"
           marginBottom="30px"
         >
           {props.title}

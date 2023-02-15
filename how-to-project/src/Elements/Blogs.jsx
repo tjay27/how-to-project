@@ -158,6 +158,7 @@ const q = query(articleRef, where("category", "==" , "Research Paper"));
     <Card
       sx={{
         maxWidth: 345,
+        // marginLeft: "2px",
         backgroundColor: "rgb(70, 43, 136, 0.4)",
         color: "white",
       }}

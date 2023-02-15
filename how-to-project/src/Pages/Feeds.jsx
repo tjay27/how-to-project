@@ -1,21 +1,42 @@
 import React, { useState, useEffect } from "react";
 import BlogCard from "../BlogCards";
 import NavBar from "../NavBar";
-import Img1 from "../Images/6.png";
-import Img2 from "../Images/7.png";
 import LoginIcon from "../Elements/login";
+import Logo from "../Images/Logo.png";
+
 import { Button } from "@mui/material";
 import TransitionModal from "../Elements/Modal"
 function Feeds() {
   
   return (
     <>
-      <img class="img1" src={Img1} alt="" />
-      <img class="img2" src={Img2} alt="" />
+    {/* <div class="bar">
+    <nav>
+    <img class="Logo" src={Logo} alt="Logo" />
 
+    <ul>
+      <li><a href="feed">Feed</a></li>
+      <li><a href="My-Activity">My Activity</a></li>
+      <li><a href="SearchPage">Search</a></li>
+    </ul>
+    <div class="dropdown">
+<button class="dropbtn">More</button>
+<div class="dropdown-content">
+<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#">Publish</button>
+<a href="#">Invite</a>
+<a href="#">Feedback</a>
+</div>
+</div>
+    <button type="button" class="b2">Get Chrome Extension</button>
+    <LoginIcon/>
+
+    </nav>
+    <hr/>
+  </div> */}
       <LoginIcon/>
 
       <NavBar />
+
       <div class="feed myfeed">
      {/*} {Blogs.map((blog) => (
 

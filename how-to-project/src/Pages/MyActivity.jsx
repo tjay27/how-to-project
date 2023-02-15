@@ -1,7 +1,5 @@
 import React ,{useState}from "react";
 import NavBar from "../NavBar";
-import Img1 from "../Images/6.png";
-import Img2 from "../Images/7.png";
 import BCards from "../Elements/BCards";
 import Blogs from "../Blogs";
 import LoginIcon from "../Elements/login";
@@ -16,6 +14,8 @@ import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Liked from "../Elements/Liked";
 import Bookmarked from "../Elements/Bookmarked";
+import Logo from "../Images/Logo.png";
+
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -58,34 +58,62 @@ function MyActivity() {
   };
   return (
     <>
-      <img class="img1" src={Img1} alt="" />
-      <img class="img2" src={Img2} alt="" />
+    <div class="bar">
+    <nav>
+    <img class="Logo" src={Logo} alt="Logo" />
 
-      
-
+    <ul>
+      <li><a href="feed">Feed</a></li>
+      <li><a href="My-Activity">My Activity</a></li>
+      <li><a href="SearchPage">Search</a></li>
+    </ul>
+    <div class="dropdown">
+<button class="dropbtn">More</button>
+<div class="dropdown-content">
+<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#">Publish</button>
+<a href="#">Invite</a>
+<a href="#">Feedback</a>
+</div>
+</div>
+    <button type="button" class="b2">Get Chrome Extension</button>
     <LoginIcon/>
-      <NavBar />
+
+    </nav>
+    <hr/>
+  </div>
+      {/* SEARCH BAR */}
+      <div>
+        <input 
+        class="search-bar"
+      type="text"
+      placeholder="        Search"
+      ></input>
+
+      </div>
+
+    {/* <LoginIcon/>
+      <NavBar /> */}
       {user ?
       <div style={{marginLeft: '5%', marginRight: '5%'}}>
         
-      <Avatar
+      {/* <Avatar
   alt="Remy Sharp"
   src={user.photoURL}
   sx={{ width: 126, height: 126 ,marginLeft:80}}
-/>
-<Typography variant="h4" align="center" sx={{color:"white", margin:2}}>{user.displayName}</Typography>
+/> 
+ <Typography variant="h4" align="center" sx={{color:"white", margin:2}}>{user.displayName}</Typography> */}
 <Box
     sx={{
         width: '100%',
-        marginLeft:3
+        marginLeft:1,
       }}>
       <Box sx={{ borderBottom: 1, borderColor: 'divider' }} >
         <Tabs value={value} onChange={handleChange} aria-label="basic tabs example" textColor="white"
             indicatorColor="primary"
-            sx={{marginLeft:33 , color:"white" , paddingLeft:9 }}>
-          <Tab sx={{marginRight:3 , fontSize:23}} label="my submissions" {...a11yProps(0)} />
-          <Tab sx={{marginRight:3 , fontSize:23}} label="liked"{...a11yProps(1)} />
-          <Tab sx={{marginRight:3 , fontSize:23}} label="Bookmark" {...a11yProps(2)} />
+            sx={{marginLeft:33 , color:"white" , paddingLeft:9 , marginTop:20 }}>
+          <Tab sx={{marginRight:3 , fontSize:18}} label="my submissions" {...a11yProps(0)} />
+          <Tab sx={{marginRight:3 , fontSize:18}} label="liked"{...a11yProps(1)} />
+          <Tab sx={{marginRight:3 , fontSize:18}} label="Bookmark" {...a11yProps(2)} />
         </Tabs>
       </Box>
       <TabPanel value={value} index={0}>

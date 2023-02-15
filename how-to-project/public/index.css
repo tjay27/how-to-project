@@ -1,5 +1,6 @@
 body {
   background-color: black;
+  
 }
 
 @media only screen and (min-width: 600px){
@@ -8,12 +9,119 @@ body {
   }
 }
 
+/* ******************* NAVBAR *****************  */
+
+/* .Logo{
+  margin-left: 20px;
+  margin-top: 20px;
+}
+
+.CB{
+  margin-top: 20px;
+} */
+
+nav{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-left: 50px;
+  padding-right: 250px;
+  padding-top: 20px;
+}
+
+nav ul li{
+  list-style-type: none;
+  display: inline-block;
+  padding: 10px 20px;
+  padding-top: 20px;
+}
+
+nav ul li a{
+  
+  color:white;
+  text-decoration: none;
+  font-size: x-large;
+  font-weight: bold;
+}
+
+nav ul li a:hover{
+  color:#7D5FBB;
+}
+hr{
+  border: 2px solid #DEE5EE;
+}
+
+.b2{
+padding: 10px;
+gap:10px;
+border: 2px solid #FFFFFF;
+border-radius: 10px;
+background-color: black;
+color:white;
+font-size: large;
+font-weight: bold;
+}
+
+/* .arrow {
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  display: inline-block;
+  padding: 2px;
+}
+
+.down {
+  transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+} */
+
+.dropbtn {
+  background-color:black;
+  color: white;
+  padding: 16px;
+  font-size: 20px;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {background-color: #f1f1f1}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.dropdown:hover .dropbtn {
+  background-color: #7D5FBB;
+}
 /* ******************* TITLE *****************  */
 
 .home-section-1 h1{
   font-size: 74px;
   margin-bottom: 20px;
   color: white;
+  text-align: center;
+  /* margin-left: 150px; */
 }
 .home-section-1 h4 {
   font-size: 30px;
@@ -38,12 +146,33 @@ body {
     position: absolute;
 }
 
-.home-section-1 .main-img{
+.home-section-1 .mainImg{
   position: absolute;
-  margin-right: 10px;
+width: 1568px;
+height: 660px;
+left: -63px;
+top: 320px;
+
+background: linear-gradient(180deg, rgba(0, 0, 0, 0.01) 0%, rgba(0, 0, 0, 0.54) 78.11%), url(30-301242_beautiful-purple-moon-purple-moon-freetoedit-full-moon.png);
+
+
 }
 
-.home-section-1 .obj{
+.home-section-1 .Banner{
+  display: flex;
+flex-direction: row;
+align-items: flex-start;
+padding: 10px;
+gap: 10px;
+
+position: absolute;
+width: 1814px;
+height: 48px;
+left: -186px;
+top: 956px;
+}
+
+/*.home-section-1 .obj{
   z-index: 1;
 }
 
@@ -60,12 +189,58 @@ body {
 .home-section-1 .obj1{
   margin-left: -50px;
 }
-
+*/
 
 /* ******************* Features **************** */
+#features h1{
+  position: absolute;
+  width: 263px;
+  height: 61px;
+  left: 589px;
+  top: 1068px;
+  
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 50px;
+  line-height: 61px;
+  /* identical to box height */
+  
+  letter-spacing: -0.02em;
+  
+  color: #FFFFFF;
+  
+}
+
+.Line{
+  position: absolute;
+width: 300px;
+height: 0px;
+left: 570px; 
+top: 1128px;
+
+border: 2px solid rgba(222, 229, 238, 0.58);
+}
+.frames{
+  display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: absolute;
+gap: 50px;
+margin:10px;
+
+position: absolute;
+width: 1354px;
+height: 367px;
+left: 43px;
+top: 1156px;
+
+}
 
 #features{
 	padding: 2rem;
+  margin-top: 700px;
 }
 
 .feature-box{
@@ -104,7 +279,53 @@ p{
 
 /* **************** TEAM MEMBERS ****************** */
 
-.teamSection{
+#team h1{
+  position: absolute;
+  width: 263px;
+  height: 61px;
+  left: 589px;
+  top: 1602px;
+  
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 50px;
+  line-height: 61px;
+  /* identical to box height */
+  
+  letter-spacing: -0.02em;
+  
+  color: #FFFFFF;
+  
+}
+
+.Line2{
+  position: absolute;
+width: 300px;
+height: 0px;
+left: 570px; 
+top: 1670px;
+
+border: 2px solid rgba(222, 229, 238, 0.58);
+}
+.frames2{
+  display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: absolute;
+gap: 50px;
+margin:10px;
+
+position: absolute;
+width: 1354px;
+height: 367px;
+left: 43px;
+top: 1700px;
+
+}
+
+/* .teamSection{
   margin: 0 120px;
 }
 
@@ -115,7 +336,7 @@ p{
   height: 300px;
   display: inline;
   margin: 70px;
-  padding: 0;
+  padding: absolute;
   float: left;
 }
 
@@ -127,7 +348,7 @@ p{
   font-size: 4rem;
   color: white;
   padding: 0 50px;
-}
+} */
 
 /* ********************* MY FEED ****************** */
 .searchCont{
@@ -136,23 +357,29 @@ p{
 }
 .search-bar{
   /* position: absolute; */
-  display: inline-block;
-  width: 350px;
-  height: 40px;
-  border-radius: 25px;
-  background-color: #c69af6;
-  margin: 20px;
-  /* right: 200px;
-  top: 40px; */
-  padding: 10px;
+  display: flex;
+flex-direction: row;
+align-items: center;
+/* padding: 15px 20px; */
+/* gap: 640px; */
+
+position: absolute;
+
+width: 700px;
+height: 40px;
+left: 300px;
+top: 160px;
+
+background: rgba(233, 231, 231, 0.29);
+border-radius: 5px;
 }
 
 .search-bar:hover{
-  box-shadow: 5px 5px 40px #c89ef5;
+  box-shadow: 1px 1px 20px white;
 }
 
 .search-icon{
-  position: relative;
+  position: absolute;
     z-index: 2;
     right: 65px;
     background: top;
@@ -163,10 +390,47 @@ p{
   box-shadow: 10px 5px 40px #c89ef5;
 }
 
-#searchBar {
+/* #searchBar {
   width: 400px;
+} */
+
+.cards{
+  box-sizing: border-box;
+  position:absolute;
+top:300px;
+left:220px;
+width: 280px;
+height: 380px;
+padding:10px;
+background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(28, 26, 26, 0.81) 90.61%), url(tumblr_58f376f9b77a6d63fe7bf407588274f6_58502905_1280.jpg);
+border: 1px solid #FFFFFF;
+border-radius: 10px;
+
+/* display: flex;
+flex-direction: row;
+align-items: center;
+padding: 0px;
+gap: 30px;
+
+width: 1014px;
+height: 328px; */
+
+
 }
 
+.feedname{
+  width: 131px;
+height: 34px;
+top: 240px;
+left:220px;
+font-family: 'Montserrat';
+font-style: normal;
+font-weight: 500;
+font-size: 28px;
+line-height: 34px;
+position:absolute;
+color: #FFFFFF;
+}
 .profile-icon{
   position: absolute;
   display: inline-block;
@@ -176,12 +440,12 @@ p{
   background-color: transparent;
 }
 
-.loginImg{
+/* .loginImg{
   display: block;
   justify-content: center;
   margin: auto;
   height: 70px;
-}
+} */
 
 .feed{
   width: 80%;
@@ -221,6 +485,14 @@ p{
 .BlogCard{
   margin: 20px;
   display: inline-block;
+   display: flex;
+flex-direction: row;
+align-items: center;
+padding: 0px;
+gap: 30px;
+
+width: 1014px;
+height: 328px; 
 }
 
 .img1{
@@ -289,6 +561,23 @@ p{
 }
 
 /*********************MY ACTIVITY ********************/
+/* .myactivitybox{
+  display: flex;
+flex-direction: row;
+justify-content: space-between;
+align-items: center;
+padding: 0px;
+gap: 375px;
+
+position: absolute;
+width: 805px;
+height: 59px;
+left: 317px;
+top: 305px;
+
+} */
+
+
 .search-bar2{
   position:relative;
   display: inline-block;
@@ -318,7 +607,7 @@ p{
   position: relative;
   margin-top:0px;
   margin-left: 530px;
-  width:500px
+  width:100%;
 }
 .footer-icon{
  margin: 30px;
@@ -337,20 +626,24 @@ p{
   width: 200px;
 }
 .container-content{
-  width:700px;
-  margin:20px 380px;
+  width:90%;
+  margin-left: 60px;
+  margin-right: 260px;
+  padding: 50px;
   color:white;
 }
 .container-head{
   position: relative;
-  margin-left:  450px ;
+  margin-left:  10px ;
   margin-top: 0px;
-  width: 550px;
+  width: 100%;
+  text-align: left;
 }
 .container-head p{
+  margin-left: 10px;
   color: white;
   font-size: 40px;
-  text-align: center;
+  text-align: left;
   margin-bottom: 0px;
 }
 
@@ -368,10 +661,12 @@ p{
 
 .img3{
   position:relative;
-  margin:19px 340px ;
+  /* margin:19px 340px ; */
   border-radius: 20px;
+  border-color: white;
+  padding:20px;
   height:450px;
-  width:750px
+  width:100%;
 }
 .search-container{
   width:900px;
@@ -381,11 +676,32 @@ p{
 .papercard{
   display: inline-block;
  }
+
+                                       /* SEARCH PAGE*/
  .blogchips{
-  display:flex;
-  flex-wrap: wrap;
-  list-style: none;
+  margin-top: 30px;
+  margin-left: -10px;
+  display: flex;
+flex-direction: row;
+/* align-items: flex-start; */
+flex-wrap: wrap;
+flex-basis: 100px;
+padding: 0px;
+gap: 10px;
+width:1000px;
+/* width: 100px;
+height: 182px; */
  }
+/* .searchChip{
+  width:280 ;
+  height:50 ;
+  background-color:white;
+  color:black;
+  padding:4px;
+  font-size:20px;
+  
+} */
+
  .header-search{
   position: relative;
   left:500px;
@@ -440,8 +756,14 @@ p{
 
   /********************AdminPage*************************/
 
+.adminText{
+  color: white;
+  margin-left: 300px;
+  margin-top: 130px;
+  font-family: 'Montserrat';
+}
 .AdminCard{
-  margin: 20px;
+  /* margin: 2px; */
   display: inline-block;
 }
 
@@ -451,8 +773,8 @@ p{
   height: auto;
   align-items: center;
   justify-content: center;
-  margin-left: 2vw;
-  margin-top: 3vh;
+  margin-left: 40px;
+  margin-top: -20px;
   border: 8px solid transparent;
   padding-left: 200px;
   padding-right: 50px;
@@ -495,7 +817,9 @@ p{
 
 .stats-bar .column h6 {
   text-transform: uppercase;
+  font-family: Montserrat;
   width: max-content;
+  font-size: 20px;
 }
 
 .stats-bar {

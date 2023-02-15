@@ -1,7 +1,4 @@
 import React from "react";
-import Img1 from "../Images/6.png";
-import Img2 from "../Images/7.png";
-import Img3 from "../Images/image 2.png";
 import Button from "@mui/material/Button";
 import { Typography } from "@mui/material";
 import TransitionModal from '../Elements/Modal';
@@ -19,6 +16,10 @@ import BookmarkBorderIcon from '@mui/icons-material/BookmarkBorder';
 import BookmarkIcon from '@mui/icons-material/Bookmark';
 import Comment from "../Elements/Comment";
 import { Link } from "react-router-dom";
+import NavBar from "../NavBar";
+import LoginIcon from "../Elements/login";
+import Logo from "../Images/Logo.png";
+
 
 const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
 
@@ -120,49 +121,72 @@ function BlogPost() {
   return (
 
     <>
-      <img class="img1" src={Img1} alt="" />
-      <img class="img2" src={Img2} alt="" />
-      
-      
+    <div className="bar">
+    <nav>
+    <img className="Logo" src={Logo} alt="Logo" />
 
+    <ul>
+      <li><a href="feed">Feed</a></li>
+      <li><a href="My-Activity">My Activity</a></li>
+      <li><a href="SearchPage">Search</a></li>
+    </ul>
+    <div className="dropdown">
+<button className="dropbtn">More</button>
+<div className="dropdown-content">
+<button type="button" className="btn btn-info btn-lg" data-toggle="modal" data-target="#">Publish</button>
+<a href="#">Invite</a>
+<a href="#">Feedback</a>
+</div>
+</div>
+    <button type="button" className="b2">Get Chrome Extension</button>
+    <LoginIcon/>
 
+    </nav>
+    <hr/>
+  </div>
+      {/* <LoginIcon/>
+      <NavBar /> */}
      {article && (
       <>
-      <Button size="large"  disableTouchRipple>
-        <Link to="/feed"><i class="arrow fa-solid fa-3x fa-circle-arrow-left"></i></Link>
-      </Button>
+      {/* <Button size="large"  disableTouchRipple>
+        <Link to="/feed"><i className="arrow fa-solid fa-3x fa-circle-arrow-left"></i></Link>
+      </Button> */}
       
       
       
       
-      <div class="right-bar">
+      {/* <div className="right-bar">
 
         <Button size="large" sx={{color:"white",margin:2}}>
-          <i class="fa fa-3x fa-check-square-o"  aria-hidden="true"></i> 
+          <i className="fa fa-3x fa-check-square-o"  aria-hidden="true"></i> 
           <Typography variant="h6" align="center" >In This Article</Typography>
         </Button>
          <Typography variant="body1" align="center">{article.category}</Typography>
          
-      </div>
+      </div> */}
      <div className="container-head">
-        <Typography align="center">{article.Title}</Typography>
+        <Typography marginTop={5} fontFamily=''>{article.Title}</Typography>
         <Button  size="large" disableTouchRipple>
-          <i class="user-icon fa-3x fa-solid fa-user" ></i>
-          <Typography variant="h6" align="center" color="white" marginLeft={5}>{article.author.name}</Typography>
+          {/* <i className="user-icon fa-3x fa-solid fa-user" ></i> */}
+          <Typography variant="h6" color="white"> By {article.author.name}</Typography>
+
         </Button>
+      
+      <br></br>
+      <br />
       </div>     
-       <img class="img3" src={`${article.imgURL}`} alt="" />
+       <img className="img3" src={`${article.imgURL}`} alt="" />
        
 
-      <div class="container-content">
+      <div className="container-content">
 
-      <Typography variant="h6" align="center">{article.description}</Typography>
-      <Typography variant="h4" align="center" sx={{color:"#c69af6",margin:7}}>Discussion Corner</Typography>
-      <Comment id={id} currentlyLoggedInUser={user}></Comment>
+      <Typography variant="h6" align="left" margin-left="0px">{article.description}</Typography>
+      {/* <Typography variant="h4" align="center" sx={{color:"#c69af6",margin:7}}>Discussion Corner</Typography> */}
+      {/* <Comment id={id} currentlyLoggedInUser={user}></Comment> */}
       </div>
       {
         (user)
-        ? <div class="footer">
+        ? <div className="footer">
         <Checkbox   sx={{ '& .MuiSvgIcon-root': { fontSize: 54 } , color: "white",
   '&.Mui-checked': {
     color: "white"}}}
@@ -173,7 +197,7 @@ function BlogPost() {
         <Button size="large">
           <TransitionModal 
           title="Share via"
-          button={<i class="footer-icon fa fa-3x fa-share-alt"></i>
+          button={<i className="footer-icon fa fa-3x fa-share-alt"></i>
 }
           >
             <FacebookShareButton

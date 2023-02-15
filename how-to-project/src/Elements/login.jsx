@@ -48,6 +48,7 @@ function LoginIcon(){
       >
         <i class=" fa-3x fas fa-user-circle"></i>
       </Fab>
+      
 
       {/* <PopUp
         trigger={openLogin}
@@ -68,6 +69,7 @@ function LoginIcon(){
       content="Welcome. You can write your own technical blogs, research papers or articles for others to read. Have fun writing and browsing through some super cool technical stuff."
       
     >
+
       <img class="loginImg" src={Login} alt="" />
          <div>
             <p>{user.displayName}</p>  
@@ -81,7 +83,7 @@ function LoginIcon(){
           :  <PopUp
           trigger={openLogin}
           setTrigger={setOpenLogin}
-          title="Login"
+          title="Welcome!"
           content="Hello User, login to your account for writing your own technical stuff and accessing various other features like commenting, discussing and saving blogs or articles."
           
         >

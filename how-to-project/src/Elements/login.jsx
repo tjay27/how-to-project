@@ -43,6 +43,8 @@ function LoginIcon(){
           top: "35px",
           color: "rgb(198, 154, 246)",
           bgColor: "transparent",
+          width: "48px",
+          height: "48px",
         }}
         class="profile-icon"
       >

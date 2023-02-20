@@ -1,10 +1,10 @@
 import React from "react";
 import mainImg from "../Images/image 2.png";
-import Banner from "../Images/Banner.png";
 import Line from "../Images/Line.png";
 import Frame from "../Images/Frame.png";
 import Logo from "../Images/Logo.png";
 import LoginIcon from "../Elements/login";
+import Navbar  from "../Elements/Navbar";
 
 
 import { Link } from "react-router-dom";
@@ -16,50 +16,34 @@ import members from "../members";
 function Home() {
   return (
     <div>
-      <div class="bar">
-        <nav>
-        <img class="Logo" src={Logo} alt="Logo" />
-
-        <ul>
-          <li><a href="feed">Feed</a></li>
-          <li><a href="My-Activity">My Activity</a></li>
-          <li><a href="SearchPage">Search</a></li>
-        </ul>
-        <div class="dropdown">
-  <button class="dropbtn">More</button>
-  <div class="dropdown-content">
-  <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#">Publish</button>
-  <a href="#">Invite</a>
-  <a href="#">Feedback</a>
-  </div>
-</div>
-        <button type="button" class="b2">Get Chrome Extension</button>
-        <LoginIcon/>
-
-        </nav>
-        <hr/>
-      </div>
+      <Navbar />
       <div class="home-section-1">
         <div class="row">
           <div>
-            <h1>Tag Line</h1>
-            {/* <h1>Tag Line</h1>
-            <h1>Tag Line</h1>
-            <button
-              type="button"
-              class="btn btn-outline-light btn-lg download-button"
-            >
-              <i class="fab fa-chrome" style={{ padding: "5px" }}></i> Get
-              Chrome Extention
-            </button> */}
+            <h1>TAG LINE HERE</h1>
+            
           </div>
+          {/* <img src={mainImg} alt="" /> */}
           <div class="col-lg-7">
-           {/* <img class="obj obj1" src={obj1} alt="1" />
-            <img class="obj obj2" src={obj2} alt="2" />
-            <img class="obj obj3" src={obj3} alt="3" /> */}
             <img class="mainImg" src={mainImg} alt="mainImg" />
-            <img class="Banner" src={Banner} alt="Banner" />
+            
           </div>
+
+          {/* <div class="corousel">
+              <div class="marquee-container" >
+                <div class="overlay">
+                </div>
+
+                <div class="marquee">
+                Celestial Biscuit IGDTUW • Celestial Biscuit IGDTUW • Celestial Biscuit IGDTUW • Celestial Biscuit IGDTUW • Celestial Biscuit IGDTUW • Celestial Biscuit IGDTUW • Celestial Biscuit IGDTUW • Celestial Biscuit IGDTUW •
+                </div>
+                <div class="marquee" aria-hidden="true">
+                Celestial Biscuit IGDTUW • Celestial Biscuit IGDTUW • Celestial Biscuit IGDTUW • Celestial Biscuit IGDTUW • Celestial Biscuit IGDTUW • Celestial Biscuit IGDTUW • Celestial Biscuit IGDTUW • Celestial Biscuit IGDTUW •
+                </div>
+
+              </div>
+            </div> */}
+
         </div>
       </div>
 

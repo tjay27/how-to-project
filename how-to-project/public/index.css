@@ -162,7 +162,10 @@ font-family: 'Ubuntu', sans-serif;
 .home-section-1 img{
     /* margin: 0; */
     padding: 0;
-    position: absolute;
+    /* position: absolute; */
+    /* left: 3%; */
+    margin-left: 5%;
+    margin-top: -10px;
 }
 
 /* .home-section-1 .mainImg{
@@ -177,7 +180,7 @@ background: linear-gradient(180deg, rgba(0, 0, 0, 0.01) 0%, rgba(0, 0, 0, 0.54) 
 
 } */
 
-.marquee-container {
+ .marquee-container {
   overflow-x: hidden !important;
   display: flex !important;
   flex-direction: row !important;
@@ -186,16 +189,15 @@ background: linear-gradient(180deg, rgba(0, 0, 0, 0.01) 0%, rgba(0, 0, 0, 0.54) 
   background-color: #E3E3E3;
   color: black;
 
-  /* --pause-on-hover:paused; 
-  --pause-on-click:paused; */
+  
 }
+/*
 .overlay {
   position: absolute;
   width: 100%;
   height: 100%;
 
-  /* --gradient-color:rgba(255, 255, 255, 1), rgba(255, 255, 255, 0); 
-  --gradient-width:200px; */
+  
 }
 .marquee {
   flex: 0 0 auto;
@@ -208,7 +210,7 @@ background: linear-gradient(180deg, rgba(0, 0, 0, 0.01) 0%, rgba(0, 0, 0, 0.54) 
   animation-play-state: running;
   animation-delay: 0s;
   animation-direction: normal;
-}
+} */
 
 /*.home-section-1 .obj{
   z-index: 1;
@@ -231,17 +233,15 @@ background: linear-gradient(180deg, rgba(0, 0, 0, 0.01) 0%, rgba(0, 0, 0, 0.54) 
 
 /* ******************* Features **************** */
 #features h1{
-  position: absolute;
-  width: 263px;
-  height: 61px;
-  left: 589px;
-  top: 1068px;
-  
-  font-family: 'Montserrat';
+  font-size: 44px;
+  font-family: 'Roboto Flex', sans-serif;
+font-family: 'Ubuntu', sans-serif;
+  color: white;
+  text-align: center;
+
   font-style: normal;
   font-weight: 500;
-  font-size: 50px;
-  line-height: 61px;
+
   /* identical to box height */
   
   letter-spacing: -0.02em;
@@ -251,34 +251,38 @@ background: linear-gradient(180deg, rgba(0, 0, 0, 0.01) 0%, rgba(0, 0, 0, 0.54) 
 }
 
 .Line{
-  position: absolute;
-width: 300px;
+width: 280px;
 height: 0px;
-left: 570px; 
-top: 1128px;
-
+margin-left: auto;
+    margin-right: auto;
 border: 2px solid rgba(222, 229, 238, 0.58);
 }
 .frames{
   display: flex;
-flex-direction: row;
-justify-content: center;
-align-items: center;
-padding: absolute;
-gap: 50px;
-margin:10px;
-
-position: absolute;
-width: 1354px;
-height: 367px;
-left: 43px;
-top: 1156px;
-
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: absolute;
+  /* gap: 50px; */
+  margin: 50px 20px;
+  width: 1354px;
+  height: 367px;
+}
+.team-frames {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  padding: absolute;
+  /* gap: 50px; */
+  margin: 50px 20px;
+  width: 1354px;
+  height: 367px;
 }
 
-#features{
-	padding: 2rem;
-  margin-top: 700px;
+#features, #team{
+	padding: 0 2rem;
+    margin: 60px 20px 0px 20px;
 }
 
 .feature-box{
@@ -298,11 +302,11 @@ top: 1156px;
 	color: #ff00fb;
 }
 
-h3{
+/* h3{
 	font-size: 2.7rem;
 	font-family: Montserrat-Medium;
   color: white;
-}
+} */
 
 p{
 	font-family: Ubuntu;
@@ -318,17 +322,13 @@ p{
 /* **************** TEAM MEMBERS ****************** */
 
 #team h1{
-  position: absolute;
-  width: 263px;
-  height: 61px;
-  left: 589px;
-  top: 1602px;
+  font-size: 44px;
+  font-family: 'Roboto Flex', sans-serif;
+font-family: 'Ubuntu', sans-serif;
+  color: white;
+  text-align: center;
   
-  font-family: 'Montserrat';
-  font-style: normal;
   font-weight: 500;
-  font-size: 50px;
-  line-height: 61px;
   /* identical to box height */
   
   letter-spacing: -0.02em;
@@ -337,31 +337,6 @@ p{
   
 }
 
-.Line2{
-  position: absolute;
-width: 300px;
-height: 0px;
-left: 570px; 
-top: 1670px;
-
-border: 2px solid rgba(222, 229, 238, 0.58);
-}
-.frames2{
-  display: flex;
-flex-direction: row;
-justify-content: center;
-align-items: center;
-padding: absolute;
-gap: 50px;
-margin:10px;
-
-position: absolute;
-width: 1354px;
-height: 367px;
-left: 43px;
-top: 1700px;
-
-}
 
 /* .teamSection{
   margin: 0 120px;
@@ -387,6 +362,70 @@ top: 1700px;
   color: white;
   padding: 0 50px;
 } */
+
+
+
+  /* Card */
+
+  .card-main {
+    /* margin: 3rem 3rem 0 3rem; */
+    width: 418px !important;
+    height: 367px !important;
+  }
+
+  .card {
+    width: 418px !important;
+    height: 367px !important;
+    border-radius: 18px;
+  }
+
+  .team-card-main {
+    /* margin: 3rem 3rem 0 3rem; */
+    width: 350px !important;
+    height: 380px !important;
+  }
+
+  .team-card {
+    width: 350px !important;
+    height: 380px !important;
+    border-radius: 18px;
+
+    position: relative;
+  }
+  .team-card h3 {
+    position: absolute;
+    bottom: 70px;
+    font-family: Montserrat;
+    font-weight: 600;
+  }
+  .team-card h4 {
+    position: absolute;
+    bottom: 35px;
+    font-family: 'Ubuntu', sans-serif;
+  }
+
+  .cardFront {
+    background-image: url(./Images/Frame.png);
+    background-size: cover;
+  }
+
+  .cardFront h3 {
+    color: var(--title);
+    font-family: 'Ubuntu', sans-serif;
+  }
+
+  .cardBack {
+    padding: 25px;
+  }
+
+  .cardBack p {
+    /* font-size: x-small; */
+    text-align: justify;
+    text-overflow: clip;
+    font-family: Montserrat;
+    color: #212121;
+  }
+
 
 /* ********************* MY FEED ****************** */
 .searchCont{

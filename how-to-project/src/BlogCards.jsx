@@ -246,7 +246,7 @@ export default function BlogCard() {
         
         
           <TransitionModal 
-            title="Share via"
+            title="Share"
             button={<i class='fas fa-2x fa-share'></i>}
             >
               <FacebookShareButton

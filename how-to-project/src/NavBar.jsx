@@ -15,6 +15,8 @@ import {db,auth} from './Firebase/firebase'
 import { collection ,addDoc} from "firebase/firestore";
 import { useNavigate } from "react-router-dom";
 import Rating from '@mui/material/Rating';
+import TransitionModal from './Elements/Modal';
+
 
 
 
@@ -172,23 +174,8 @@ function NavBar() {
               <ListItemText primary="Publish" />
             </ListItemButton>
           </ListItem>
-          <PopUp
-            trigger={contri}
-            setTrigger={setContri}
-            title="Publish your Content"
-            content="Write and post your technical stuff like blog, research paper and articles.
-             Remember, it is important you submit an authentic and original article on a topic that is
-              relevant to each of these website’s readership.Make sure your guest blog articles are 
-              polished, researched, and compelling."
-          >
-            <Link to="/Contribute" style={{ textDecoration: "none", color: "white" }}>
-            <Button variant="contained"
-                      color="secondary"
-                      sx={{ marginTop: "20px" }}> PUBLISH
-                </Button>
-          </Link>
-           
-          </PopUp>
+
+
           
 
           <ListItem key="Invite" disablePadding>

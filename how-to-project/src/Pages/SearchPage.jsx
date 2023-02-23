@@ -12,6 +12,7 @@ import ResearchPaper from "../Elements/ResearchPaper"
 import Tech from "../Elements/Tech"
 import Blogs from "../Elements/Blogs"
 import Logo from "../Images/Logo.png";
+import Navbar from "../Elements/Navbar";
 
 
 function TabPanel(props) {
@@ -127,6 +128,7 @@ function SearchPage() {
        <BlogChips/><br/>
        <a href="">view more</a>
       </div>
+      <Navbar/>
       
 
       

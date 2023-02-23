@@ -21,18 +21,26 @@ export default function AlertDialog(props) {
         {props.button}
       </Button>
       <Dialog
+        sx={{backgroundColor:"white"}}
+        PaperProps={{
+          style:{
+            backgroundColor:"black",
+            boxShadow:"none"
+            
+          }
+        }}
         open={open}
         onClose={handleClose}
         aria-labelledby="alert-dialog-title"
         aria-describedby="alert-dialog-description"
       >
-        <DialogTitle id="alert-dialog-title" >
+        <DialogTitle id="alert-dialog-title" sx={{color:'white'}} >
           <h2>{props.title}</h2>
         </DialogTitle>
-        <DialogContent id="alert-dialog-description" >
+        <DialogContent id="alert-dialog-description" sx={{color:'white'}} >
           <h6>{props.content}</h6>
         </DialogContent>
-        <DialogContent>
+        <DialogContent sx={{color:'white'}}>
           {props.children}
         </DialogContent>
         

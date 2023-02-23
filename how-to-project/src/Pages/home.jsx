@@ -11,6 +11,7 @@ import { Link } from "react-router-dom";
 import { Typography } from "@mui/material";
 import MemberCard from "../memberCard";
 import members from "../members";
+import Marquee from "react-fast-marquee";
 
 
 function Home() {
@@ -28,6 +29,7 @@ function Home() {
             <img class="mainImg" src={mainImg} alt="mainImg" />
             
           </div>
+
 
           {/* <div class="corousel">
               <div class="marquee-container" >
@@ -59,7 +61,13 @@ function Home() {
         <img class="Frame" src={Frame} alt="Frame" />
         </div>
 
-
+        <div className="marquee-text">
+            <Marquee>
+            <span>. CELESTIAL BISCUIT IGDTUW .</span>
+            <span>. CELESTIAL BISCUIT IGDTUW .</span>
+            <span>. CELESTIAL BISCUIT IGDTUW .</span>
+            </Marquee>
+          </div>
           {/* <div class="col-lg-1">
             <img src={obj4} alt="3" />
           </div> */}

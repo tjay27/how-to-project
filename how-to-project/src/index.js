@@ -10,6 +10,7 @@ import LoginPage from './Pages/LoginPage';
 import { AuthContextProvider } from "../src/Firebase/AuthContext";
 import Contribute from "./Pages/Contribute";
 import AdminPage from "./Pages/AdminPage"
+import SearchImage from "./Pages/SearchImage";
 
 // import "../public/index.css";
 
@@ -28,6 +29,7 @@ function Main() {
           <Route path="/Contribute" element={<Contribute/>} />
           <Route path="/article/:id" element={<BlogPost/>} />
           <Route path="/admin" element={<AdminPage/>} />
+          <Route path="/image" element={<SearchImage/>} />
 
         </Routes>
         </AuthContextProvider>

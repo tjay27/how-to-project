@@ -20,10 +20,10 @@ import FormControlLabel from '@mui/material/FormControlLabel';
 import FormControl from '@mui/material/FormControl';
 
 
-function LikeArticle({id,likes,Title}){
+function LikeArticle({id,likes}){
   const {user} = useAuthState(auth);
 
-  const likesRef = doc(db,"Blogs",id);
+  const likesRef = doc(db,"Admin",id);
   
   const handleLike = ()=>{
 
@@ -130,7 +130,7 @@ const q = query(articleRef, where("category", "==" , "Research Paper"));
 
   
    useEffect(()=>{
-       const articleRef=collection(db,"Blogs")
+       const articleRef=collection(db,"Admin")
        const q = query(articleRef, where("category", "==" , "Blogs"));
 
        onSnapshot(q,(snapshot)=>{

@@ -5,64 +5,100 @@ import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
+import { useState ,useEffect} from "react";
+import { collection, query, where ,onSnapshot,arrayUnion,arrayRemove,doc,updateDoc,addDoc} from "firebase/firestore";
+import { auth, db } from "../Firebase/firebase";
+import useAuthState from "../Firebase/hooks";
+import { UserAuth } from "../Firebase/AuthContext";
 import { Link } from "react-router-dom";
-// import { makeStyles } from "@mui/material";
+import DeleteArticle from "../Elements/DeleteArticle";
 
-// const useStyles = makeStyles((theme) => ({
-//   card: {
-//     "&:hover": {
-//       border: "5px solid #fff",
-//     },
-//   },
-// }));
-
-export default function AdminCard(props) {
-  // const classes = useStyles();
-  return (
-    <div class="AdminCard">
-      <Card
-        sx={{
-          maxWidth: 345,
-          backgroundColor: "rgb(70, 43, 136, 0.4)",
-          color: "white",
-        }}
-      >
-        <CardMedia component="img" height="140" image={props.img} alt="media" />
-        <CardContent>
-          <Link
-            to="/BlogPost"
-            style={{ textDecoration: "none", color: "white" }}
-          >
-            <Typography gutterBottom variant="h5" component="div">
-              {props.heading}
-            </Typography>
-          </Link>
-          <Typography variant="body2" color="white">
-            {props.desc}
-          </Typography>
-        </CardContent>
-        <CardActions>
+function ApprovePost({id}){
+  const  approvePost = async () =>{
+    await updateDoc(doc(db,"Admin",id),{status:true})
+    console.log("hello");
+  }
+    return(
+      <div>
           <Button
+            size="small"
+            sx={{ backgroundColor: "none", color: "#c69af6" }}
+            onClick={approvePost}
+          >
+            <i class="fas fa-2x fa-pen-to-square"></i>
+          </Button>
+      </div>
+    )
+}
+
+export default function BlogCard() { 
+
+   const [articles,setArticles]=useState([]);
+   const {user} = useAuthState(auth);
+
+
+   useEffect(()=>{
+       const articleRef=collection(db,"Admin")
+       const q=query(articleRef);
+       onSnapshot(q,(snapshot)=>{
+           const articles = snapshot.docs.map((doc)=>({
+               id:doc.id,
+               ...doc.data(),
+           }));
+           setArticles(articles);
+           console.log(articles);
+       })
+   },[]);
+
+  return (
+  <>
+
+    <div>
+             {
+    articles.length === 0 ?(
+        <p style={{margin: 20, fontSize: 22}}>No articles found</p>
+    ):(
+
+    articles.map(({id,Title,Topic,imgURL,author})=><div class="BlogCard" key={id}>
+
+    <Card class="cards"
+      // sx={{
+      //   maxWidth: 345,
+      //   backgroundColor: "rgb(70, 43, 136, 0.4)",
+      //   color: "white",
+      // }}
+    >
+      <CardMedia component="img" height="140" image={`${imgURL}`} alt="media" />
+      
+      <CardContent>
+        <Typography gutterBottom variant="h5" component="div">
+        <Link to={`/article/${id}`}>{Title}</Link>
+        </Typography>
+        <Typography variant="body2" color="white">
+          Author: {author.name}
+        </Typography>
+        <Typography variant="body2" color="white">
+          Field: {Topic}
+        </Typography>
+        
+      </CardContent>
+      <Button
             size="small"
             sx={{ backgroundColor: "none", color: "#c69af6" }}
           >
             <i class="fas fa-2x fa-file-circle-plus"></i>
           </Button>
-          <Button
-            size="small"
-            sx={{ backgroundColor: "none", color: "#c69af6" }}
-          >
-            <i class="fas fa-2x fa-pen-to-square"></i>
-          </Button>
-          <Button
-            size="small"
-            sx={{ backgroundColor: "none", color: "#c69af6" }}
-          >
-            <i class="fas fa-2x fa-trash"></i>
-          </Button>
-          
-        </CardActions>
-      </Card>
-    </div>
-  );
+      <ApprovePost id={id}/>
+      <DeleteArticle id={id}/>
+      <CardActions>
+
+      </CardActions>
+    </Card>
+    
+  </div>)
+    )
 }
+</div>
+</>
+)}
+ 

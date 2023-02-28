@@ -26,7 +26,7 @@ export default function Contribute(){
 
   const [description,setDescription]=useState("");
 
-  const bloglist=collection(db,'Blogs');
+  const bloglist=collection(db,'Admin');
 
   let navigate = useNavigate();
   const handleSubmit=async (e)=>{ 
@@ -45,6 +45,7 @@ export default function Contribute(){
           author:{name:auth.currentUser.displayName,id:auth.currentUser.uid},
           category,
           comments:[],
+          status:false,
           tags: [Title.toLocaleLowerCase(), Topic.toLocaleLowerCase()],
 
       }).then(()=>{alert("success!!")}).catch(err=>{alert(err.message)});
@@ -68,6 +69,7 @@ export default function Contribute(){
     author:{name:auth.currentUser.displayName,id:auth.currentUser.uid},
     category,
     comments:[],
+    status:false,
     tags: [Title.toLocaleLowerCase(), Topic.toLocaleLowerCase()],
 
 }).then(()=>{alert("success!!")}).catch(err=>{alert(err.message)});

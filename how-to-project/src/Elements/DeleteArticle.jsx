@@ -26,7 +26,6 @@ export default function DeleteArticle({ id }) {
       <Button
             size="small"
             sx={{color: "#40F4FF" ,
-                 marginLeft:"390px",
                  }}>
                 
             <i class="fa-solid fa-2x fa-trash"

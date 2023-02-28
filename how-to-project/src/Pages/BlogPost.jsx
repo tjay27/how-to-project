@@ -29,7 +29,7 @@ function BlogPost() {
   const{user}=useAuthState(auth);
 
   useEffect(()=>{
-    const docRef=doc(db,"Blogs",id);
+    const docRef=doc(db," Admin",id);
     onSnapshot(docRef,(snapshot)=>{
       setArticle({...snapshot.data(),id:snapshot.id});
     });

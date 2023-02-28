@@ -20,10 +20,10 @@ import FormControlLabel from '@mui/material/FormControlLabel';
 import FormControl from '@mui/material/FormControl';
 
 
-function LikeArticle({id,likes,Title}){
+function LikeArticle({id,likes}){
   const {user} = useAuthState(auth);
 
-  const likesRef = doc(db,"Blogs",id);
+  const likesRef = doc(db,"Admin",id);
   
   const handleLike = ()=>{
 
@@ -106,7 +106,7 @@ export default function BlogCard() {
    const {user} = useAuthState(auth);
 
   const searchBlog = async () => {
-    const articleRef=collection(db,"Blogs")
+    const articleRef=collection(db,"Admin")
 
       var q;
       if(searchInput.length > 0 && searchAuthor.length > 0){
@@ -143,8 +143,8 @@ export default function BlogCard() {
 
   
    useEffect(()=>{
-       const articleRef=collection(db,"Blogs")
-       const q=query(articleRef);
+       const articleRef=collection(db,"Admin")
+       const q=query(articleRef,where('status',"==",true));
        onSnapshot(q,(snapshot)=>{
            const articles = snapshot.docs.map((doc)=>({
                id:doc.id,
@@ -274,7 +274,6 @@ export default function BlogCard() {
         aria-labelledby="demo-radio-buttons-group-label"
         defaultValue="female"
         name="radio-buttons-group"
-        sx={{color:"black"}}
       >
         <FormControlLabel value="female" control={<Radio />} label="Sensitive Content" onChange={(e)=>{setCat("Sensitive Content")}} />
         <FormControlLabel value="male" control={<Radio />} label="Wrong information" onChange={(e)=>{setCat("Wrong information")}}/>

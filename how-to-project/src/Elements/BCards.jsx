@@ -5,7 +5,6 @@ import useAuthState from "../Firebase/hooks";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Button from "@mui/material/Button";
-import Typography from "@mui/material/Typography";
 import { collection, doc,query,onSnapshot, getDocs } from "firebase/firestore";
 import { Link } from "react-router-dom";
 import DeleteArticle from "./DeleteArticle";
@@ -32,13 +31,13 @@ export default function BCards({user}) {
     
   return (
 
-    <div >
-       {
-    articles.length === 0 ?(
-        <p>no articles found</p>
-    ):(
-    articles.map(({id,Title,link,Topic,userId,likes,comment, imgURL})=><div class="BlogCard" key={id}>
-    <Card class="cards"
+    <div>
+      {
+        articles.length === 0 ?( 
+          <p>no articles found</p>
+        ):(
+          articles.map(({id,Title,link,Topic,userId,likes,comment, imgURL})=><div class="BlogCard" key={id}>
+            <Card class="cards"
         // sx={{
         //   maxWidth: 700,
         //   backgroundColor: "rgb(148, 207, 250, 0.4)",
@@ -51,7 +50,8 @@ export default function BCards({user}) {
         sx={{width:150,display:"flex",padding:3}}  alt="media" src={imgURL}/>
         <CardContent sx={{display:"inline" }}>
           <Link to={`/article/${id}`} style={{color: "white"}}>{Title}</Link>
-          <DeleteArticle id={id}/>
+          <DeleteArticle size="small"
+            id={id}/>
           <Button
             size="small"
             sx={{color: "#40F4FF" }}>    

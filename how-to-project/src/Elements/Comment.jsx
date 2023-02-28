@@ -12,10 +12,10 @@ export default function Comment({currentlyLoggedInUser,id}){
     const [comment,setComment]=useState("");
     const [comments,setComments]=useState([]);
     
-    const commentRef = doc(db,"Blogs",id)
+    const commentRef = doc(db,"Admin",id)
 
 useEffect(()=>{
-    const docRef = doc(db,"Blogs",id)
+    const docRef = doc(db,"Admin",id)
     onSnapshot(docRef,(snapshot)=>{
        setComments(snapshot.data().comments);
     })

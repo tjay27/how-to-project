@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
 import BlogCard from "../BlogCards";
-import NavBar from "../NavBar";
 import LoginIcon from "../Elements/login";
 import Logo from "../Images/Logo.png";
 import { Link } from "react-router-dom";
 import { Button , Typography } from "@mui/material";
 import TransitionModal from "../Elements/Modal"
+import Navbar from "../Elements/Navbar";
 function Feeds() {
   
   return (
@@ -35,7 +35,7 @@ function Feeds() {
   </div> */}
       <LoginIcon/>
 
-      <NavBar />
+      <Navbar />
 
       <div class="feed myfeed">
      {/*} {Blogs.map((blog) => (

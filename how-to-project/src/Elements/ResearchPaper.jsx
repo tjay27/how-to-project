@@ -23,7 +23,7 @@ import FormControl from '@mui/material/FormControl';
 function LikeArticle({id,likes,Title}){
   const {user} = useAuthState(auth);
 
-  const likesRef = doc(db,"Blogs",id);
+  const likesRef = doc(db,"Admin",id);
   
   const handleLike = ()=>{
 

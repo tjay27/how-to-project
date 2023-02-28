@@ -56,31 +56,8 @@ function SearchPage() {
   };
   return (
     <>
-    <div class="bar">
-    <nav>
-    <img class="Logo" src={Logo} alt="Logo" />
-
-    <ul>
-      <li><a href="feed">Feed</a></li>
-      <li><a href="My-Activity">My Activity</a></li>
-      <li><a href="SearchPage">Search</a></li>
-    </ul>
-    <div class="dropdown">
-<button class="dropbtn">More</button>
-<div class="dropdown-content">
-<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#">Publish</button>
-<a href="#">Invite</a>
-<a href="#">Feedback</a>
-</div>
-</div>
-    <button type="button" class="b2">Get Chrome Extension</button>
-    <LoginIcon/>
-
-    </nav>
-    <hr/>
-  </div>
-   {/* <LoginIcon/>
-      <NavBar /> */}
+      <LoginIcon/>
+      <Navbar /> 
 
       {/* <div className="header-search">
         <Typography variant="h1" marginTop={"20px"}>TOPICS</Typography>
@@ -94,7 +71,7 @@ function SearchPage() {
         <input 
         class="search-bar"
       type="text"
-      placeholder="        Search"
+      placeholder="Search"
       ></input>
 
       </div>
@@ -127,11 +104,7 @@ function SearchPage() {
        <Typography variant='h4' color="white" marginTop={10} marginLeft={-10} fontFamily="Montserrat">FOR YOU</Typography>
        <BlogChips/><br/>
        <a href="">view more</a>
-      </div>
-      <Navbar/>
-      
-
-      
+      </div>    
     </>
   );
 }

@@ -7,19 +7,17 @@ import { TextField } from '@mui/material';
 
 
 export default function Comment({currentlyLoggedInUser,id}){
-    // const {user} = useAuthState(auth);
-
     const [comment,setComment]=useState("");
     const [comments,setComments]=useState([]);
     
     const commentRef = doc(db,"Admin",id)
 
-useEffect(()=>{
-    const docRef = doc(db,"Admin",id)
-    onSnapshot(docRef,(snapshot)=>{
-       setComments(snapshot.data().comments);
-    })
-},[]);
+    useEffect(()=>{
+        const docRef = doc(db,"Admin",id)
+        onSnapshot(docRef,(snapshot)=>{
+           setComments(snapshot.data().comments);
+        })
+    },[]);
 
 const handleChangeComment=(e)=>{
     if(e.key ==="Enter"){
@@ -51,8 +49,6 @@ const handleDeleteComment=(comment)=>{
 }
     return(
         <div>
-            {/* {console.log(currentlyLoggedInUser)} */}
-
             <div className='container' >
                 {
                 comments.map(({commentId,user,comment,userName})=>(

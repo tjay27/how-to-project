@@ -201,11 +201,11 @@ export default function BlogCard() {
         <p style={{margin: 20, fontSize: 22}}>No articles found</p>
     ):(
 
-    articles.map(({id,Title,Topic,userId,likes,comment,imgURL,author,link})=><div class="BlogCard" key={id}>
+    articles.map(({id,Title,Topic,likes,imgURL,author,link})=><div class="ApproveCard" key={id}>
 
     <Card class="cards"
       // sx={{
-      //   maxWidth: 345,
+      //  maxWidth: 345,
       //   backgroundColor: "rgb(70, 43, 136, 0.4)",
       //   color: "white",
       // }}
@@ -268,12 +268,16 @@ export default function BlogCard() {
               </LinkedinShareButton>
           </TransitionModal>
                          
-           <TransitionModal title="Report content ?" button={<i class="fa-solid fa-2x fa-circle-exclamation"></i> } content="Inappropriate content on the website can be reported and removed soon ">
+           <TransitionModal 
+           title="Report content ?" 
+           button={<i class="fa-solid fa-2x fa-circle-exclamation"></i> } 
+           content="Inappropriate content on the website can be reported and removed soon ">
           <FormControl>
       <RadioGroup
         aria-labelledby="demo-radio-buttons-group-label"
         defaultValue="female"
         name="radio-buttons-group"
+        color="white"
       >
         <FormControlLabel value="female" control={<Radio />} label="Sensitive Content" onChange={(e)=>{setCat("Sensitive Content")}} />
         <FormControlLabel value="male" control={<Radio />} label="Wrong information" onChange={(e)=>{setCat("Wrong information")}}/>

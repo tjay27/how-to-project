@@ -8,15 +8,15 @@ import Button from "@mui/material/Button";
 import { collection, doc,query,onSnapshot, getDocs } from "firebase/firestore";
 import { Link } from "react-router-dom";
 import DeleteArticle from "./DeleteArticle";
+import { CardActions } from "@mui/material";
 
 
 export default function BCards({user}) {
   const [articles,setArticles]=useState([]);
-  //  const {user} =  useAuthState(auth);
 
-   useEffect(()=>{
+  useEffect(()=>{
     const reportRef= collection(db,"users",user.email,"My submission");
-    const q= query(reportRef);
+    const q = query(reportRef);
 
     onSnapshot(q,(snapshot)=>{
         const articles = snapshot.docs.map((doc)=>({
@@ -26,7 +26,7 @@ export default function BCards({user}) {
         setArticles(articles);
         console.log(articles);
     })
-},[]);
+  },[]);
   
     
   return (
@@ -36,7 +36,7 @@ export default function BCards({user}) {
         articles.length === 0 ?( 
           <p>no articles found</p>
         ):(
-          articles.map(({id,Title,link,Topic,userId,likes,comment, imgURL})=><div class="BlogCard" key={id}>
+          articles.map(({id,Title, imgURL})=><div class="BlogCard" key={id}>
             <Card class="cards"
         // sx={{
         //   maxWidth: 700,
@@ -46,24 +46,27 @@ export default function BCards({user}) {
         //   borderRadius:7
         // }}
       >
-        <CardMedia component="img" height="120" width="250"
-        sx={{width:150,display:"flex",padding:3}}  alt="media" src={imgURL}/>
-        <CardContent sx={{display:"inline" }}>
+        <CardMedia 
+          component="img"  
+          alt="media" 
+          src={imgURL}
+          />
+        
           <Link to={`/article/${id}`} style={{color: "white"}}>{Title}</Link>
-          <DeleteArticle size="small"
-            id={id}/>
-          <Button
-            size="small"
-            sx={{color: "#40F4FF" }}>    
-            <i class="fa-solid fa-2x fa-eye"></i>     
- </Button>
-          <Button
-            size="small"
-            sx={{color: "#40F4FF" }}>         
-<i class="fa-solid fa-2x fa-pen-to-square"></i>         
- </Button>
-
-        </CardContent>
+          <CardActions>
+            <DeleteArticle size="small"
+              id={id}/>
+            <Button
+              size="small"
+              sx={{color: "#40F4FF" }}>    
+              <i class="fa-solid fa-2x fa-eye"></i>     
+            </Button>
+            <Button
+              size="small"
+              sx={{color: "#40F4FF" }}>         
+              <i class="fa-solid fa-2x fa-pen-to-square"></i>         
+            </Button>
+          </CardActions>
       </Card>
       </div>
       ))}

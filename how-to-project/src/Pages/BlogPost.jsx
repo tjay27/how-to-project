@@ -16,10 +16,7 @@ import BookmarkBorderIcon from '@mui/icons-material/BookmarkBorder';
 import BookmarkIcon from '@mui/icons-material/Bookmark';
 import Comment from "../Elements/Comment";
 import { Link } from "react-router-dom";
-import NavBar from "../NavBar";
-import LoginIcon from "../Elements/login";
-import Logo from "../Images/Logo.png";
-
+import Navbar from "../Elements/Navbar";
 
 const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
 
@@ -29,7 +26,7 @@ function BlogPost() {
   const{user}=useAuthState(auth);
 
   useEffect(()=>{
-    const docRef=doc(db," Admin",id);
+    const docRef=doc(db,"Admin",id);
     onSnapshot(docRef,(snapshot)=>{
       setArticle({...snapshot.data(),id:snapshot.id});
     });
@@ -121,31 +118,7 @@ function BlogPost() {
   return (
 
     <>
-    <div className="bar">
-    <nav>
-    <img className="Logo" src={Logo} alt="Logo" />
-
-    <ul>
-      <li><a href="feed">Feed</a></li>
-      <li><a href="My-Activity">My Activity</a></li>
-      <li><a href="SearchPage">Search</a></li>
-    </ul>
-    <div className="dropdown">
-<button className="dropbtn">More</button>
-<div className="dropdown-content">
-<button type="button" className="btn btn-info btn-lg" data-toggle="modal" data-target="#">Publish</button>
-<a href="#">Invite</a>
-<a href="#">Feedback</a>
-</div>
-</div>
-    <button type="button" className="b2">Get Chrome Extension</button>
-    <LoginIcon/>
-
-    </nav>
-    <hr/>
-  </div>
-      {/* <LoginIcon/>
-      <NavBar /> */}
+      <Navbar />
      {article && (
       <>
       {/* <Button size="large"  disableTouchRipple>

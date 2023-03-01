@@ -37,16 +37,8 @@ function AdminPage() {
 
       
       <StatsAdmin/>
-      <div class="feed myfeed">
-        {Blogs.map((blog) => (
-          <AdminCard
-            key={blog.id}
-            img={blog.imgURL}
-            heading={blog.heading}
-            desc={blog.desc}
-          />
-        ))}
-      </div>
+      
+      <AdminCard/>
     </>
   );
 }

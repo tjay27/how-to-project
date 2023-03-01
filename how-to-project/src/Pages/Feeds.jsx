@@ -33,8 +33,6 @@ function Feeds() {
     </nav>
     <hr/>
   </div> */}
-      <LoginIcon/>
-
       <Navbar />
 
       <div class="feed myfeed">

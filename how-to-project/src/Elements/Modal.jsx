@@ -21,7 +21,7 @@ export default function AlertDialog(props) {
         {props.button}
       </Button>
       <Dialog
-        sx={{backgroundColor:"white"}}
+        sx={{backgroundColor:"rgba(255, 255, 255, 0.6)"}}
         PaperProps={{
           style:{
             backgroundColor:"black",

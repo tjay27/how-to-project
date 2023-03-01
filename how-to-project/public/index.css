@@ -434,13 +434,11 @@ font-family: 'Ubuntu', sans-serif;
 }
 .search-bar{
   /* position: absolute; */
-  display: flex;
+display: flex;
 flex-direction: row;
 align-items: center;
 /* padding: 15px 20px; */
 /* gap: 640px; */
-
-position: absolute;
 
 width: 700px;
 height: 40px;
@@ -473,13 +471,12 @@ border-radius: 5px;
 
 .cards{
   box-sizing: border-box;
-  position:absolute;
 top:300px;
 left:220px;
-width: 280px;
+width: 345px;
 height: 380px;
 padding:10px;
-background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(28, 26, 26, 0.81) 90.61%), url(tumblr_58f376f9b77a6d63fe7bf407588274f6_58502905_1280.jpg);
+background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(28, 26, 26, 0.81) 90.61%);
 border: 1px solid #FFFFFF;
 border-radius: 10px;
 
@@ -500,12 +497,12 @@ height: 328px; */
 height: 34px;
 top: 240px;
 left:220px;
+margin:30px;
 font-family: 'Montserrat';
 font-style: normal;
 font-weight: 500;
 font-size: 28px;
 line-height: 34px;
-position:absolute;
 color: #FFFFFF;
 }
 .profile-icon{
@@ -561,15 +558,13 @@ color: #FFFFFF;
 
 .BlogCard{
   margin: 20px;
-  display: inline-block;
-   display: flex;
-flex-direction: row;
-align-items: center;
-padding: 0px;
-gap: 30px;
-
-width: 1014px;
-height: 328px; 
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 0px;
+  gap: 30px;
+  width: 1014px;
+  height: 328px; 
 }
 
 .img1{
@@ -839,10 +834,7 @@ height: 182px; */
   margin-top: 130px;
   font-family: 'Montserrat';
 }
-.AdminCard{
-  /* margin: 2px; */
-  display: inline-block;
-}
+
 
 .stats {
   /* background-color: rgba(255, 255, 255, 0.233); */
@@ -906,4 +898,10 @@ height: 182px; */
   font-family: Montserrat-Medium;
   /* background-color: rgba(255, 255, 255, 0.233) ; */
 }
-  
+
+.ApproveCard{
+  margin: 20px 20px ;
+  display: inline-block;
+  align-items: center;
+  padding: 0px;
+}

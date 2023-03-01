@@ -10,3 +10,12 @@
 .publishPost span{
     color: white ;
 }
+.form-container label{
+    color:white
+}
+.form-container input{
+    color: white;
+}
+.form-container textarea{
+    color: white;
+}

@@ -11,6 +11,7 @@ import FormControl from '@mui/material/FormControl';
 import FormLabel from '@mui/material/FormLabel';
 import { Button } from "@mui/material";
 import './contribute.css';
+import Navbar from "../Elements/Navbar";
 
 
 export default function Contribute(){
@@ -90,6 +91,7 @@ navigate("/feed");
 
     return(
        <div class="publishPost">
+        <Navbar/>
         <Box sx={{
         "& .MuiTextField-root": { m: 1 , width:"150ch" },
         marginLeft:3, marginTop:5, color: "white"

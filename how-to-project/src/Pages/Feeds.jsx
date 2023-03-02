@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import BlogCard from "../BlogCards";
 import LoginIcon from "../Elements/login";
 import Logo from "../Images/Logo.png";
+import NavBar from "../Elements/Navbar";
 import { Link } from "react-router-dom";
 import { Button , Typography } from "@mui/material";
 import TransitionModal from "../Elements/Modal"
@@ -33,7 +34,7 @@ function Feeds() {
     </nav>
     <hr/>
   </div> */}
-      <Navbar />
+      <NavBar />
 
       <div class="feed myfeed">
      {/*} {Blogs.map((blog) => (

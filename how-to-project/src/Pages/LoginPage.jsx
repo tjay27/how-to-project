@@ -8,10 +8,11 @@ import LoginPlanet from "../Images/LoginPlanet.png"
 import { UserAuth } from "../Firebase/AuthContext";
 import useAuthState from "../Firebase/hooks";
 import { auth } from "../Firebase/firebase";
-import Navbar from "../Elements/Navbar";
 import Login from '../Images/Login.png'
 import {GoogleButton } from 'react-google-button'
 import './contribute.css';
+import Logo from "../Images/Logo.png";
+
 
 
 
@@ -50,30 +51,39 @@ function LoginPage() {
       }
 
   return (
-    <>
-    <Navbar/>
+    <div style={{height:"100vh", overflowY:"hidden"}}>
+    <div class="bar">
+      <div class="login-nav">
+        <img class="Logo" src={Logo} alt="Logo" />
+      </div>
+      <hr/>
+    </div>
+
     <div className="loginpage">
 
     <div className="ver-line">
       <img className="loginPlanet"  src={LoginPlanet} alt="mainImg" />
       <div className="vert-line">
-        <div className="form-container">
+        
+        <div className="form-cont">
         <Typography variant="h4" color={"white"} align="center">Welcome !</Typography>
         <img class="loginImg" src={Login} alt="" />
-        <TextField id="Email" fullWidth></TextField>
-        <TextField id="Password" fullWidth sx={{color:"white"}}></TextField>
+
+        <div className="Google-Button-cont">  
+              {/* <Typography variant="h6" sx={{marginTop:3,color:"white"}}>Login as User ?</Typography>  */}
+              <GoogleButton class="google-button" onClick={handleGoogleSignIn}/>
+        </div>
+
+        <Typography variant="h6" sx={{marginTop:7,color:"white", textAlign:"center"}}>Login as Admin ?</Typography>  
+        <TextField class="credentials" id="Email" type="email" fullWidth placeholder="Enter Email"></TextField>
+        <TextField class="credentials" id="Password" type="password" fullWidth placeholder="Enter Password"></TextField>
           <Button  variant="contained"
           align="center"
           color="secondary"
-          sx={{ marginTop: "20px" ,width:"400px"}}
-          type="submit"> Sign up</Button>
+          sx={{ marginTop: "20px" ,width:"380px", backgroundColor:"#8152BD", marginLeft:"37px", height:"42px"}}
+          type="submit"> Sign In</Button>
 
-        <div className="Google-Button">  
-              <Typography variant="h6" sx={{marginTop:3,color:"white"}}>Login as Admin ?</Typography>  
-              <GoogleButton  onClick={handleGoogleSignIn}/>
-        </div>
-
-
+      
         </div>
       </div>
 
@@ -81,7 +91,7 @@ function LoginPage() {
     </div> 
 
     </div> 
-    </>
+    </div>
   );
 }
 

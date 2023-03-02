@@ -27,7 +27,7 @@ export default function SearchImage(){
         console.log(response.data.results)
       })
     }
-    const handleImage=(prop)=>{
+    const handleImage=(e)=>{
       //const bloglist= collection(db,"Image")
       //await addDoc(bloglist,{
        // img
@@ -35,7 +35,8 @@ export default function SearchImage(){
 
       //setImg("")
 
-      console.log(prop)
+      // console.log(e);
+      console.log(e.target.currentSrc);
       console.log("clicked")
     }
     return(
@@ -65,7 +66,7 @@ export default function SearchImage(){
                                 height="345"
                                 src={prop.urls.small}
                                 alt="image"
-                                onClick={handleImage(prop.urls.small)}
+                                onClick={handleImage}
                               />
                               <CardContent>{prop.urls.small}</CardContent>
                             </CardActionArea>

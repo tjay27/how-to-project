@@ -18,7 +18,37 @@ function Home() {
   return (
     <div>
       {/* Navbar */}
-      <Navbar/>
+      <div class="bar">
+            <nav>
+                <img class="Logo" src={Logo} alt="Logo" />
+                
+                <ul>
+                    <li class="active-page"><a href="/">Home</a></li>
+                    <li><a href="/feed">My Feed</a></li>
+                    <li><a href="/">Activities</a></li>
+                    <li><a href="/">Search</a></li>
+                    
+                    <li>
+                    <div class="dropdown">
+                    <button class="dropbtn"><img src={Down_arrow}></img></button>
+                    <ul class="dropdown-content">
+                        {/* <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#">Publish</button> */}
+                        <li>Publish <span></span><span></span><span></span><span></span></li>
+                        <li>Invite <span></span><span></span><span></span><span></span></li>
+                        <li>Feedback <span></span><span></span><span></span><span></span></li>
+                    </ul>
+                    </div>
+                    </li>
+                    
+                </ul>
+                
+
+                <button type="button" class="b2">Get Chrome Extension</button>
+                <LoginIcon/>
+
+            </nav>
+            <hr/>
+        </div>
 
       {/*****  SECTION 1 ******/}
       <div class="home-section-1">

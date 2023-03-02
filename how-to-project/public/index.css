@@ -15,7 +15,11 @@ body {
 }
 
 /* ******************* NAVBAR *****************  */
-
+/* login page navbar */
+.login-nav{
+  margin-top: 25px;
+  margin-left: 65px;
+}
 /* .Logo{
   margin-left: 20px;
   margin-top: 20px;
@@ -28,9 +32,9 @@ body {
 nav{
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-around;
   padding-left: 50px;
-  padding-right: 250px;
+  padding-right: 50px;
   padding-top: 10px;
   margin-bottom: -18px;
 }
@@ -65,6 +69,7 @@ nav ul li a:hover{
 }
 hr{
   border: 2px solid #DEE5EE;
+  margin-bottom: 0px;
 }
 
 .b2{
@@ -109,20 +114,93 @@ font-size: 16px;
 .dropdown-content {
   display: none;
   position: absolute;
-  background-color: #f9f9f9;
+  background-color: #f8f8f8;
   min-width: 160px;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   z-index: 1;
+  border-radius: 8px;
+  padding: 4px 0px;
 }
 
-.dropdown-content a {
-  color: black;
-  padding: 12px 16px;
-  text-decoration: none;
-  display: block;
+.dropdown-content li {
+  /* width: 190px;
+    height: 50px;
+    border: 2px solid #8152BD;
+    border-radius: 2px;
+    margin: 10px;
+    padding-top: 7px;
+    text-decoration: none;
+    display: block;
+    text-align: center;
+    background-color: #8760ba;
+    color: white; */
+
+    --c: #7D5FBB;
+    color: var(--c);
+    font-size: 16px;
+    border: 0.2em solid var(--c);
+    border-radius: 0.5em;
+    width: 200px;
+    /* height: 40px; */
+    text-transform: uppercase;
+    font-weight: bold;
+    font-family: sans-serif;
+    letter-spacing: 0.1em;
+    text-align: center;
+    line-height: 1.8em;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    transition: 0.5s;
+    margin: 0.5em 1em; 
 }
 
-.dropdown-content a:hover {background-color: #f1f1f1}
+.dropdown-content li span {
+  position: absolute;
+    width: 25%;
+    height: 100%;
+    background-color: var(--c);
+    transform: translateY(150%);
+    border-radius: 50%;
+    left: calc((var(--n) - 1) * 25%);
+    transition: 0.5s;
+    transition-delay: calc((var(--n) - 1) * 0.1s);
+    z-index: -1;
+}
+
+.dropdown-content li:hover {
+  color: white;
+  cursor: pointer;
+}
+
+.dropdown-content li:hover span {
+  transform: translateY(0) scale(2);
+}
+
+.dropdown-content li span:nth-child(1) {
+  --n: 1;
+}
+
+.dropdown-content li span:nth-child(2) {
+  --n: 2;
+}
+
+.dropdown-content li span:nth-child(3) {
+  --n: 3;
+}
+
+/* nav ul li span:nth-child(4) {
+  --n: 4;
+} */
+
+.dropdown-content *:hover {
+  /* border: 2px solid #8152BD; */
+  /* background-color: #8152BD;
+  color: white;
+  border-radius: 2px;
+  border: 2px solid #8152BD; */
+  
+}
 
 .dropdown:hover .dropdown-content {
   display: block;
@@ -804,7 +882,8 @@ height: 182px; */
 /*************************LOGIN & SIGNUP PAGE*********************/
 
 .loginPlanet{
-  height: 800px;
+  height: 700px;
+  margin-top: -3%;
 }
 .ver-line{
   display: flex;
@@ -814,13 +893,30 @@ height: 182px; */
   border-left: 5px solid #212121;
   width: 400px;
 }
-.Google-Button{
+.Google-Button-cont{
   margin-top: 3;
 }
-.form-container{
-    margin:100px ;
-    width: 400px;
+.google-button{
+  width: 380px !important;
+    margin-top: 20px;
+    /* margin: 20px; */
+    margin-left: auto;
+    margin-right: auto;
+}
+.form-cont{
+    margin:20% 40% ;
+    width: 450px;
   }
+
+.credentials{
+  background-color: white;
+    color: #4F555A !important;
+    border-radius: 5px;
+    margin: 10px;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+}
 
   /********************AdminPage*************************/
 

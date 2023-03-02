@@ -3,7 +3,7 @@ import { Timestamp,collection, addDoc } from "firebase/firestore";
 import React ,{useState} from "react";
 import {auth, db } from "../Firebase/firebase";
 import useAuthState from "../Firebase/hooks";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Radio from '@mui/material/Radio';
 import RadioGroup from '@mui/material/RadioGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
@@ -58,7 +58,7 @@ export default function Contribute(){
       setImgURL("")
       setCat("")
       setComment([])
-  navigate("/feed");
+  navigate("/image");
   const reportRef=collection(db,"users",user.email,"My submission");
 
   await addDoc(reportRef,{
@@ -82,7 +82,6 @@ setLink("")
 setImgURL("")
 setCat("")
 setComment([])
-navigate("/feed");
 
       }
       
@@ -131,13 +130,6 @@ navigate("/feed");
             onChange={(e)=>{setLink(e.target.value)}}
             sx={{margin:2}}
             />
-            <TextField 
-            fullWidth label="Image" 
-            id="Image" 
-            margin="20px"  
-            onChange={(e)=>{setImgURL(e.target.value)}}
-            sx={{margin:2, color:"white"}}
-            required/>
 
 <FormControl  sx={{margin:2}}>
       <FormLabel id="demo-row-radio-buttons-group-label">Choose Category</FormLabel>
@@ -158,7 +150,7 @@ navigate("/feed");
           sx={{ marginTop: "20px" , marginLeft:75 }}
             onClick={handleSubmit}
           >
-            Publish
+            NEXT
           </Button>
 
         </Box>

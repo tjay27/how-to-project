@@ -1,12 +1,17 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { Button } from "@mui/material";
+import { Button, CardContent } from "@mui/material";
 import Card from '@mui/material/Card';
 import CardMedia from '@mui/material/CardMedia';
 import { CardActionArea } from '@mui/material';
+import Navbar from "../Elements/Navbar";
+import { addDoc, collection, doc, updateDoc } from "firebase/firestore";
+import { db } from "../Firebase/firebase";
+
 export default function SearchImage(){
     const[image,setImage]=useState([])
     const[photo,setPhoto]=useState("");
+    const[img,setImg]=useState("")
 
     function handleChange(event){
         setPhoto(event.target.value)
@@ -19,16 +24,30 @@ export default function SearchImage(){
       axios.get(url)
       .then((response)=>{
         setImage(response.data.results)
+        console.log(response.data.results)
       })
+    }
+    const handleImage=(prop)=>{
+      //const bloglist= collection(db,"Image")
+      //await addDoc(bloglist,{
+       // img
+      //}).then(()=>{alert("success!!")}).catch(err=>{alert(err.message)});
+
+      //setImg("")
+
+      console.log(prop)
+      console.log("clicked")
     }
     return(
         <>
+        <Navbar/>
         <div> 
             <input 
             onChange={handleChange} 
-            type="text" 
-            name="photo" 
+            class="search-bar"
+            type="search"
             placeholder="Search for photos"
+            id="searchInput"
             />
 
             <Button onClick={getImage}>Get Image</Button>
@@ -37,16 +56,18 @@ export default function SearchImage(){
         <div className="container">
             <div className="row">
                 {
-                    image.map((value,index)=>{
+                    image.map((prop)=>{
                         return(
                             <Card sx={{ maxWidth: 345 ,margin:1}}>
                             <CardActionArea>
                               <CardMedia
                                 component="img"
                                 height="345"
-                                src={value.urls.small}
+                                src={prop.urls.small}
                                 alt="image"
+                                onClick={handleImage(prop.urls.small)}
                               />
+                              <CardContent>{prop.urls.small}</CardContent>
                             </CardActionArea>
                           </Card>
                         )

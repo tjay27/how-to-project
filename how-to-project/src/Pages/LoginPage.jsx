@@ -48,13 +48,7 @@ function LoginPage() {
       if(initializing){
         return("loading...");
       }
-  const handleSignOut = async()=>{
-    try{
-      await logOut()
-    }catch(error){
-      console.log(error)
-    }
-  }
+
   return (
     <>
     <Navbar/>

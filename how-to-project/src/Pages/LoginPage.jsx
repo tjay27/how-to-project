@@ -51,7 +51,7 @@ function LoginPage() {
       }
 
   return (
-    <div style={{height:"100vh", overflowY:"hidden"}}>
+    <div>
     <div class="bar">
       <div class="login-nav">
         <img class="Logo" src={Logo} alt="Logo" />
@@ -59,7 +59,6 @@ function LoginPage() {
       <hr/>
     </div>
 
-    <div className="loginpage">
 
     <div className="ver-line">
       <img className="loginPlanet"  src={LoginPlanet} alt="mainImg" />
@@ -80,7 +79,7 @@ function LoginPage() {
           <Button  variant="contained"
           align="center"
           color="secondary"
-          sx={{ marginTop: "20px" ,width:"380px", backgroundColor:"#8152BD", marginLeft:"37px", height:"42px"}}
+          sx={{ marginTop: "20px" ,width:"323px", backgroundColor:"#8152BD", marginLeft:"37px", height:"42px"}}
           type="submit"> Sign In</Button>
 
       
@@ -91,7 +90,6 @@ function LoginPage() {
     </div> 
 
     </div> 
-    </div>
   );
 }
 

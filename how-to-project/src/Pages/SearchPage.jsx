@@ -1,23 +1,24 @@
 import React ,{useState}from "react";
-import Chips from '../Elements/Chips';
-import BlogChips from '../Elements/BlogChips';
-import NavBar from "../NavBar";
-import {Typography} from '@mui/material';
-import LoginIcon from "../Elements/login";
+import BCards from "../Elements/BCards";
+import Blogs from "../Elements/Blogs";
+import Tech from "../Elements/Tech"
+import ResearchPaper from "../Elements/ResearchPaper"
+import { Typography } from "@mui/material";
+import Box from '@mui/material/Box';
+import useAuthState from "../Firebase/hooks";
+import { auth } from "../Firebase/firebase";
+import { UserAuth } from "../Firebase/AuthContext";
 import PropTypes from 'prop-types';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
-import Box from '@mui/material/Box';
-import ResearchPaper from "../Elements/ResearchPaper"
-import Tech from "../Elements/Tech"
-import Blogs from "../Elements/Blogs"
+import Liked from "../Elements/Liked";
+import Bookmarked from "../Elements/Bookmarked";
 import Logo from "../Images/Logo.png";
 import Navbar from "../Elements/Navbar";
 
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
-  
 
   return (
     <div
@@ -50,63 +51,66 @@ function a11yProps(index) {
 }
 
 function SearchPage() {
+  const {user}=useAuthState(auth);
   const[value,setValue] = useState(0);
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
   return (
     <>
-      <LoginIcon/>
-      <Navbar /> 
-
-      {/* <div className="header-search">
-        <Typography variant="h1" marginTop={"20px"}>TOPICS</Typography>
-      </div> */}
-      <div className="search-container">     
-       <Typography variant='h4' color="white" margin="30px" marginTop={20} marginLeft={-10} fontFamily="Montserrat">TOPICS</Typography>
-       <div>
-
-        {/* SEARCH BAR */}
+      <Navbar/>
+      {/* SEARCH BAR */}
       <div>
         <input 
-        class="search-bar"
-      type="text"
-      placeholder="Search"
+          class="search-bar"
+          type="search"
+          placeholder="Search for Blogs , Technical writing or Research Paper "
+          id="searchInput"
       ></input>
-
       </div>
+
+      <div style={{marginLeft: '5%', marginRight: '5%'}}>
         
-       <Box
+      {/* <Avatar
+  alt="Remy Sharp"
+  src={user.photoURL}
+  sx={{ width: 126, height: 126 ,marginLeft:80}}
+/> 
+ <Typography variant="h4" align="center" sx={{color:"white", margin:2}}>{user.displayName}</Typography> */}
+<Box
     sx={{
         width: '100%',
-        marginLeft:3
+        marginLeft:1,
       }}>
       <Box sx={{ borderBottom: 1, borderColor: 'divider' }} >
         <Tabs value={value} onChange={handleChange} aria-label="basic tabs example" textColor="white"
             indicatorColor="primary"
-            sx={{ color:"white" }}>
-          <Tab sx={{marginRight:3 , fontSize:20}} label="Research Paper" {...a11yProps(0)} />
-          <Tab sx={{marginRight:3 , fontSize:20}} label="Blogs"{...a11yProps(1)} />
-          <Tab sx={{marginRight:3 , fontSize:20}} label="Technical Writings" {...a11yProps(2)} />
+            sx={{marginLeft:33 , color:"white" , paddingLeft:9 , marginTop:20 }}>
+          <Tab sx={{marginRight:3 , fontSize:20}} label="BLOGS" {...a11yProps(0)} />
+          <Tab sx={{marginRight:3 , fontSize:20}} label="RESEARCH PAPER"{...a11yProps(1)} />
+          <Tab sx={{marginRight:3 , fontSize:20}} label="TECHNICAL STUFF" {...a11yProps(2)} />
         </Tabs>
       </Box>
-      <TabPanel value={value} index={0}>       
-          <ResearchPaper/>     
+      <TabPanel value={value} index={0}>
+        <div class="ApproveCard">
+          <Blogs/>
+        </div>
       </TabPanel>
       <TabPanel value={value} index={1}>
-      <Blogs/>
+      <div class="ApproveCard">
+          <ResearchPaper/>
+      </div>
       </TabPanel>
       <TabPanel value={value} index={2}>
-      <Tech/>
+      <div class="ApproveCard">
+        <Tech/>
+      </div>
       </TabPanel>
     </Box>
-       </div>
-       <Typography variant='h4' color="white" marginTop={10} marginLeft={-10} fontFamily="Montserrat">FOR YOU</Typography>
-       <BlogChips/><br/>
-       <a href="">view more</a>
-      </div>    
+</div>
+
+     
     </>
   );
 }
-
 export default SearchPage;

@@ -25,8 +25,8 @@ function Home() {
                 <ul>
                     <li class="active-page"><a href="/">Home</a></li>
                     <li><a href="/feed">My Feed</a></li>
-                    <li><a href="/">Activities</a></li>
-                    <li><a href="/">Search</a></li>
+                    <li><a href="/my-activity">Activities</a></li>
+                    <li><a href="/searchpage">Search</a></li>
                     
                     <li>
                     <div class="dropdown">
@@ -44,8 +44,7 @@ function Home() {
                 
 
                 <button type="button" class="b2">Get Chrome Extension</button>
-                <LoginIcon/>
-
+                <button><a href="/loginpage"><i class="fa-regular fa-3x fa-circle-user"></i></a></button>
             </nav>
             <hr/>
         </div>

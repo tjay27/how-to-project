@@ -161,15 +161,15 @@ export default function BlogCard() {
 
       <div>
         <input
-          class="search-bar"
-          type="text"
-          placeholder="Search by Title or Field of Study..."
-          id="searchBar"
+            class="search-bar"
+            type="search"
+            placeholder="Search blogs by name , field of study or author name"
+            id="searchInput"
           onChange={(e)=>{setSearchInput(e.target.value);}}
           onKeyDown = {handleKeyDown}
           value={searchInput}
         ></input>
-        <button class="search-icon" type="submit" onClick={searchBlog}><i class="fas fa-search"></i></button>
+        <button class="search-icon" type="submit" onClick={searchBlog}></button>
         </div>
 
         {/* <div>

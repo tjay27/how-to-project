@@ -28,8 +28,10 @@ function Main() {
           <Route path="/LoginPage" element={<LoginPage/>} />
           <Route path="/Contribute" element={<Contribute/>} />
           <Route path="/article/:id" element={<BlogPost/>} />
-          <Route path="/admin" element={<AdminPage/>} />
           <Route path="/image" element={<SearchImage/>} />
+
+          {/*Protected Route */}
+          <Route path="/admin" element={<AdminPage/>} />
 
         </Routes>
         </AuthContextProvider>

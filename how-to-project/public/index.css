@@ -313,7 +313,7 @@ background: linear-gradient(180deg, rgba(0, 0, 0, 0.01) 0%, rgba(0, 0, 0, 0.54) 
 #features h1{
   font-size: 44px;
   font-family: 'Roboto Flex', sans-serif;
-font-family: 'Ubuntu', sans-serif;
+  font-family: 'Ubuntu', sans-serif;
   color: white;
   text-align: center;
 
@@ -588,7 +588,6 @@ color: #FFFFFF;
   display: inline-block;
   right: 100px;
   top: 22px;
-  color: rgb(198, 154, 246);
   background-color: transparent;
 }
 
@@ -819,9 +818,6 @@ top: 305px;
   width:100%;
 }
 .search-container{
-  width:900px;
-  margin-top: 160px;
-  margin-left: 300px;
 }
 .papercard{
   display: inline-block;
@@ -882,14 +878,14 @@ height: 182px; */
 /*************************LOGIN & SIGNUP PAGE*********************/
 
 .loginPlanet{
-  height: 700px;
+  height: 800px;
   margin-top: -3%;
 }
 .ver-line{
   display: flex;
 }
 .vert-line{
-  height: 800px;
+  height: 760px;
   border-left: 5px solid #212121;
   width: 400px;
 }
@@ -897,15 +893,15 @@ height: 182px; */
   margin-top: 3;
 }
 .google-button{
-  width: 380px !important;
+  width: 353px !important;
     margin-top: 20px;
     /* margin: 20px; */
     margin-left: auto;
     margin-right: auto;
 }
 .form-cont{
-    margin:20% 40% ;
-    width: 450px;
+    margin:20% 10% ;
+    width: 400px;
   }
 
 .credentials{

@@ -63,15 +63,13 @@ function MyActivity() {
       {/* SEARCH BAR */}
       <div>
         <input 
-        class="search-bar"
-      type="text"
-      placeholder="Search"
+          class="search-bar"
+          type="search"
+          placeholder="Search"
+          id="searchInput"
       ></input>
-
       </div>
 
-    {/* <LoginIcon/>
-      <NavBar /> */}
       {user ?
       <div style={{marginLeft: '5%', marginRight: '5%'}}>
         
@@ -90,23 +88,23 @@ function MyActivity() {
         <Tabs value={value} onChange={handleChange} aria-label="basic tabs example" textColor="white"
             indicatorColor="primary"
             sx={{marginLeft:33 , color:"white" , paddingLeft:9 , marginTop:20 }}>
-          <Tab sx={{marginRight:3 , fontSize:18}} label="my submissions" {...a11yProps(0)} />
-          <Tab sx={{marginRight:3 , fontSize:18}} label="liked"{...a11yProps(1)} />
-          <Tab sx={{marginRight:3 , fontSize:18}} label="Bookmark" {...a11yProps(2)} />
+          <Tab sx={{marginRight:3 , fontSize:20}} label="my submissions" {...a11yProps(0)} />
+          <Tab sx={{marginRight:3 , fontSize:20}} label="liked"{...a11yProps(1)} />
+          <Tab sx={{marginRight:3 , fontSize:20}} label="Bookmark" {...a11yProps(2)} />
         </Tabs>
       </Box>
       <TabPanel value={value} index={0}>
-        <div class="feed myfeed">
+        <div class="ApproveCard">
                     <BCards user={user}/>
                   </div>
       </TabPanel>
       <TabPanel value={value} index={1}>
-      <div class="feed myfeed">
+      <div class="ApproveCard">
                     <Liked user={user}/>
                   </div>
       </TabPanel>
       <TabPanel value={value} index={2}>
-      <div class="feed myfeed">
+      <div class="ApproveCard">
                     <Bookmarked user={user}/>
                   </div>
       </TabPanel>

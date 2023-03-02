@@ -11,8 +11,8 @@ function Navbar () {
                 <ul>
                     <li><a href="/">Home</a></li>
                     <li><a href="/feed">My Feed</a></li>
-                    <li><a href="/">Activities</a></li>
-                    <li><a href="/">Search</a></li>
+                    <li><a href="/my-activity">Activities</a></li>
+                    <li><a href="/searchpage">Search</a></li>
                     {/* <li><a href="feed">Feed</a></li>
                     <li><a href="My-Activity">My Activity</a></li>
                     <li><a href="SearchPage">Search</a></li> */}

@@ -3,10 +3,7 @@ import BlogCard from "../BlogCards";
 import LoginIcon from "../Elements/login";
 import Logo from "../Images/Logo.png";
 import NavBar from "../Elements/Navbar";
-import { Link } from "react-router-dom";
-import { Button , Typography } from "@mui/material";
-import TransitionModal from "../Elements/Modal"
-import Navbar from "../Elements/Navbar";
+
 function Feeds() {
   
   return (
@@ -47,18 +44,7 @@ function Feeds() {
      ))}*/}
 
      <BlogCard/>
-     <TransitionModal 
-            title="Share"
-            button="Publish"
-            >
-            <Typography>do you wish to publish ?</Typography>
-            <Link to="/Contribute" style={{ textDecoration: "none", color: "white" }}>
-            <Button variant="contained"
-                      color="secondary"
-                      sx={{ marginTop: "20px" }}> PUBLISH
-                </Button>
-          </Link>
-          </TransitionModal>
+
 
       </div>
       

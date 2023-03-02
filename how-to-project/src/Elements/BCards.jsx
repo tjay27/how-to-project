@@ -3,6 +3,7 @@ import Card from "@mui/material/Card";
 import { auth, db } from "../Firebase/firebase";
 import useAuthState from "../Firebase/hooks";
 import CardContent from "@mui/material/CardContent";
+import Typography from "@mui/material/Typography";
 import CardMedia from "@mui/material/CardMedia";
 import Button from "@mui/material/Button";
 import { collection, doc,query,onSnapshot, getDocs } from "firebase/firestore";
@@ -13,6 +14,7 @@ import { CardActions } from "@mui/material";
 
 export default function BCards({user}) {
   const [articles,setArticles]=useState([]);
+  
 
   useEffect(()=>{
     const reportRef= collection(db,"users",user.email,"My submission");
@@ -30,48 +32,50 @@ export default function BCards({user}) {
   
     
   return (
-
     <div>
-      {
-        articles.length === 0 ?( 
-          <p>no articles found</p>
-        ):(
-          articles.map(({id,Title, imgURL})=><div class="BlogCard" key={id}>
-            <Card class="cards"
+    {
+      articles.length === 0 ?(
+          <p style={{margin: 20, fontSize: 22}}>No articles found</p>
+      ):(
+  
+      articles.map(({id,Title,Topic,imgURL,author})=><div class="ApproveCard" key={id}>
+  
+      <Card class="cards"
         // sx={{
-        //   maxWidth: 700,
-        //   backgroundColor: "rgb(148, 207, 250, 0.4)",
+        //   maxWidth: 345,
+        //   backgroundColor: "rgb(70, 43, 136, 0.4)",
         //   color: "white",
-        //   display:"flex",
-        //   borderRadius:7
         // }}
       >
-        <CardMedia 
-          component="img"  
-          alt="media" 
-          src={imgURL}
-          />
+        <CardMedia component="img" height="140" image={`${imgURL}`} alt="media" />
         
-          <Link to={`/article/${id}`} style={{color: "white"}}>{Title}</Link>
-          <CardActions>
-            <DeleteArticle size="small"
-              id={id}/>
-            <Button
+        <CardContent>
+          <Typography gutterBottom variant="h5" component="div">
+          <Link to={`/article/${id}`}>{Title}</Link>
+          </Typography>
+          <Typography variant="body2" color="white">
+            Author: {author.name}
+          </Typography>
+          <Typography variant="body2" color="white">
+            Field: {Topic}
+          </Typography>
+          
+        </CardContent>
+        <CardActions>
+        <Button
               size="small"
-              sx={{color: "#40F4FF" }}>    
-              <i class="fa-solid fa-2x fa-eye"></i>     
+              sx={{ backgroundColor: "none", color: "#c69af6" }}
+            >
+              <i class="fas fa-2x fa-file-circle-plus"></i>
             </Button>
-            <Button
-              size="small"
-              sx={{color: "#40F4FF" }}>         
-              <i class="fa-solid fa-2x fa-pen-to-square"></i>         
-            </Button>
-          </CardActions>
+        <DeleteArticle id={id}/>
+        </CardActions>
       </Card>
-      </div>
-      ))}
       
-    
-    </div>
+    </div>)
+      )
+  }
+  </div>
+
   );
 }

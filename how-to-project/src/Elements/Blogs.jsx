@@ -105,9 +105,22 @@ export default function BlogCard() {
    const [articles,setArticles]=useState([]);
    const {user} = useAuthState(auth);
 
-  {/*const searchBlog = async () => {
-    const articleRef=collection(db,"Blogs")
-const q = query(articleRef, where("category", "==" , "Research Paper"));
+  const searchBlog = async () => {
+    const articleRef=collection(db,"Admin")
+
+      var q;
+      if(searchInput.length > 0 && searchAuthor.length > 0){
+        q = query(articleRef, where("tags", "array-contains" , searchInput.toLowerCase()), where('author.name', "==" , searchAuthor));
+      }
+      else if(searchInput.length > 0){
+        q = query(articleRef, where("tags", "array-contains" , searchInput.toLowerCase()));
+      }
+      else if(searchAuthor.length > 0){
+        q = query(articleRef, where('author.name', "==" , searchAuthor));
+      }
+      else {
+        q= query(articleRef);
+      }
 
       console.log(q);
       onSnapshot(q,(snapshot)=>{
@@ -125,14 +138,13 @@ const q = query(articleRef, where("category", "==" , "Research Paper"));
       setUpdated(searchInput);
       searchBlog();
     }
-  };*/}
+  };
 
 
   
    useEffect(()=>{
        const articleRef=collection(db,"Admin")
-       const q = query(articleRef, where("category", "==" , "Blogs"));
-
+       const q=query(articleRef,where('status',"==",true),where("category","==","Blogs"));
        onSnapshot(q,(snapshot)=>{
            const articles = snapshot.docs.map((doc)=>({
                id:doc.id,
@@ -145,7 +157,24 @@ const q = query(articleRef, where("category", "==" , "Research Paper"));
 
   return (
   <>
-    
+    <div class="searchCont">
+
+        {/* <div>
+
+        <input
+          class="search-bar"
+          type="text"
+          placeholder="Search by Author Name..."
+          id="searchBar1"
+          onChange={(e)=>{setSearchAuthor(e.target.value);}}
+          onKeyDown = {(e) => {if (e.key === 'Enter') {
+            searchBlog();
+          }}}
+          value={searchAuthor}
+        ></input>
+        <button class="search-icon" type="submit" onClick={searchBlog}><i class="fas fa-search"></i></button>
+        </div> */}
+    </div>
 
     <div>
              {
@@ -153,15 +182,14 @@ const q = query(articleRef, where("category", "==" , "Research Paper"));
         <p style={{margin: 20, fontSize: 22}}>No articles found</p>
     ):(
 
-    articles.map(({id,Title,Topic,userId,likes,comment,imgURL,author,link})=><div class="BlogCard" key={id}>
+    articles.map(({id,Title,Topic,likes,imgURL,author,link})=><div class="ApproveCard" key={id}>
 
-    <Card
-      sx={{
-        maxWidth: 345,
-        // marginLeft: "2px",
-        backgroundColor: "rgb(70, 43, 136, 0.4)",
-        color: "white",
-      }}
+    <Card class="cards"
+      // sx={{
+      //  maxWidth: 345,
+      //   backgroundColor: "rgb(70, 43, 136, 0.4)",
+      //   color: "white",
+      // }}
     >
       <CardMedia component="img" height="140" image={`${imgURL}`} alt="media" />
       
@@ -199,7 +227,7 @@ const q = query(articleRef, where("category", "==" , "Research Paper"));
         
         
           <TransitionModal 
-            title="Share via"
+            title="Share"
             button={<i class='fas fa-2x fa-share'></i>}
             >
               <FacebookShareButton
@@ -221,18 +249,22 @@ const q = query(articleRef, where("category", "==" , "Research Paper"));
               </LinkedinShareButton>
           </TransitionModal>
                          
-           <TransitionModal title="Report content ?" button={<i class="fa-solid fa-2x fa-circle-exclamation"></i> } content="sensitive content on the website can be reported and removed soon ">
+           <TransitionModal 
+           title="Report content ?" 
+           button={<i class="fa-solid fa-2x fa-circle-exclamation"></i> } 
+           content="Inappropriate content on the website can be reported and removed soon ">
           <FormControl>
       <RadioGroup
         aria-labelledby="demo-radio-buttons-group-label"
         defaultValue="female"
         name="radio-buttons-group"
-        sx={{color:"black"}}
+        color="white"
       >
         <FormControlLabel value="female" control={<Radio />} label="Sensitive Content" onChange={(e)=>{setCat("Sensitive Content")}} />
         <FormControlLabel value="male" control={<Radio />} label="Wrong information" onChange={(e)=>{setCat("Wrong information")}}/>
         <FormControlLabel value="other" control={<Radio />} label="misleading" onChange={(e)=>{setCat("misleading")}}/>
         <FormControlLabel value="other2" control={<Radio />} label="incomplete information" onChange={(e)=>{setCat("incomplete information")}}/>
+        <FormControlLabel value="other4" control={<Radio />} label="Plagarized Content" onChange={(e)=>{setCat("plagarized content")}}/>
         <FormControlLabel value="other3" control={<Radio />} label="Other" onChange={(e)=>{setCat("Technical Stuff")}}/>
       </RadioGroup>
       <Button variant="contained"
@@ -252,3 +284,4 @@ const q = query(articleRef, where("category", "==" , "Research Paper"));
 </div>
 </>
 )}
+ 

@@ -84,27 +84,21 @@ function SearchPage() {
       }}>
       <Box sx={{ borderBottom: 1, borderColor: 'divider' }} >
         <Tabs value={value} onChange={handleChange} aria-label="basic tabs example" textColor="white"
-            indicatorColor="primary"
+            indicatorColor="secondary"
             sx={{marginLeft:33 , color:"white" , paddingLeft:9 , marginTop:20 }}>
-          <Tab sx={{marginRight:3 , fontSize:20}} label="BLOGS" {...a11yProps(0)} />
-          <Tab sx={{marginRight:3 , fontSize:20}} label="RESEARCH PAPER"{...a11yProps(1)} />
-          <Tab sx={{marginRight:3 , fontSize:20}} label="TECHNICAL STUFF" {...a11yProps(2)} />
+          <Tab sx={{marginRight:3 , fontSize:22}} label="BLOGS" {...a11yProps(0)} />
+          <Tab sx={{marginRight:3 , fontSize:22}} label="RESEARCH PAPER"{...a11yProps(1)} />
+          <Tab sx={{marginRight:3 , fontSize:22}} label="TECHNICAL STUFF" {...a11yProps(2)} />
         </Tabs>
       </Box>
       <TabPanel value={value} index={0}>
-        <div class="ApproveCard">
           <Blogs/>
-        </div>
       </TabPanel>
       <TabPanel value={value} index={1}>
-      <div class="ApproveCard">
           <ResearchPaper/>
-      </div>
       </TabPanel>
       <TabPanel value={value} index={2}>
-      <div class="ApproveCard">
-        <Tech/>
-      </div>
+         <Tech/>
       </TabPanel>
     </Box>
 </div>

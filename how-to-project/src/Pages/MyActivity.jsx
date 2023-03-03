@@ -86,27 +86,21 @@ function MyActivity() {
       }}>
       <Box sx={{ borderBottom: 1, borderColor: 'divider' }} >
         <Tabs value={value} onChange={handleChange} aria-label="basic tabs example" textColor="white"
-            indicatorColor="primary"
+            indicatorColor="secondary"
             sx={{marginLeft:33 , color:"white" , paddingLeft:9 , marginTop:20 }}>
-          <Tab sx={{marginRight:3 , fontSize:20}} label="my submissions" {...a11yProps(0)} />
-          <Tab sx={{marginRight:3 , fontSize:20}} label="liked"{...a11yProps(1)} />
-          <Tab sx={{marginRight:3 , fontSize:20}} label="Bookmark" {...a11yProps(2)} />
+          <Tab sx={{marginRight:3 , fontSize:22}} label="my submissions" {...a11yProps(0)} />
+          <Tab sx={{marginRight:3 , fontSize:22}} label="liked"{...a11yProps(1)} />
+          <Tab sx={{marginRight:3 , fontSize:22}} label="Bookmark" {...a11yProps(2)} />
         </Tabs>
       </Box>
       <TabPanel value={value} index={0}>
-        <div class="ApproveCard">
                     <BCards user={user}/>
-                  </div>
       </TabPanel>
       <TabPanel value={value} index={1}>
-      <div class="ApproveCard">
                     <Liked user={user}/>
-                  </div>
       </TabPanel>
       <TabPanel value={value} index={2}>
-      <div class="ApproveCard">
                     <Bookmarked user={user}/>
-                  </div>
       </TabPanel>
     </Box>
 </div>

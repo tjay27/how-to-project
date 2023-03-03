@@ -23,7 +23,7 @@ export default function DeleteArticle({ id }) {
     <div>
       <Button
             size="small"
-            sx={{color: "#40F4FF" ,
+            sx={{color: "#c69af6" ,
                  }}>         
             <i class="fa-solid fa-2x fa-trash"
             onClick={handleDelete}

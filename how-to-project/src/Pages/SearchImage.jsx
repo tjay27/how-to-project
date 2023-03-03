@@ -8,12 +8,13 @@ import Navbar from "../Elements/Navbar";
 import { addDoc, collection, doc, updateDoc } from "firebase/firestore";
 import { db } from "../Firebase/firebase";
 
-export default function SearchImage({multiformValue,setMultiformValue,handleSubmit}){
+export default function SearchImage({multiformValue,setMultiformValue, handleSubmit}){
     const[image,setImage]=useState([])
     const[photo,setPhoto]=useState("");
 
     function handleImg(event){
-        setPhoto(event.target.value)
+        setPhoto(event.target.value);
+        // setMultiformValue({...multiformValue,imgURL:(event.target.value)})
     }
     const getImage=()=>{
         console.log(photo);
@@ -36,8 +37,10 @@ export default function SearchImage({multiformValue,setMultiformValue,handleSubm
 
       // console.log(e);
       //console.log(e.target.currentSrc);
+      setMultiformValue({...multiformValue,imgURL:(e.target.currentSrc)})
       console.log("clicked")
     }
+    
     return(
         <>
         <Navbar/>
@@ -66,8 +69,8 @@ export default function SearchImage({multiformValue,setMultiformValue,handleSubm
                                 src={prop.urls.small}
                                 alt="image"
                                 value={multiformValue.imgURL}
-                                onChange={(e)=>{setMultiformValue({...multiformValue,imgURL: prop.urls.small})
-                              }}
+                              //   onChange={(e)=>{ console.log("Kya hai"); console.log(e.target); setMultiformValue({...multiformValue,imgURL:(e.target.value)})
+                              // }}
                                 onClick={handleImage}
                               />
                               <CardContent>By {prop.user.name}</CardContent>

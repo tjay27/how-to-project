@@ -13,8 +13,20 @@ import MemberCard from "../memberCard";
 import members from "../members";
 import Marquee from "react-fast-marquee";
 import CardFlip from "../Elements/FlipCard";
+import { UserAuth } from "../Firebase/AuthContext";
 
 function Home() {
+
+  const {user, logOut} = UserAuth();
+
+    const handleSignOut = async()=>{
+        try{
+          await logOut()
+        }catch(error){
+          console.log(error)
+        }
+    }
+
   return (
     <div>
       {/* Navbar */}
@@ -25,8 +37,8 @@ function Home() {
                 <ul>
                     <li class="active-page"><a href="/">Home</a></li>
                     <li><a href="/feed">My Feed</a></li>
-                    <li><a href="/my-activity">Activities</a></li>
                     <li><a href="/searchpage">Search</a></li>
+                    <li><a href="/my-activity">Dashboard</a></li>
                     
                     <li>
                     <div class="dropdown">
@@ -44,7 +56,12 @@ function Home() {
                 
 
                 <button type="button" class="b2">Get Chrome Extension</button>
-                <button><a href="/loginpage"><i class="fa-regular fa-3x fa-circle-user"></i></a></button>
+
+                {
+                    user? <button class="b2" onClick={handleSignOut}>Logout</button>
+                        : <a class="login-icon" href="/loginpage"><i class="fa-regular fa-3x fa-circle-user"></i></a>
+                }
+
             </nav>
             <hr/>
         </div>

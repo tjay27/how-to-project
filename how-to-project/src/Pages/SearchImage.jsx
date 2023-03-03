@@ -66,7 +66,7 @@ export default function SearchImage({multiformValue,setMultiformValue,handleSubm
                                 src={prop.urls.small}
                                 alt="image"
                                 value={multiformValue.imgURL}
-                                onChange={(e)=>{setMultiformValue({...multiformValue,imgURL:(e.target.value)})
+                                onChange={(e)=>{setMultiformValue({...multiformValue,imgURL: prop.urls.small})
                               }}
                                 onClick={handleImage}
                               />

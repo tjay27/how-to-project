@@ -13,6 +13,8 @@ import {GoogleButton } from 'react-google-button'
 import './contribute.css';
 import Logo from "../Images/Logo.png";
 import {signInWithEmailAndPassword} from "firebase/auth";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 
@@ -52,17 +54,19 @@ function LoginPage() {
   const handleAdminSignIn = async (e) =>{
     e.preventDefault();
     try{
-      await signInWithEmailAndPassword(auth, email, password)
+      await signInWithEmailAndPassword(auth, adminEmail, adminPass)
       .then((userCredential) => {
         // Signed in 
-        user = userCredential.user;
+        // user = userCredential.user;
         // ...
+        navigate('/admin');
       })
       .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
+        toast.error(errorMessage, {position: toast.POSITION.TOP_RIGHT, className: 'admin-login-failed'});
       });
-      navigate('/admin');
+      
      }catch(error){
          console.log(error);
      }
@@ -116,6 +120,7 @@ function LoginPage() {
           sx={{ marginTop: "20px" ,width:"323px", backgroundColor:"#8152BD", marginLeft:"37px", height:"42px"}}
           type="submit" onClick={handleAdminSignIn}> Sign In</Button>
 
+          <ToastContainer />
       
         </div>
       </div>

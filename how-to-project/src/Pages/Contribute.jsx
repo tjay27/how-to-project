@@ -12,20 +12,35 @@ import FormLabel from '@mui/material/FormLabel';
 import { Button } from "@mui/material";
 import './contribute.css';
 import Navbar from "../Elements/Navbar";
+import SearchImage from "./SearchImage";
 
 
 export default function Contribute(){
     const {user} = useAuthState(auth);
      /********for adding new blog link ***********/
-  const [Topic,setTopic]=useState("");
-  const [Title,setTitle]=useState("");
-  const [link,setLink]=useState("");
-  const [imgURL,setImgURL]=useState("");
-  const [category,setCat]=useState("");
-  const [comments,setComment]=useState([]);
 
+     const [multiformValue,setMultiformValue]=useState({
+      Topic:"",
+      Title:"",
+      link:"",
+      imgURL:"",
+      category:"",
+      comments:[],
+      description:""
+     })
 
-  const [description,setDescription]=useState("");
+     const {Topic,Title,link,imgURL,category,comments,description}= multiformValue;
+
+  /*********For setting up pages ********/
+
+  const [activeStep,setActiveStep]=useState(0)
+  const handleNext=()=>{
+    setActiveStep((nextStep) => nextStep+1)
+  }
+  const handleBack=()=>{
+    setActiveStep((prevStep) => prevStep-1)
+  }
+
 
   const bloglist=collection(db,'Admin');
 
@@ -51,14 +66,9 @@ export default function Contribute(){
 
       }).then(()=>{alert("success!!")}).catch(err=>{alert(err.message)});
 
-      setTitle("")
-      setTopic("")
-      setDescription("")
-      setLink("")
-      setImgURL("")
-      setCat("")
-      setComment([])
-  navigate("/image");
+
+  
+  /**adding in users collection********/
   const reportRef=collection(db,"users",user.email,"My submission");
 
   await addDoc(reportRef,{
@@ -73,86 +83,105 @@ export default function Contribute(){
     status:false,
     tags: [Title.toLocaleLowerCase(), Topic.toLocaleLowerCase()],
 
-}).then(()=>{alert("success!!")}).catch(err=>{alert(err.message)});
-
-setTitle("")
-setTopic("")
-setDescription("")
-setLink("")
-setImgURL("")
-setCat("")
-setComment([])
-
-      }
-      
+}).catch(err=>{alert(err.message)});
+  }
+      navigate("/feed")
   };
 
 
     return(
-       <div class="publishPost">
-        <Navbar/>
-        <Box sx={{
-        "& .MuiTextField-root": { m: 1 , width:"150ch" },
-        marginLeft:3, marginTop:5, color: "white"
-      }}>
-            <Typography variant="h3" align="center">CONTRIBUTE </Typography>
-            <TextField 
-            fullWidth label="Title" 
-            id="Title" 
-            margin="20px"  
-            onChange={(e)=>{setTitle(e.target.value)}}
-            sx={{margin:2}}
-            required/>
+      <div>
+        {activeStep === 0 && (
+
+<div class="publishPost">
+<Navbar/>
+<Box sx={{
+"& .MuiTextField-root": { m: 1 , width:"150ch" },
+marginLeft:3, marginTop:5, color: "white"
+}}>
+    <Typography variant="h3" align="center">CONTRIBUTE </Typography>
+    <TextField 
+    fullWidth label="Title" 
+    id="Title" 
+    margin="20px"  
+    sx={{margin:2}}
+    value={multiformValue.Title} 
+    onChange={(e)=>{setMultiformValue({...multiformValue,Title:(e.target.value)})
+    }}
+    required/>
 
 
-            <TextField 
-            fullWidth label="Field of Study" 
-            id="Topic" 
-            margin="20px"  
-            onChange={(e)=>{setTopic(e.target.value)}}
-            sx={{margin:2}}
-            required/>
+    <TextField 
+    fullWidth label="Field of Study" 
+    id="Topic" 
+    margin="20px" 
+    value={multiformValue.Topic} 
+    onChange={(e)=>{setMultiformValue({...multiformValue,Topic:(e.target.value)})
+    }}
+    sx={{margin:2}}
+    required/>
 
-<TextField 
-            fullWidth label="Description" 
-            multiline
-            rows={4}
-            id="Description" 
-            margin="20px"  
-            onChange={(e)=>{setDescription(e.target.value)}}           
-            sx={{margin:2}}
-            required/>
+   <TextField 
+    fullWidth label="Description" 
+    multiline
+    rows={4}
+    id="Description" 
+    margin="20px" 
+    value={multiformValue.description} 
+    onChange={(e)=>{setMultiformValue({...multiformValue,description:(e.target.value)})
+    }}           
+    sx={{margin:2}}
+    required/>
 
-<TextField 
-            fullWidth label="Link (optional)" 
-            id="Link" 
-            margin="20px"  
-            onChange={(e)=>{setLink(e.target.value)}}
-            sx={{margin:2}}
-            />
+   <TextField 
+    fullWidth label="Link (optional)" 
+    id="Link" 
+    margin="20px"  
+    value={multiformValue.link}
+    onChange={(e)=>{setMultiformValue({...multiformValue, link : e.target.value})
+    }}    
+    sx={{margin:2}}
+    />
 
 <FormControl  sx={{margin:2}}>
-      <FormLabel id="demo-row-radio-buttons-group-label">Choose Category</FormLabel>
-      <RadioGroup
-        row
-        aria-labelledby="demo-row-radio-buttons-group-label"
-        name="row-radio-buttons-group"
-      >
-        <FormControlLabel value="female" control={<Radio />} label="Research Paper" onChange={(e)=>{setCat("Research paper")}} />
-        <FormControlLabel value="male" control={<Radio />} label="Blogs" onChange={(e)=>{setCat("Blogs")}}/>
-        <FormControlLabel value="other" control={<Radio />} label="Technical Stuff" onChange={(e)=>{setCat("Technical Stuff")}}/>
-        
-      </RadioGroup>
-    </FormControl><br/>
-          <Button
-          variant="contained"
-          color="secondary"
-          sx={{ marginTop: "20px" , marginLeft:75 }}
-            onClick={handleSubmit}
-          >
-            NEXT
-          </Button>
+<FormLabel id="demo-row-radio-buttons-group-label">Choose Category</FormLabel>
+<RadioGroup
+row
+aria-labelledby="demo-row-radio-buttons-group-label"
+name="row-radio-buttons-group"
+>
+<FormControlLabel control={<Radio />} label="Research Paper" value={multiformValue.category}
+                                onChange={(e)=>{setMultiformValue({...multiformValue,category:("Research Paper")})
+                                }} />
+<FormControlLabel control={<Radio />} label="Blogs" value={multiformValue.category}
+                                onChange={(e)=>{setMultiformValue({...multiformValue,category:("Blogs")})
+                                }}/>
+<FormControlLabel control={<Radio />} label="Technical Stuff" value={multiformValue.category}
+                                onChange={(e)=>{setMultiformValue({...multiformValue,category:("Technical Stuff")})
+                                }}/>
 
-        </Box>
-       </div>
+</RadioGroup>
+</FormControl><br/>
+</Box>
+<Button variant="contained" color="secondary" sx={{ marginTop: "20px" , marginLeft:75 }} onClick={handleNext}>
+  Next
+</Button>
+</div>
+
+        )}
+
+
+        {activeStep === 1 && (
+          <>
+          <SearchImage multiformValue={multiformValue} setMultiformValue={setMultiformValue} handleSubmit={handleSubmit}/>
+          <Button variant="contained" color="secondary" sx={{ marginTop: "20px" , marginLeft:75 }} onClick={handleBack}>
+          Back
+        </Button>
+        </>
+        )}
+
+
+
+      </div>
+ 
     )}         

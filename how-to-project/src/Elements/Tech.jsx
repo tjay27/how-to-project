@@ -130,7 +130,7 @@ const q = query(articleRef, where("category", "==" , "Research Paper"));
 
   
    useEffect(()=>{
-       const articleRef=collection(db,"Blogs")
+       const articleRef=collection(db,"Admin")
        const q = query(articleRef, where("category", "==" , "Technical Stuff"));
 
        onSnapshot(q,(snapshot)=>{

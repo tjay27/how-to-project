@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { Button, CardContent } from "@mui/material";
+import { Button, CardContent, TextField } from "@mui/material";
 import Card from '@mui/material/Card';
 import CardMedia from '@mui/material/CardMedia';
 import { CardActionArea } from '@mui/material';
@@ -8,12 +8,11 @@ import Navbar from "../Elements/Navbar";
 import { addDoc, collection, doc, updateDoc } from "firebase/firestore";
 import { db } from "../Firebase/firebase";
 
-export default function SearchImage(){
+export default function SearchImage({multiformValue,setMultiformValue,handleSubmit}){
     const[image,setImage]=useState([])
     const[photo,setPhoto]=useState("");
-    const[img,setImg]=useState("")
 
-    function handleChange(event){
+    function handleImg(event){
         setPhoto(event.target.value)
     }
     const getImage=()=>{
@@ -27,16 +26,16 @@ export default function SearchImage(){
         console.log(response.data.results)
       })
     }
-    const handleImage=(e)=>{
-      //const bloglist= collection(db,"Image")
+    const handleImage=async(e)=>{
+      const bloglist= collection(db,"Image")
       //await addDoc(bloglist,{
-       // img
+      //  img
       //}).then(()=>{alert("success!!")}).catch(err=>{alert(err.message)});
 
-      //setImg("")
+      //setImg(e.target.currentSrc)
 
       // console.log(e);
-      console.log(e.target.currentSrc);
+      //console.log(e.target.currentSrc);
       console.log("clicked")
     }
     return(
@@ -44,7 +43,7 @@ export default function SearchImage(){
         <Navbar/>
         <div> 
             <input 
-            onChange={handleChange} 
+            onChange={handleImg} 
             class="search-bar"
             type="search"
             placeholder="Search for photos"
@@ -66,9 +65,12 @@ export default function SearchImage(){
                                 height="345"
                                 src={prop.urls.small}
                                 alt="image"
+                                value={multiformValue.imgURL}
+                                onChange={(e)=>{setMultiformValue({...multiformValue,imgURL:(e.target.value)})
+                              }}
                                 onClick={handleImage}
                               />
-                              <CardContent>{prop.urls.small}</CardContent>
+                              <CardContent>By {prop.user.name}</CardContent>
                             </CardActionArea>
                           </Card>
                         )
@@ -76,6 +78,18 @@ export default function SearchImage(){
                 }
             </div>
         </div>
+        <Button
+  variant="contained"
+  color="secondary"
+  sx={{ marginTop: "20px" , marginLeft:75 }}
+    onClick={handleSubmit}
+  >
+    Submit
+  </Button>
+  {/*<TextField
+   onChange={(e)=>{setMultiformValue({...multiformValue,imgURL:(e.target.value)})
+   }}
+  />*/}
         </>
     )
 }

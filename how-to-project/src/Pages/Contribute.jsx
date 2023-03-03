@@ -34,8 +34,13 @@ export default function Contribute(){
   /*********For setting up pages ********/
 
   const [activeStep,setActiveStep]=useState(0)
-  const handleNext=()=>{
-    setActiveStep((nextStep) => nextStep+1)
+  const handleNext=(e)=>{
+    e.preventDefault();
+      if(Title===""||Topic===""||description===""){
+        alert("Fill all the fields");
+        return false;
+      }else{
+    setActiveStep((nextStep) => nextStep+1)}
   }
   const handleBack=()=>{
     setActiveStep((prevStep) => prevStep-1)

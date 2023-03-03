@@ -93,6 +93,10 @@ font-size: 16px;
   color: white;
 }
 
+.admin-login-failed{
+  color: white;
+}
+
 /* .arrow {
   border: solid white;
   border-width: 0 3px 3px 0;

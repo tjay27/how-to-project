@@ -3,9 +3,11 @@ import BlogCard from "../BlogCards";
 import LoginIcon from "../Elements/login";
 import Logo from "../Images/Logo.png";
 import NavBar from "../Elements/Navbar";
+import {auth } from "../Firebase/firebase";
+import { UserAuth } from "../Firebase/AuthContext";
 
 function Feeds() {
-  
+
   return (
     <>
     {/* <div class="bar">
@@ -31,7 +33,7 @@ function Feeds() {
     </nav>
     <hr/>
   </div> */}
-      <NavBar />
+      <NavBar/>
 
       <div class="Admin-section">
      {/*} {Blogs.map((blog) => (

@@ -25,7 +25,7 @@ function ApprovePost({id}){
             sx={{ backgroundColor: "none", color: "#c69af6" }}
             onClick={approvePost}
           >
-            <i class="fas fa-2x fa-pen-to-square"></i>
+            <i class="fas fa-2x fa-square-check"></i>
           </Button>
       </div>
     )
@@ -65,7 +65,7 @@ export default function BlogCard() {
   return (
   <>
 
-    <div>
+    <div className="Admin-section">
     <Typography variant="h5" color="white">Pending</Typography>
     {
     articles.length === 0 ?(
@@ -113,7 +113,7 @@ export default function BlogCard() {
 </div>
 
 
-<div>
+<div className="Admin-section">
 <Typography variant="h5" color={"white"}>Approved</Typography>
   {
     approve.length === 0 ?(
@@ -150,7 +150,6 @@ export default function BlogCard() {
           >
             <i class="fas fa-2x fa-file-circle-plus"></i>
           </Button>
-      <ApprovePost id={id}/>
       <DeleteArticle id={id}/>
       </CardActions>
     </Card>

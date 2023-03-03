@@ -33,7 +33,7 @@ function Feeds() {
   </div> */}
       <NavBar />
 
-      <div class="feed myfeed">
+      <div class="Admin-section">
      {/*} {Blogs.map((blog) => (
 
           <BlogCard

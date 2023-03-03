@@ -157,7 +157,6 @@ export default function BlogCard() {
 
   return (
   <>
-    <div class="searchCont">
 
       <div>
         <input
@@ -187,7 +186,6 @@ export default function BlogCard() {
         ></input>
         <button class="search-icon" type="submit" onClick={searchBlog}><i class="fas fa-search"></i></button>
         </div> */}
-    </div>
 
     <div>
       <h3 class="feedname">

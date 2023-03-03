@@ -5,8 +5,7 @@ import Card from '@mui/material/Card';
 import CardMedia from '@mui/material/CardMedia';
 import { CardActionArea } from '@mui/material';
 import Navbar from "../Elements/Navbar";
-import { addDoc, collection, doc, updateDoc } from "firebase/firestore";
-import { db } from "../Firebase/firebase";
+
 
 export default function SearchImage({multiformValue,setMultiformValue, handleSubmit}){
     const[image,setImage]=useState([])
@@ -28,7 +27,7 @@ export default function SearchImage({multiformValue,setMultiformValue, handleSub
       })
     }
     const handleImage=async(e)=>{
-      const bloglist= collection(db,"Image")
+      //const bloglist= collection(db,"Image")
       //await addDoc(bloglist,{
       //  img
       //}).then(()=>{alert("success!!")}).catch(err=>{alert(err.message)});
@@ -69,8 +68,6 @@ export default function SearchImage({multiformValue,setMultiformValue, handleSub
                                 src={prop.urls.small}
                                 alt="image"
                                 value={multiformValue.imgURL}
-                              //   onChange={(e)=>{ console.log("Kya hai"); console.log(e.target); setMultiformValue({...multiformValue,imgURL:(e.target.value)})
-                              // }}
                                 onClick={handleImage}
                               />
                               <CardContent>By {prop.user.name}</CardContent>
@@ -82,11 +79,11 @@ export default function SearchImage({multiformValue,setMultiformValue, handleSub
             </div>
         </div>
         <Button
-  variant="contained"
-  color="secondary"
-  sx={{ marginTop: "20px" , marginLeft:75 }}
-    onClick={handleSubmit}
-  >
+          variant="contained"
+          color="secondary"
+          sx={{ marginTop: "20px" , marginLeft:75 }}
+          onClick={handleSubmit}
+        >
     Submit
   </Button>
   {/*<TextField

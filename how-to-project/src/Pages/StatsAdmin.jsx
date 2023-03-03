@@ -11,19 +11,19 @@ const Statistics = () => {
         <ul className="stats-bar">
           <li className="column post1">
             {/* <MdEditCalendar size={'4em'}/> */}
-            <h6>Active Posts</h6>
+            <h6>Approved Posts</h6>
             <h4>50</h4>
           </li>
 
           <li className="column post1">
             {/* <BsPatchCheck size={'4em'}/> */}
-            <h6>Visits per day</h6>
+            <h6>Pending Posts</h6>
             <h4>100</h4>
           </li>
 
           <li className="column post1">
             {/* <BsEye size={'4em'}/> */}
-            <h6>Login per Day</h6>
+            <h6>Total Users</h6>
             <h4>5</h4>
           </li>
         </ul>

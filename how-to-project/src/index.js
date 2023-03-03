@@ -14,13 +14,19 @@ import SearchImage from "./Pages/SearchImage";
 
 // import "../public/index.css";
 
+const USER_TYPES ={
+  PUBLIC:"Public user",
+  NORMAL_USER:"Normal user",
+  ADMIN_USER:"Admin user"
+}
+const CURRENT_USER_TYPES = USER_TYPES.ADMIN_USER
 function Main() {
   return (
     <div>
       <BrowserRouter>
         <AuthContextProvider>
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="/" element={<PublicElement><Home /></PublicElement>} />
           <Route path="/feed" element={<Feeds />} />
           <Route path="/My-Activity" element={<MyActivity/>} />
           <Route path="/BlogPost" element={<BlogPost />} />
@@ -31,13 +37,31 @@ function Main() {
           <Route path="/image" element={<SearchImage/>} />
 
           {/*Protected Route */}
-          <Route path="/admin" element={<AdminPage/>} />
+          <Route path="/admin" element={<AdminElement><AdminPage/></AdminElement>} />
+
+          {/**Page not found */}
+          <Route path="*" element={<div>Page not found</div>}/>
 
         </Routes>
         </AuthContextProvider>
       </BrowserRouter>
     </div>
   );
+}
+
+function PublicElement({children}){
+  return <>
+  {children}
+  </>
+}
+
+function AdminElement({children}){
+  if(CURRENT_USER_TYPES === USER_TYPES.ADMIN_USER){
+    return <>{children}</>;
+  }
+  else{
+    return <div>YOU DO NOT HAVE ACCESS TO THIS PAGE</div>
+  }
 }
 
 ReactDOM.render(<Main />, document.getElementById("root"));

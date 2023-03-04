@@ -36,7 +36,7 @@ function LoginIcon(){
       {user
       ?<TransitionModal 
       title="Login"
-      button={<i class=" fa-3x fas fa-user-circle"></i>}
+      button={<a class="login-icon"><i class="fa-regular fa-4x fa-circle-user"></i></a>}
       content="Welcome. You can write your own technical blogs, research papers or articles for others to read.
        Have fun writing and browsing through some super cool technical stuff."
       >
@@ -53,7 +53,7 @@ function LoginIcon(){
 
           :<TransitionModal 
           title="Login"
-          button={<i class=" fa-3x fas fa-user-circle"></i>}
+          button={<a class="login-icon"><i class="fa-regular fa-3x fa-circle-user"></i></a>}
           content="Hello User, login to your account for writing your own technical stuff and accessing various other features like commenting, discussing and saving blogs or articles." 
           >
             <img class="loginImg" src={Login} alt="" />

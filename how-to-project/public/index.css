@@ -359,16 +359,20 @@ border: 2px solid rgba(222, 229, 238, 0.58);
   width: 1354px;
   height: 367px;
 }
-.team-frames {
-  display: flex;
-  flex-direction: row;
+.team-frames {  
   justify-content: space-evenly;
   align-items: center;
-  padding: absolute;
-  /* gap: 50px; */
+
+ /* display: flex;
+  flex-direction: row;  
   margin: 50px 20px;
-  width: 1354px;
-  height: 367px;
+  padding: absolute;
+   gap: 50px; 
+  width: 100%;*/
+}
+.team-frames img{
+  margin:20px 20px;
+  align-items: center;
 }
 
 #features, #team{
@@ -524,7 +528,7 @@ font-family: 'Ubuntu', sans-serif;
   justify-content: flex-start;
 }
 .search-bar{
-  /* position: absolute; */
+ position: relative; 
 display: flex;
 flex-direction: row;
 align-items: center;
@@ -532,12 +536,17 @@ align-items: center;
 /* gap: 640px; */
 
 width: 700px;
-height: 40px;
-left: 300px;
-top: 160px;
+height: 45px;
+left: 330px;
+top: 100px;
+padding:3;
 
 background: rgba(233, 231, 231, 0.29);
 border-radius: 5px;
+}
+.feedpage{
+  left:235px;
+  top:65px;
 }
 
 .search-bar:hover{
@@ -583,17 +592,15 @@ height: 328px; */
 
 }
 
+
 .feedname{
-  width: 131px;
-height: 34px;
-top: 240px;
-left:220px;
-margin:30px;
+position: relative;
+left:25px;
+margin-top: 100px;
 font-family: 'Montserrat';
 font-style: normal;
 font-weight: 500;
-font-size: 28px;
-line-height: 34px;
+font-size: 30px;
 color: #FFFFFF;
 }
 .profile-icon{
@@ -737,7 +744,7 @@ height: 59px;
 left: 317px;
 top: 305px;
 
-} */
+} 
 
 
 .search-bar2{
@@ -763,7 +770,7 @@ top: 305px;
 
 .BCard{
   margin:60px;
-}
+}*/
 /***********************FOOTER-blogPage*******************/
 .footer{
   position: relative;
@@ -837,21 +844,23 @@ top: 305px;
  }
 
                                        /* SEARCH PAGE*/
+
+/*
  .blogchips{
   margin-top: 30px;
   margin-left: -10px;
   display: flex;
 flex-direction: row;
-/* align-items: flex-start; */
+ align-items: flex-start; 
 flex-wrap: wrap;
 flex-basis: 100px;
 padding: 0px;
 gap: 10px;
 width:1000px;
-/* width: 100px;
-height: 182px; */
+ width: 100px;
+height: 182px; 
  }
-/* .searchChip{
+ .searchChip{
   width:280 ;
   height:50 ;
   background-color:white;
@@ -931,10 +940,14 @@ height: 182px; */
   /********************AdminPage*************************/
 
 .adminText{
-  color: white;
-  margin-left: 300px;
-  margin-top: 130px;
+  position: relative;
+  left:100px;
+  margin-top: 150px;
   font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 30px;
+  color: #FFFFFF;
 }
 
 
@@ -944,7 +957,7 @@ height: 182px; */
   height: auto;
   align-items: center;
   justify-content: center;
-  margin-left: 5px;
+  margin-left: 0px;
   margin-top: -20px;
   border: 8px solid transparent;
   padding-left: 50px;

@@ -5,15 +5,12 @@ import Navbar  from "../Elements/Navbar";
 import { FlipCard } from "react-flipme";
 import Logo from "../Images/Logo.png";
 import Down_arrow from "../Images/down-arrow.png";
-import LoginIcon from "../Elements/login";
+import FramePooja from "../Images/FramePooja.png"
 
-import { Link } from "react-router-dom";
-import { Typography } from "@mui/material";
-import MemberCard from "../memberCard";
-import members from "../members";
 import Marquee from "react-fast-marquee";
 import CardFlip from "../Elements/FlipCard";
 import { UserAuth } from "../Firebase/AuthContext";
+import LoginIcon from "../Elements/login";
 
 function Home() {
 
@@ -58,7 +55,7 @@ function Home() {
                 <button type="button" class="b2">Get Chrome Extension</button>
 
                 {
-                    user? <button class="b2" onClick={handleSignOut}>Logout</button>
+                    user? <LoginIcon/>
                         : <a class="login-icon" href="/loginpage"><i class="fa-regular fa-3x fa-circle-user"></i></a>
                 }
 
@@ -145,41 +142,12 @@ function Home() {
         </div>
 
         <div class="team-frames">
-        <div className='team-card-main'>
-          <FlipCard>
-            <FlipCard.Front className="cardFront team-card">
-              <h3>NAME 1</h3>
-              <h4>POSITION</h4>
-            </FlipCard.Front>
-            <FlipCard.Back className="cardBack team-card">
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis dicta, quasi soluta deleniti, quam sunt dolorum, impedit magnam tempora suscipit quod error fugit temporibus omnis hic ullam modi corrupti placeat?</p>
-            </FlipCard.Back>
-          </FlipCard>
-        </div>
+        <img src={FramePooja}/>
+        <img src={FramePooja}/>
+        <img src={FramePooja}/>
+        <img src={FramePooja}/>
+        <img src={FramePooja}/>
 
-        <div className='team-card-main'>
-          <FlipCard>
-            <FlipCard.Front className="cardFront team-card">
-            <h3>NAME 2</h3>
-            <h4>POSITION</h4>
-            </FlipCard.Front>
-            <FlipCard.Back className="cardBack team-card">
-              <p>desc</p>
-            </FlipCard.Back>
-          </FlipCard>
-        </div>
-
-        <div className='team-card-main'>
-          <FlipCard>
-            <FlipCard.Front className="cardFront team-card">
-            <h3>NAME 3</h3>
-            <h4>POSITION</h4>
-            </FlipCard.Front>
-            <FlipCard.Back className="cardBack team-card">
-              <p>desc</p>
-            </FlipCard.Back>
-          </FlipCard>
-        </div>
         </div>
       </section>
 

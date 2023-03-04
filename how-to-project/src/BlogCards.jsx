@@ -157,10 +157,8 @@ export default function BlogCard() {
 
   return (
   <>
-
-      <div>
         <input
-            class="search-bar"
+            class="search-bar feedpage"
             type="search"
             placeholder="Search blogs by name , field of study or author name"
             id="searchInput"
@@ -169,7 +167,6 @@ export default function BlogCard() {
           value={searchInput}
         ></input>
         <button class="search-icon" type="submit" onClick={searchBlog}></button>
-        </div>
 
         {/* <div>
 
@@ -187,11 +184,9 @@ export default function BlogCard() {
         <button class="search-icon" type="submit" onClick={searchBlog}><i class="fas fa-search"></i></button>
         </div> */}
 
-    <div>
       <h3 class="feedname">
         MY FEED
       </h3>
-    </div>
 
     <div>
              {
@@ -208,11 +203,11 @@ export default function BlogCard() {
       //   color: "white",
       // }}
     >
-      <CardMedia component="img" height="140" image={`${imgURL}`} alt="media" />
+      <CardMedia component="img" height="150px" image={`${imgURL}`} alt="media" />
       
       <CardContent>
-        <Typography gutterBottom variant="h5" component="div">
-        <Link to={`/article/${id}`}>{Title}</Link>
+        <Typography gutterBottom variant="h5" component="div" color={"white"}>
+        <Link color="white" to={`/article/${id}`}>{Title}</Link>
         </Typography>
         <Typography variant="body2" color="white">
           Author: {author.name}

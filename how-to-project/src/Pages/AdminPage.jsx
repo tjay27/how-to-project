@@ -31,10 +31,7 @@ function AdminPage() {
       </div>
 
       
-      <div class="adminText">
-        <h1>ADMIN PAGE</h1>
-      </div>
-
+      <h3 class="adminText">ADMIN PAGE</h3>
       
       <StatsAdmin/>
       

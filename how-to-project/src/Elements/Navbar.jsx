@@ -48,10 +48,10 @@ function Navbar () {
                 </ul>
                 
                 {
-                    user? <button class="b2" onClick={handleSignOut}>Logout</button>
+                    user? <LoginIcon/>
                         : <a class="login-icon" href="/loginpage"><i class="fa-regular fa-3x fa-circle-user"></i></a>
                 }
-                {/* <LoginIcon/> */}
+
 
             </nav>
             <hr/>

@@ -7,14 +7,13 @@ import { Typography } from "@mui/material";
 import Box from '@mui/material/Box';
 import useAuthState from "../Firebase/hooks";
 import { auth } from "../Firebase/firebase";
-import { UserAuth } from "../Firebase/AuthContext";
 import PropTypes from 'prop-types';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Liked from "../Elements/Liked";
 import Bookmarked from "../Elements/Bookmarked";
-import Logo from "../Images/Logo.png";
 import Navbar from "../Elements/Navbar";
+import Button from "@mui/material/Button";
 
 
 function TabPanel(props) {
@@ -66,7 +65,9 @@ function SearchPage() {
           type="search"
           placeholder="Search for Blogs , Technical writing or Research Paper "
           id="searchInput"
-      ></input>
+      />
+      <Button class="search-icon" ><i class="fa-solid fa-magnifying-glass"></i></Button>
+
       </div>
 
       <div style={{marginLeft: '5%', marginRight: '5%'}}>

@@ -20,10 +20,14 @@ function Navbar () {
         <div class="bar">
             <nav>
                 <img class="Logo" src={Logo} alt="Logo" />
+                <input type="checkbox" id="check"/>
+                    <label for="check" class="checkbtn">
+                        <i class="fas fa-bars"></i>
+                    </label>
                 
                 <ul>
                     <li><a href="/">Home</a></li>
-                    <li><a href="/feed">My Feed</a></li>
+                    <li><a class="active-page" href="/feed">My Feed</a></li>
                     <li><a href="/searchpage">Search</a></li>
                     {
                         // (user.providerData[0].providerId === 'google.com')

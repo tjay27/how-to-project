@@ -35,8 +35,18 @@ export default function BlogCard() {
 
    const [articles,setArticles]=useState([]);
    const [approve,setApproved]=useState([])
+   const [noOfElement,setnoOfElement]=useState(3)
+   const [noOfPending,setnoOfPending]=useState(3)
    const {user} = useAuthState(auth);
 
+   const slice = approve.slice(0,noOfElement)
+   const slice1 = articles.slice(0,noOfPending)
+   const loadMore =()=>{
+    setnoOfElement(noOfElement+noOfElement)
+   }
+   const loadPending = () =>{
+    setnoOfPending(noOfPending+noOfPending)
+   }
 
    useEffect(()=>{
        const articleRef=collection(db,"Admin")
@@ -72,7 +82,7 @@ export default function BlogCard() {
         <p style={{margin: 20, fontSize: 22}}>No articles found</p>
     ):(
 
-    articles.map(({id,Title,Topic,imgURL,author})=><div class="ApproveCard" key={id}>
+    slice1.map(({id,Title,Topic,imgURL,author})=><div class="ApproveCard" key={id}>
 
     <Card class="cards"
       // sx={{
@@ -110,6 +120,8 @@ export default function BlogCard() {
   </div>)
     )
 }
+<Button onClick={()=>loadPending()}>new</Button>
+
 </div>
 
 
@@ -120,7 +132,7 @@ export default function BlogCard() {
         <p style={{margin: 20, fontSize: 22}}>No articles found</p>
     ):(
 
-    approve.map(({id,Title,Topic,imgURL,author})=><div class="ApproveCard" key={id}>
+    slice.map(({id,Title,Topic,imgURL,author})=><div class="ApproveCard" key={id}>
 
     <Card class="cards"
       // sx={{
@@ -153,10 +165,11 @@ export default function BlogCard() {
       <DeleteArticle id={id}/>
       </CardActions>
     </Card>
-    
   </div>)
     )
 }
+<Button onClick={()=>loadMore()}>Load more</Button>
+
 </div>
 </>
 )}

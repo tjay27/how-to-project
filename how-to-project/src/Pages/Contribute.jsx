@@ -97,16 +97,17 @@ export default function Contribute(){
     return(
       <div>
         {activeStep === 0 && (
+<div>
+  <Navbar/>
 
 <div class="publishPost">
-<Navbar/>
 <Box sx={{
-"& .MuiTextField-root": { m: 1 , width:"150ch" },
-marginLeft:3, marginTop:5, color: "white"
+"& .MuiTextField-root": { m: 1 , width:"900px" },
+marginLeft:20, marginTop:5, 
 }}>
-    <Typography variant="h3" align="center">CONTRIBUTE </Typography>
+    <Typography variant="h4" marginLeft={2} marginBottom={5} color="white" >CONTRIBUTE </Typography>
     <TextField 
-    fullWidth label="Title" 
+    label="Title" 
     id="Title" 
     margin="20px"  
     sx={{margin:2}}
@@ -117,7 +118,7 @@ marginLeft:3, marginTop:5, color: "white"
 
 
     <TextField 
-    fullWidth label="Field of Study" 
+    label="Field of Study" 
     id="Topic" 
     margin="20px" 
     value={multiformValue.Topic} 
@@ -127,7 +128,7 @@ marginLeft:3, marginTop:5, color: "white"
     required/>
 
    <TextField 
-    fullWidth label="Description" 
+    label="Description" 
     multiline
     rows={4}
     id="Description" 
@@ -168,18 +169,18 @@ name="row-radio-buttons-group"
 </RadioGroup>
 </FormControl><br/>
 </Box>
-<Button variant="contained" color="secondary" sx={{ marginTop: "20px" , marginLeft:75 }} onClick={handleNext}>
+<Button variant="contained" color="secondary" sx={{ marginTop: "20px" , marginLeft:75, marginBottom: "20px" }} onClick={handleNext}>
   Next
 </Button>
 </div>
-
+</div>
         )}
 
 
         {activeStep === 1 && (
           <>
           <SearchImage multiformValue={multiformValue} setMultiformValue={setMultiformValue} handleSubmit={handleSubmit}/>
-          <Button variant="contained" color="secondary" sx={{ marginTop: "20px" , marginLeft:75 }} onClick={handleBack}>
+          <Button variant="contained" color="secondary" sx={{ marginTop: "64px" , marginLeft:60 }} onClick={handleBack}>
           Back
         </Button>
         </>

@@ -1,6 +1,6 @@
 import React, { useState } from "react"
 import Fab from "@mui/material/Fab";
-import { Button } from "@mui/material";
+import { Button, Typography } from "@mui/material";
 import Login from '../Images/Login.png'
 import {GoogleButton } from 'react-google-button'
 import { UserAuth } from '../Firebase/AuthContext';
@@ -33,8 +33,8 @@ function LoginIcon(){
     }
     return(
         <>
-      {user
-      ?<TransitionModal 
+      {/*user
+      ?*/}<TransitionModal 
       title="Login"
       button={<a class="login-icon"><i class="fa-regular fa-4x fa-circle-user"></i></a>}
       content="Welcome. You can write your own technical blogs, research papers or articles for others to read.
@@ -42,7 +42,7 @@ function LoginIcon(){
       >
         <img class="loginImg" src={Login} alt="" />
         <div>
-          <p>{user.displayName}</p>  
+          <Typography align="center" variant="h5">{user.displayName}</Typography>  
           <Button  variant="contained"
           align="center"
           color="secondary"
@@ -51,7 +51,7 @@ function LoginIcon(){
           </div>
       </TransitionModal>
 
-          :<TransitionModal 
+          {/* :<TransitionModal 
           title="Login"
           button={<a class="login-icon"><i class="fa-regular fa-3x fa-circle-user"></i></a>}
           content="Hello User, login to your account for writing your own technical stuff and accessing various other features like commenting, discussing and saving blogs or articles." 
@@ -62,7 +62,7 @@ function LoginIcon(){
             </div>
         </TransitionModal>
 
-        }
+        }*/}
 
       </>
     ) 

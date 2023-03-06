@@ -166,6 +166,7 @@ export default function BlogCard() {
           onKeyDown = {handleKeyDown}
           value={searchInput}
         ></input>
+        
         <button class="search-icon" type="submit" onClick={searchBlog}></button>
 
         {/* <div>

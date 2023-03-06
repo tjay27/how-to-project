@@ -27,7 +27,6 @@ function AdminPage() {
           placeholder="Search"
           id="searchInput"
         ></input>
-        <i class="fas fa-search search-icon"></i>
       </div>
 
       

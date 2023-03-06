@@ -51,11 +51,10 @@ export default function SearchImage({multiformValue,setMultiformValue, handleSub
             placeholder="Search for photos"
             id="searchInput"
             />
-
-            <Button onClick={getImage}>Get Image</Button>
+            <Button class="search-icon"onClick={getImage}><i class="fa-solid fa-magnifying-glass"></i></Button>
         </div>
 
-        <div className="container">
+        <div className="image-container">
             <div className="row">
                 {
                     image.map((prop)=>{
@@ -67,7 +66,6 @@ export default function SearchImage({multiformValue,setMultiformValue, handleSub
                                 height="345"
                                 src={prop.urls.small}
                                 alt="image"
-                                value={multiformValue.imgURL}
                                 onClick={handleImage}
                               />
                               <CardContent>By {prop.user.name}</CardContent>
@@ -77,15 +75,15 @@ export default function SearchImage({multiformValue,setMultiformValue, handleSub
                     })
                 }
             </div>
-        </div>
-        <Button
+            <Button
           variant="contained"
           color="secondary"
           sx={{ marginTop: "20px" , marginLeft:75 }}
           onClick={handleSubmit}
-        >
-    Submit
-  </Button>
+          >Submit
+          </Button>
+        </div>
+        
   {/*<TextField
    onChange={(e)=>{setMultiformValue({...multiformValue,imgURL:(e.target.value)})
    }}

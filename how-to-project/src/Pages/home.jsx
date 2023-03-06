@@ -30,7 +30,10 @@ function Home() {
       <div class="bar">
             <nav>
                 <img class="Logo" src={Logo} alt="Logo" />
-                
+                <input type="checkbox" id="check"/>
+                    <label for="check" class="checkbtn">
+                        <i class="fas fa-bars"></i>
+                    </label>
                 <ul>
                     <li class="active-page"><a href="/">Home</a></li>
                     <li><a href="/feed">My Feed</a></li>

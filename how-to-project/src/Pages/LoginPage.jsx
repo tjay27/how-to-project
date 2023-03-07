@@ -46,7 +46,7 @@ function LoginPage() {
 
   useEffect(() => {
     if(user?.displayName){
-      navigate('/feed');
+      navigate('/searchpage');
     }
   }, [user]);
 

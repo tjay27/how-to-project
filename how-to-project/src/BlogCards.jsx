@@ -157,10 +157,11 @@ export default function BlogCard() {
 
   return (
   <>
+       <div class="searchBar-cont">
         <input
             class="search-bar feedpage"
             type="search"
-            placeholder="Search blogs by name , field of study or author name"
+            placeholder="Search stuff by Title or Field of Study"
             id="searchInput"
           onChange={(e)=>{setSearchInput(e.target.value);}}
           onKeyDown = {handleKeyDown}
@@ -169,6 +170,7 @@ export default function BlogCard() {
         
         <button class="search-icon" type="submit" onClick={searchBlog}></button>
 
+        </div>
         {/* <div>
 
         <input

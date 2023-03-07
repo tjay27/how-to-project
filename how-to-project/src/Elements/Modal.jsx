@@ -17,7 +17,7 @@ export default function AlertDialog(props) {
 
   return (
     <div>
-      <Button onClick={handleClickOpen} size="small" sx={{ backgroundColor: "none", color: "#c69af6" }} disableTouchRipple>
+      <Button onClick={handleClickOpen} size="small" sx={{ backgroundColor: "none", color: "black", "&:hover": {color: "white" } }} disableTouchRipple>
         {props.button}
       </Button>
       <Dialog

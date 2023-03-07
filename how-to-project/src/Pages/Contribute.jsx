@@ -156,13 +156,13 @@ row
 aria-labelledby="demo-row-radio-buttons-group-label"
 name="row-radio-buttons-group"
 >
-<FormControlLabel control={<Radio />} label="Research Paper" value={multiformValue.category}
+<FormControlLabel control={<Radio />} label="Research Paper" value="ResearchPaper"
                                 onChange={(e)=>{setMultiformValue({...multiformValue,category:("Research Paper")})
                                 }} />
-<FormControlLabel control={<Radio />} label="Blogs" value={multiformValue.category}
+<FormControlLabel control={<Radio />} label="Blogs" value="Blogs"
                                 onChange={(e)=>{setMultiformValue({...multiformValue,category:("Blogs")})
                                 }}/>
-<FormControlLabel control={<Radio />} label="Technical Stuff" value={multiformValue.category}
+<FormControlLabel control={<Radio />} label="Technical Stuff" value="TechnicalStuff"
                                 onChange={(e)=>{setMultiformValue({...multiformValue,category:("Technical Stuff")})
                                 }}/>
 

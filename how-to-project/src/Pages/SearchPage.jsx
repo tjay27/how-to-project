@@ -58,7 +58,7 @@ function SearchPage() {
   return (
     <>
       <Navbar/>
-      {/* SEARCH BAR */}
+      {/* SEARCH BAR 
       <div>
         <input 
           class="search-bar"
@@ -68,7 +68,7 @@ function SearchPage() {
       />
       <Button class="search-icon" ><i class="fa-solid fa-magnifying-glass"></i></Button>
 
-      </div>
+      </div>*/}
 
       <div style={{marginLeft: '5%', marginRight: '5%'}}>
         
@@ -89,7 +89,7 @@ function SearchPage() {
             sx={{marginLeft:33 , color:"white" , paddingLeft:9 , marginTop:20 }}>
           <Tab sx={{marginRight:3 , fontSize:22}} label="BLOGS" {...a11yProps(0)} />
           <Tab sx={{marginRight:3 , fontSize:22}} label="RESEARCH PAPER"{...a11yProps(1)} />
-          <Tab sx={{marginRight:3 , fontSize:22}} label="TECHNICAL STUFF" {...a11yProps(2)} />
+          <Tab sx={{marginRight:3 , fontSize:22}} label="PLACEMENT STORIES" {...a11yProps(2)} />
         </Tabs>
       </Box>
       <TabPanel value={value} index={0}>

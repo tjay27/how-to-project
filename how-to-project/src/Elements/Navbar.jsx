@@ -3,6 +3,7 @@ import Down_arrow from "../Images/down-arrow.png";
 import LoginIcon from "./login";
 import {auth } from "../Firebase/firebase";
 import { UserAuth } from "../Firebase/AuthContext";
+import { NavLink } from "react-router-dom";
 
 function Navbar () {
 
@@ -26,9 +27,15 @@ function Navbar () {
                     </label>
                 
                 <ul class="navbar-options">
-                    <li><a href="/">Home</a></li>
-                    <li><a class="active-page" href="/searchpage">Explore</a></li>
-                    <li><a  href="/Contribute">Publish</a></li>
+                    <li>
+                        <NavLink exact to="/" activeclassName="active-page">Home</NavLink>
+                    </li>
+                    <li>
+                        <NavLink  to="/SearchPage" activeclassName="active-page">Explore</NavLink>
+                    </li>
+                    <li>
+                        <NavLink to="/Contribute" activeclassName="active-page">Publish</NavLink>
+                    </li>
                     
                     {
                         // (user.providerData[0].providerId === 'google.com')

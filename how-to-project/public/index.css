@@ -50,7 +50,7 @@ nav ul li{
   /* text-decoration: none; */
 }
 
-.active-page {
+nav a.active {
   background-color: #7D5FBB;
   padding:10px;
   border-radius: 5px;
@@ -60,7 +60,8 @@ nav ul li a{
   
   color:white;
   text-decoration: none;
-  font-size: 20px;
+  font-size: 22px;
+  font-weight: 450;
 }
 
 .navbar-options a:hover{
@@ -594,9 +595,8 @@ padding:3;
 background: rgba(233, 231, 231, 0.29);
 border-radius: 5px;
 }
-.feedpage{
-  left:235px;
-  top:65px;
+.searchpage{
+
 }
 
 .search-bar:hover{

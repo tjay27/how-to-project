@@ -19,7 +19,6 @@ function AdminPage() {
   return (
     <>
     <Navbar/>
-      {/* <NavBar /> */}
       <div>
         <input
           class="search-bar"

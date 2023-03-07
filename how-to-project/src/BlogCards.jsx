@@ -250,20 +250,20 @@ export default function BlogCard() {
             content="Inspire others to explore tech, share the content."
             >
               <FacebookShareButton
-              url={`/article/${id}`}>
+              url={link}>
                 <FacebookIcon  logoFillColor="white" round={true}></FacebookIcon>
               </FacebookShareButton>
               <WhatsappShareButton
               title="sharing content"
-              url={`/article/${id}`}>
+              url={link}>
                 <WhatsappIcon logoFillColor="white" round={true}></WhatsappIcon>
               </WhatsappShareButton>
               <TwitterShareButton
-              url={`/article/${id}`}>
+              url={link}>
                 <TwitterIcon logoFillColor="white" round={true}></TwitterIcon>
               </TwitterShareButton>
               <LinkedinShareButton
-              url={`/article/${id}`}>
+              url={link}>
               <LinkedinIcon logoFillColor="white" round={true}></LinkedinIcon>
               </LinkedinShareButton>
           </TransitionModal>

@@ -10,6 +10,9 @@ import { useNavigate } from 'react-router-dom';
 import { collection ,addDoc} from "firebase/firestore";
 import TransitionModal from './Modal';
 
+import { NavLink } from "react-router-dom";
+
+
 function Navbar () {
   const navigate = useNavigate()
 
@@ -62,9 +65,15 @@ function Navbar () {
                     </label>
                 
                 <ul class="navbar-options">
-                    <li><a href="/">Home</a></li>
-                    <li><a class="active-page" href="/searchpage">Explore</a></li>
-                    <li><a  href="/Contribute">Publish</a></li>
+                    <li>
+                        <NavLink exact to="/" activeclassName="active-page">Home</NavLink>
+                    </li>
+                    <li>
+                        <NavLink  to="/SearchPage" activeclassName="active-page">Explore</NavLink>
+                    </li>
+                    <li>
+                        <NavLink to="/Contribute" activeclassName="active-page">Publish</NavLink>
+                    </li>
                     
                     {
                         // (user.providerData[0].providerId === 'google.com')

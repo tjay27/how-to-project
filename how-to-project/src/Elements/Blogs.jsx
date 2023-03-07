@@ -144,7 +144,7 @@ export default function BlogCard() {
   
    useEffect(()=>{
        const articleRef=collection(db,"Admin")
-       const q=query(articleRef,where('status',"==",true),where("category","==","Blogs"));
+       const q=query(articleRef,where('status',"==",true),where('category',"==","Blogs"));
        onSnapshot(q,(snapshot)=>{
            const articles = snapshot.docs.map((doc)=>({
                id:doc.id,
@@ -157,7 +157,17 @@ export default function BlogCard() {
 
   return (
   <>
-    <div class="searchCont">
+        <input
+            class="search-bar searchpage"
+            type="search"
+            placeholder="Search blogs by name , field of study or author name"
+            id="searchInput"
+          onChange={(e)=>{setSearchInput(e.target.value);}}
+          onKeyDown = {handleKeyDown}
+          value={searchInput}
+        ></input>
+        
+        <button class="search-icon" type="submit" onClick={searchBlog}><i class="fa-solid fa-magnifying-glass"></i></button>
 
         {/* <div>
 
@@ -174,7 +184,6 @@ export default function BlogCard() {
         ></input>
         <button class="search-icon" type="submit" onClick={searchBlog}><i class="fas fa-search"></i></button>
         </div> */}
-    </div>
 
     <div>
              {
@@ -191,11 +200,11 @@ export default function BlogCard() {
       //   color: "white",
       // }}
     >
-      <CardMedia component="img" height="140" image={`${imgURL}`} alt="media" />
+      <CardMedia component="img" height="150px" image={`${imgURL}`} alt="media" />
       
       <CardContent>
-        <Typography gutterBottom variant="h5" component="div">
-        <Link to={`/article/${id}`}>{Title}</Link>
+        <Typography gutterBottom variant="h5" component="div" color={"white"}>
+        <Link color="white" to={link}>{Title}</Link>
         </Typography>
         <Typography variant="body2" color="white">
           Author: {author.name}
@@ -220,9 +229,9 @@ export default function BlogCard() {
             <p>{likes?<span>{likes.length}</span>:""}</p></div>
 
           <TransitionModal 
-          title="Comment section" 
+          title="Comment Section" 
           button={<i class="fas fa-2x fa-comments"></i>}
-          content="Unleash the power of words. Spark discussion, share your insights.">                          
+          content="Unleash the power of words. Spark discussion, share your insights.">             
               <Comment id={id} currentlyLoggedInUser={user}/>
           </TransitionModal>
         {/* <p>{comments?<span>{comments.length}</span>:""}</p> */}
@@ -236,7 +245,7 @@ export default function BlogCard() {
             >
               <FacebookShareButton
               url={link}>
-                <FacebookIcon logoFillColor="white" round={true}></FacebookIcon>
+                <FacebookIcon  logoFillColor="white" round={true}></FacebookIcon>
               </FacebookShareButton>
               <WhatsappShareButton
               title="sharing content"
@@ -288,4 +297,3 @@ export default function BlogCard() {
 </div>
 </>
 )}
- 

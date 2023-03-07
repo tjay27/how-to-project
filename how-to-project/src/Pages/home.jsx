@@ -26,51 +26,14 @@ function Home() {
 
   return (
     <div>
-      {/* Navbar */}
-      <div class="bar">
-            <nav>
-                <img class="Logo" src={Logo} alt="Logo" />
-                <input type="checkbox" id="check"/>
-                    <label for="check" class="checkbtn">
-                        <i class="fas fa-bars"></i>
-                    </label>
-                <ul>
-                    <li class="active-page"><a href="/">Home</a></li>
-                    <li><a href="/feed">My Feed</a></li>
-                    <li><a href="/searchpage">Search</a></li>
-                    <li><a href="/my-activity">Dashboard</a></li>
-                    
-                    <li>
-                    <div class="dropdown">
-                    <button class="dropbtn"><img src={Down_arrow}></img></button>
-                    <ul class="dropdown-content">
-                        {/* <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#">Publish</button> */}
-                        <li>Publish <span></span><span></span><span></span><span></span></li>
-                        <li>Invite <span></span><span></span><span></span><span></span></li>
-                        <li>Feedback <span></span><span></span><span></span><span></span></li>
-                    </ul>
-                    </div>
-                    </li>
-                    
-                </ul>
-                
-
-                <button type="button" class="b2">Get Chrome Extension</button>
-
-                {
-                    user? <LoginIcon/>
-                        : <a class="login-icon" href="/loginpage"><i class="fa-regular fa-3x fa-circle-user"></i></a>
-                }
-
-            </nav>
-            <hr/>
-        </div>
+      < Navbar/>
+      
 
       {/*****  SECTION 1 ******/}
       <div class="home-section-1">
         <div class="row">
           <div>
-            <h1>TAG LINE HERE</h1>
+            <h1>"Discover the world through our words"</h1>
             
           </div>
           <div class="col-lg-7">
@@ -80,13 +43,13 @@ function Home() {
 
            <div className="marquee-text">
             <Marquee>
-            <span> CELESTIAL BUISCUIT IGDTUW  • &nbsp;</span>
-            <span> CELESTIAL BUISCUIT IGDTUW  • &nbsp;</span>
-            <span> CELESTIAL BUISCUIT IGDTUW  • &nbsp;</span>
-            <span> CELESTIAL BUISCUIT IGDTUW  • &nbsp;</span>
-            <span> CELESTIAL BUISCUIT IGDTUW  • &nbsp;</span>
-            <span> CELESTIAL BUISCUIT IGDTUW  • &nbsp;</span>
-            <span> CELESTIAL BUISCUIT IGDTUW  • &nbsp;</span>
+            <span> CELESTIAL BISCUIT IGDTUW  • &nbsp;</span>
+            <span> CELESTIAL BISCUIT IGDTUW  • &nbsp;</span>
+            <span> CELESTIAL BISCUIT IGDTUW  • &nbsp;</span>
+            <span> CELESTIAL BISCUIT IGDTUW  • &nbsp;</span>
+            <span> CELESTIAL BISCUIT IGDTUW  • &nbsp;</span>
+            <span> CELESTIAL BISCUIT IGDTUW  • &nbsp;</span>
+            <span> CELESTIAL BISCUIT IGDTUW  • &nbsp;</span>
             </Marquee>
           </div>
 
@@ -107,7 +70,20 @@ function Home() {
               <h3>FEATURE NAME</h3>
             </FlipCard.Front>
             <FlipCard.Back className="cardBack card">
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis dicta, quasi soluta deleniti, quam sunt dolorum, impedit magnam tempora suscipit quod error fugit temporibus omnis hic ullam modi corrupti placeat?</p>
+              <p>We aim to provide a platform for the students of Indira Gandhi Delhi Technical University for Women (IGDTUW) to read and access the technical writings, 
+                such as blogs, articles, and papers, written by their peers at the university. </p>
+
+              </FlipCard.Back>
+          </FlipCard>
+        </div>
+
+        <div className='card-main'>
+          <FlipCard>
+            <FlipCard.Front className="cardFront card">
+            <h3>FEATURE NAME</h3>
+            </FlipCard.Front>
+            <FlipCard.Back className="cardBack card">
+              <p>User-friendly portal to promote technical writing among students and to make the writings of the students at the university more accessible and widely read among their peers.</p>
             </FlipCard.Back>
           </FlipCard>
         </div>
@@ -118,18 +94,7 @@ function Home() {
             <h3>FEATURE NAME</h3>
             </FlipCard.Front>
             <FlipCard.Back className="cardBack card">
-              <p>desc</p>
-            </FlipCard.Back>
-          </FlipCard>
-        </div>
-
-        <div className='card-main'>
-          <FlipCard>
-            <FlipCard.Front className="cardFront card">
-            <h3>FEATURE NAME</h3>
-            </FlipCard.Front>
-            <FlipCard.Back className="cardBack card">
-              <p>desc</p>
+              <p>Features such as commenting, rating and discussion features to foster a sense of community among students who write and read the technical writings.</p>
             </FlipCard.Back>
           </FlipCard>
         </div>

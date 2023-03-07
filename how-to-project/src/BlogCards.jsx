@@ -232,7 +232,10 @@ export default function BlogCard() {
           </Button>}
             <p>{likes?<span>{likes.length}</span>:""}</p></div>
 
-          <TransitionModal title="Comment section" button={<i class="fas fa-2x fa-comments"></i>}>             
+          <TransitionModal 
+          title="Comment Section" 
+          button={<i class="fas fa-2x fa-comments"></i>}
+          content="Unleash the power of words. Spark discussion, share your insights.">             
               <Comment id={id} currentlyLoggedInUser={user}/>
           </TransitionModal>
         {/* <p>{comments?<span>{comments.length}</span>:""}</p> */}
@@ -242,22 +245,23 @@ export default function BlogCard() {
           <TransitionModal 
             title="Share"
             button={<i class='fas fa-2x fa-share'></i>}
+            content="Inspire others to explore tech, share the content."
             >
               <FacebookShareButton
-              url={link}>
-                <FacebookIcon logoFillColor="white" round={true}></FacebookIcon>
+              url={`/article/${id}`}>
+                <FacebookIcon  logoFillColor="white" round={true}></FacebookIcon>
               </FacebookShareButton>
               <WhatsappShareButton
               title="sharing content"
-              url={link}>
+              url={`/article/${id}`}>
                 <WhatsappIcon logoFillColor="white" round={true}></WhatsappIcon>
               </WhatsappShareButton>
               <TwitterShareButton
-              url={link}>
+              url={`/article/${id}`}>
                 <TwitterIcon logoFillColor="white" round={true}></TwitterIcon>
               </TwitterShareButton>
               <LinkedinShareButton
-              url={link}>
+              url={`/article/${id}`}>
               <LinkedinIcon logoFillColor="white" round={true}></LinkedinIcon>
               </LinkedinShareButton>
           </TransitionModal>

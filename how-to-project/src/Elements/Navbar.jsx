@@ -25,36 +25,46 @@ function Navbar () {
                         <i class="fas fa-bars"></i>
                     </label>
                 
-                <ul>
+                <ul class="navbar-options">
                     <li><a href="/">Home</a></li>
-                    <li><a class="active-page" href="/feed">My Feed</a></li>
-                    <li><a href="/searchpage">Search</a></li>
+                    <li><a class="active-page" href="/searchpage">Explore</a></li>
+                    <li><a  href="/Contribute">Publish</a></li>
+                    
                     {
                         // (user.providerData[0].providerId === 'google.com')
                         // ? <li><a href="/my-activity">Dashboard</a></li>
                         // : <li><a href="/admin">Dashboard</a></li>
-                        <li><a href="/my-activity">Dashboard</a></li>
+                        //<li><a href="/my-activity">Dashboard</a></li>
                     }
                     
                     
-                    <li>
+                    {/*<li>
                     <div class="dropdown">
                     <button class="dropbtn"><img src={Down_arrow}></img></button>
                     <ul class="dropdown-content">
-                        {/* <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#">Publish</button> */}
                         <li>Publish <span></span><span></span><span></span><span></span></li>
                         <li>Invite <span></span><span></span><span></span><span></span></li>
                         <li>Feedback <span></span><span></span><span></span><span></span></li>
                     </ul>
                     </div>
-                    </li>
+                    </li>*/}
                     
                 </ul>
                 
-                {
-                    user? <LoginIcon/>
-                        : <a class="login-icon" href="/loginpage"><i class="fa-regular fa-3x fa-circle-user"></i></a>
-                }
+                <div class="dropdown">
+                    <LoginIcon/>
+                    <ul class="dropdown-content">
+                        <li>Dashboard <span></span><span></span><span></span><span></span></li>
+                        <li>Feedback <span></span><span></span><span></span><span></span></li>
+
+                        {
+                    user? <li onClick={handleSignOut}>Logout <span></span><span></span><span></span><span></span></li> 
+                        : <li><a href="/loginpage">Login <span></span><span></span><span></span><span></span></a></li>
+                        }
+
+                        
+                    </ul>
+                </div>
 
 
             </nav>

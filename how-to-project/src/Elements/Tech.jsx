@@ -219,7 +219,10 @@ export default function BlogCard() {
           </Button>}
             <p>{likes?<span>{likes.length}</span>:""}</p></div>
 
-          <TransitionModal title="Comment section" button={<i class="fas fa-2x fa-comments"></i>}>             
+          <TransitionModal title="Comment Section"        
+          button={<i class="fas fa-2x fa-comments"></i>}
+          content="Unleash the power of words. Spark discussion, share your insights.">             
+
               <Comment id={id} currentlyLoggedInUser={user}/>
           </TransitionModal>
         {/* <p>{comments?<span>{comments.length}</span>:""}</p> */}
@@ -228,7 +231,8 @@ export default function BlogCard() {
         
           <TransitionModal 
             title="Share"
-            button={<i class='fas fa-2x fa-share'></i>}
+            button={<i class='fas fa-2x fa-share'></i>}           
+            content="Inspire others to explore tech, share the content."
             >
               <FacebookShareButton
               url={link}>

@@ -30,9 +30,10 @@ function BlogPost() {
     onSnapshot(docRef,(snapshot)=>{
       setArticle({...snapshot.data(),id:snapshot.id});
     });
+    console.log(window.location.href)
   },[]);
 
-
+  const shareurl = "http://localhost:3000/article/";
   const [likeState, setLikeState] = useState(false);
   const [savedState, setSavedState] = useState(false);
 
@@ -174,20 +175,20 @@ function BlogPost() {
 }
           >
             <FacebookShareButton
-            url="ok">
+            url={shareurl +`${article.id}`}>
               <FacebookIcon logoFillColor="white" round={true}></FacebookIcon>
             </FacebookShareButton>
             <WhatsappShareButton
             title="sharing content"
-            url="ok">
+            url={shareurl+`${article.id}`}>
               <WhatsappIcon logoFillColor="white" round={true}></WhatsappIcon>
             </WhatsappShareButton>
             <TwitterShareButton
-            url="ok">
+            url={shareurl+`${article.id}`}>
               <TwitterIcon logoFillColor="white" round={true}></TwitterIcon>
             </TwitterShareButton>
             <LinkedinShareButton
-            url="ok">
+            url={shareurl+`${article.id}`}>
             <LinkedinIcon logoFillColor="white" round={true}></LinkedinIcon>
             </LinkedinShareButton>
         </TransitionModal>

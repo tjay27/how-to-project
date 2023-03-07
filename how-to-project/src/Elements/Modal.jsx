@@ -40,7 +40,7 @@ export default function AlertDialog(props) {
         <DialogContent id="alert-dialog-description" sx={{color:'white'}} >
           <h6>{props.content}</h6>
         </DialogContent>
-        <DialogContent sx={{color:'white'}}>
+        <DialogContent sx={{color:'white',marginLeft:1}}>
           {props.children}
         </DialogContent>
         

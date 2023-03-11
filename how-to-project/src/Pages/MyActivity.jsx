@@ -56,7 +56,14 @@ function MyActivity() {
     <>
       <Navbar/>
       {/* SEARCH BAR */}
-      <div>
+      <div
+      style={{
+        width: '60%',
+        display: 'block',
+        marginLeft: 'auto',
+        marginRight: 'auto',
+        marginTop: '5%',
+      }}>
         <input 
           class="search-bar"
           type="search"
@@ -81,10 +88,11 @@ function MyActivity() {
         width: '100%',
         marginLeft:1,
       }}>
-      <Box sx={{ borderBottom: 1, borderColor: 'divider' }} >
+      <Box sx={{ borderBottom: 1, borderColor: 'divider', display: 'flex',
+              justifyContent: 'center' }} >
         <Tabs value={value} onChange={handleChange} aria-label="basic tabs example" textColor="white"
             indicatorColor="secondary"
-            sx={{marginLeft:33 , color:"white" , paddingLeft:9 , marginTop:20 }}>
+            sx={{color:"white", marginTop: '5%',}}>
           <Tab sx={{marginRight:3 , fontSize:22}} label="my submissions" {...a11yProps(0)} />
           <Tab sx={{marginRight:3 , fontSize:22}} label="liked"{...a11yProps(1)} />
           <Tab sx={{marginRight:3 , fontSize:22}} label="Bookmark" {...a11yProps(2)} />

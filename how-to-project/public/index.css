@@ -488,24 +488,10 @@ font-family: 'Ubuntu', sans-serif;
   justify-content: flex-start;
 }
 .search-bar{
- position: relative; 
-display: flex;
-flex-direction: row;
-align-items: center;
-/* padding: 15px 20px; */
-/* gap: 640px; */
-
-width: 700px;
-height: 45px;
-left: 330px;
-top: 100px;
-padding:3;
-
-background: rgba(233, 231, 231, 0.29);
+  width: 100%;
+  height: 3em;
+  background: rgba(233, 231, 231, 0.29);
 border-radius: 5px;
-}
-.searchpage{
-
 }
 
 .search-bar:hover{
@@ -513,12 +499,10 @@ border-radius: 5px;
 }
 
 .search-icon{
-    position: relative;
-    left: 990px;
-    top:65px;
     background: top;
     border: none;
-    color: white;
+    color: white; 
+    margin-left: -5%;
 }
 
 .search-icon:hover{

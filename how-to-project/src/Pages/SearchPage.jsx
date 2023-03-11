@@ -1,4 +1,4 @@
-import React ,{useState}from "react";
+import React, { useState } from "react";
 import BCards from "../Elements/BCards";
 import Blogs from "../Elements/Blogs";
 import Tech from "../Elements/Tech"
@@ -50,14 +50,14 @@ function a11yProps(index) {
 }
 
 function SearchPage() {
-  const {user}=useAuthState(auth);
-  const[value,setValue] = useState(0);
+  const { user } = useAuthState(auth);
+  const [value, setValue] = useState(0);
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
   return (
     <>
-      <Navbar/>
+      <Navbar />
       {/* SEARCH BAR 
       <div>
         <input 
@@ -70,41 +70,50 @@ function SearchPage() {
 
       </div>*/}
 
-      <div style={{marginLeft: '5%', marginRight: '5%'}}>
-        
-      {/* <Avatar
+      <div style={{ marginLeft: '5%', marginRight: '5%' }}>
+
+        {/* <Avatar
   alt="Remy Sharp"
   src={user.photoURL}
   sx={{ width: 126, height: 126 ,marginLeft:80}}
 /> 
  <Typography variant="h4" align="center" sx={{color:"white", margin:2}}>{user.displayName}</Typography> */}
-<Box
-    sx={{
-        width: '100%',
-        marginLeft:1,
-      }}>
-      <Box sx={{ borderBottom: 1, borderColor: 'divider' }} >
-        <Tabs value={value} onChange={handleChange} aria-label="basic tabs example" textColor="white"
-            indicatorColor="secondary"
-            sx={{marginLeft:33 , color:"white" , paddingLeft:9 , marginTop:20 }}>
-          <Tab sx={{marginRight:3 , fontSize:22}} label="BLOGS" {...a11yProps(0)} />
-          <Tab sx={{marginRight:3 , fontSize:22}} label="RESEARCH PAPER"{...a11yProps(1)} />
-          <Tab sx={{marginRight:3 , fontSize:22}} label="PLACEMENT STORIES" {...a11yProps(2)} />
-        </Tabs>
-      </Box>
-      <TabPanel value={value} index={0}>
-          <Blogs/>
-      </TabPanel>
-      <TabPanel value={value} index={1}>
-          <ResearchPaper/>
-      </TabPanel>
-      <TabPanel value={value} index={2}>
-         <Tech/>
-      </TabPanel>
-    </Box>
-</div>
+        <Box
+          sx={{
+            width: '100%',
+            marginLeft: 1,
+          }}>
+          <Box
+            sx={{
+              borderBottom: 1,
+              borderColor: 'divider',
+              display: 'flex',
+              justifyContent: 'center'
+            }} >
+            <Tabs value={value} onChange={handleChange} aria-label="basic tabs example" textColor="white"
+              indicatorColor="secondary"
+              sx={{
+                color: "white",
+                marginTop: '5%',
+                }}>
+              <Tab sx={{ marginRight: 3, fontSize: '3.25vmin'}} label="BLOGS" {...a11yProps(0)} />
+              <Tab sx={{ marginRight: 3, fontSize: '3.25vmin'}} label="RESEARCH PAPER"{...a11yProps(1)} />
+              <Tab sx={{ marginRight: 3, fontSize: '3.25vmin'}} label="PLACEMENT STORIES" {...a11yProps(2)} />
+            </Tabs>
+          </Box>
+          <TabPanel value={value} index={0}>
+            <Blogs />
+          </TabPanel>
+          <TabPanel value={value} index={1}>
+            <ResearchPaper />
+          </TabPanel>
+          <TabPanel value={value} index={2}>
+            <Tech />
+          </TabPanel>
+        </Box>
+      </div>
 
-     
+
     </>
   );
 }
